@@ -3,17 +3,26 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Hui&#39;s blog</title>
+  <title>git常用操作 | Hui&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Hui's blog">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="这里是一些自己经常用到的git命令
+git 全局配置配置全局user1git config --global user.name &quot;Your Name&quot;
+配置全局Email1git config --global user.email your.email@example.com
+配置别名12git config --global alias.co checkout   这里co 代替字数较多的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="git常用操作">
+<meta property="og:url" content="http://yoursite.com/2014/04/30/git-operation/index.html">
 <meta property="og:site_name" content="Hui's blog">
-<meta property="og:description">
+<meta property="og:description" content="这里是一些自己经常用到的git命令
+git 全局配置配置全局user1git config --global user.name &quot;Your Name&quot;
+配置全局Email1git config --global user.email your.email@example.com
+配置别名12git config --global alias.co checkout   这里co 代替字数较多的">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hui's blog">
-<meta name="twitter:description">
+<meta name="twitter:title" content="git常用操作">
+<meta name="twitter:description" content="这里是一些自己经常用到的git命令
+git 全局配置配置全局user1git config --global user.name &quot;Your Name&quot;
+配置全局Email1git config --global user.email your.email@example.com
+配置别名12git config --global alias.co checkout   这里co 代替字数较多的">
   
     <link rel="alternative" href="/atom.xml" title="Hui&#39;s blog" type="application/atom+xml">
   
@@ -63,9 +72,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-git-operation" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-git-operation" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2014/04/30/git-operation/" class="article-date">
   <time datetime="2014-04-30T06:41:35.000Z" itemprop="datePublished">2014-04-30</time>
@@ -82,8 +89,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/04/30/git-operation/">git常用操作</a>
+    <h1 class="article-title" itemprop="name">
+      git常用操作
     </h1>
   
 
@@ -128,70 +135,20 @@
     </footer>
   </div>
   
-</article>
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-ssh-key-config" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2014/04/25/ssh-key-config/" class="article-date">
-  <time datetime="2014-04-25T12:20:15.000Z" itemprop="datePublished">2014-04-25</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/shell/">shell</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/04/25/ssh-key-config/">SSH通过密钥访问远程机器</a>
-    </h1>
+    <a href="/2014/04/25/ssh-key-config/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">SSH通过密钥访问远程机器</div>
+    </a>
   
+</nav>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>以下描述的步骤是通过mac访问远程Linux服务器</p>
-<h4 id="生成ssh密钥文件">生成ssh密钥文件</h4><p>在~/.ssh中生成相关密钥文件</p>
-<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">cd</span> ~/.ssh</span><br><span class="line">ssh-keygen -t rsa -C <span class="string">"xxxxx<span class="variable">@xxx</span>.com"</span></span><br></pre></td></tr></table></figure>
-<p><strong>-t</strong> 后面参数为ssh加密类型，这里是<strong>RSA</strong>类型<br><strong>-C</strong> 后面为comments  </p>
-<p>提示输入文件名和密码，密码可以为空。运行完后在.ssh目录下生成了2个文件，xxx和xxx.pub,后缀为.pub的文件为公有密钥文件，另外一个为私有文件。</p>
-<h4 id="加入ssh密钥文件">加入ssh密钥文件</h4><p>通过命令<strong>ssh-add</strong>加入刚刚生成的私有密钥文件到ssh-agent</p>
-<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-<span class="keyword">add</span> xxx</span><br></pre></td></tr></table></figure>
-<h4 id="加入公有密钥到远程客服端">加入公有密钥到远程客服端</h4><p>通过命令<strong>scp</strong>上传.pub文件到远程客服端<strong>.ssh</strong>目录</p>
-<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp ~<span class="regexp">/.ssh/xxx</span>.pub  user<span class="variable">@192</span>.<span class="number">168.1</span>.<span class="number">110</span><span class="symbol">:~/</span>.ssh</span><br></pre></td></tr></table></figure>
-<p>登入远程客服端,然后把密钥内容加入到<strong>authorized_keys</strong>文件</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ssh user@<span class="number">192.168</span>.<span class="number">1.110</span></span><br><span class="line">cd ~/<span class="class">.ssh</span></span><br><span class="line">cat xxx<span class="class">.pub</span> &gt;&gt; authorized_keys</span><br><span class="line">rm  xxx.pub</span><br></pre></td></tr></table></figure>
-<p>修改 ssh 的配置文件（默认是在 etc/ssh/sshd_config）, <strong>PubkeyAuthentication</strong> 设置成 <strong>yes</strong>。这样完成后可以直接这样访问，不用再输入密码</p>
-<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">ssh</span> user@<span class="number">192.168.1.110</span></span><br></pre></td></tr></table></figure>
-<p>我们还可以在本地config文件中进行配置，让访问变的更简单</p>
-<h4 id="配置本地ssh的config文件">配置本地ssh的config文件</h4><p>配置.ssh/config文件，加入以下内容<br><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">Host</span> localserver  </span><br><span class="line">     HostName <span class="number">192.168.1.110</span>  </span><br><span class="line">     User uname  </span><br><span class="line">     IdentityFile ~/.ssh/xxx</span><br></pre></td></tr></table></figure></p>
-<p>localserver为host的别名，可以随意取。IdentityFile指定生成在本地的私有密钥文件。这样就完成了配置,以后我们可以直接这样访问,不需要输入用户名和密码</p>
-<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">ssh</span> localserver</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/04/25/ssh-key-config/" data-id="ci7ipax7l0007j9tdxzhx4in7" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mac/">mac</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/shell/">shell</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ssh/">ssh</a></li></ul>
-
-    </footer>
-  </div>
   
 </article>
 
-
-  
-  
 </section>
         
           <aside id="sidebar">
