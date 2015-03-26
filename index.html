@@ -1,188 +1,102 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
 <head>
   <meta charset="utf-8">
   
   <title>Hui&#39;s blog</title>
+  <meta name="author" content="Hui">
+  
+  
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Hui's blog">
-<meta property="og:url" content="http://yoursite.com/index.html">
-<meta property="og:site_name" content="Hui's blog">
-<meta property="og:description">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hui's blog">
-<meta name="twitter:description">
+
   
+  <meta property="og:site_name" content="Hui&#39;s blog"/>
+
   
-    <link rel="icon" href="/favicon.png">
+    <meta property="og:image" content="undefined"/>
   
-  <!-- <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600' rel='stylesheet' type='text/css'> -->
-  <!-- <link href="//fonts.googleapis.com/css?family=Source+Code+Pro:400,700" rel="stylesheet" type="text/css"> -->
-  <link href="//fonts.useso.com/css?family=Source+Code+Pro:400,700" rel="stylesheet" type="text/css">
-  <link href='//fonts.useso.com/css?family=Open+Sans:300,600' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" href="/css/style.css" type="text/css">
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Hui&#39;s blog" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
   
 
 </head>
+
+
 <body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="header-outer" class="outer">
-    <!--<a href="/" class="logo">Hui&#39;s blog</a>-->
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-          <a class="main-nav-link" href="/about/index.html">About</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        <div id="search-form-wrap">
-          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="q" value="site:http://yoursite.com"></form>
-        </div>
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-        
-        
-          <a id="nav-github-link" class="nav-icon" href="https://github.com/dixon629" title="Fork me on GitHub"></a>
-        
-      </nav>
-    </div>
-  </div>
-</header>
-      <nav id="mobile-nav" class="off">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-    <a href="/about/index.html" class="mobile-nav-link">About</a>
-  
-  <div id="search-form-wrap-mobile">
-    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="q" value="site:http://yoursite.com"></form>
-  </div>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">Hui&#39;s blog</a></h1>
+  <h2><a href="/">Make progress a little bit every day</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/abouts.html">About</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
 </nav>
-      <div class="outer">
-        
-          <aside id="sidebar">
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper">
+  <article class="post">
   
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Categories</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/English/">English</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/d3/">d3</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/shell/">shell</a><span class="category-list-count">1</span></li></ul>
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-03-26T18:00:47.000Z"><a href="/2015/03/26/fixes-some-bugs-for-ng-grid-reorderable/">2015-03-26</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2015/03/26/fixes-some-bugs-for-ng-grid-reorderable/">Fixes some bugs for ng-grid-reorderable</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p><a href="https://github.com/angular-ui/ng-grid/tree/2.x/plugins" target="_blank" rel="external">ng-grid-reorderable</a> is a drag-drop plugin for <a href="https://github.com/angular-ui/ng-grid" target="_blank" rel="external">ng-gird</a>. I found some bugs when I was using this plugin.</p>
+<h3 id="Bug_1:_Can_drag_a_row_to_the_other_ng-grid">Bug 1: Can drag a row to the other ng-grid</h3><p>To fix this bug, it needs to compare grid id on drop event.<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> prevRow = self.services.DomUtilityService.eventStorage.rowToMove;</span><br><span class="line"><span class="keyword">if</span> (prevRow.gridId != self.myGrid.gridId) <span class="keyword">return</span>;</span><br></pre></td></tr></table></figure></p>
+<h3 id="Bug_2:_Can’t_select_all_texts_when_at_edting_status">Bug 2: Can’t select all texts when at edting status</h3><p>To fix this bug, it needs to disable drag-drop feature.<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//It should disable drag/drop feature when editing</span></span><br><span class="line">rowScope.$on(<span class="string">'ngGridEventStartCellEdit'</span>, <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">    targetRow.attr(<span class="string">'draggable'</span>, <span class="string">'false'</span>);</span><br><span class="line">    targetRow.off(<span class="string">'dragstart'</span>, onDragStart);</span><br><span class="line">&#125;);</span><br><span class="line">rowScope.$on(<span class="string">'ngGridEventEndCellEdit'</span>, <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">    targetRow.attr(<span class="string">'draggable'</span>, <span class="string">'true'</span>);</span><br><span class="line">    targetRow.on(<span class="string">'dragstart'</span>, onDragStart);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<h3 id="Bug_3:_Can_select_some_texts_and_then_drag_and_drop_it_on_the_ng-gird">Bug 3: Can select some texts and then drag and drop it on the ng-gird</h3><p>To fix this bug, it needs to remove dragover and drop event for the $viewport when editing<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">rowScope.$on(<span class="string">'ngGridEventStartCellEdit'</span>, <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">    self.myGrid.$viewport.off(<span class="string">'dragover'</span>, self.dragOver).off(<span class="string">'drop'</span>, self.onRowDrop);</span><br><span class="line">&#125;);</span><br><span class="line">rowScope.$on(<span class="string">'ngGridEventEndCellEdit'</span>, <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">    self.myGrid.$viewport.on(<span class="string">'dragover'</span>, self.dragOver).on(<span class="string">'drop'</span>, self.onRowDrop);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<h3 id="The_codes_in_gist">The codes in gist</h3><script src="//gist.github.com/a77d1507f0e65c0e2908.js?file=ng-grid-reorderable.js"></script>
+
+      
     </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
   </div>
+</article>
 
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">April 2014</a><span class="archive-list-count">2</span></li></ul>
-    </div>
-  </div>
 
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recents</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2015/03/24/nvd3-nice-scale/">nvd3中计算坐标轴的nice domain</a>
-          </li>
-        
-          <li>
-            <a href="/2015/03/23/ESL-1088-Selling-a-Business/">ESL_1088 Selling a Business</a>
-          </li>
-        
-          <li>
-            <a href="/2015/03/21/ESL-1087-Selecting-Window-Treatments/">ESL_1087 Selecting Window Treatments</a>
-          </li>
-        
-          <li>
-            <a href="/2014/04/30/git-operation/">git常用操作</a>
-          </li>
-        
-          <li>
-            <a href="/2014/04/25/ssh-key-config/">SSH通过密钥访问远程机器</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
 
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ESL/">ESL</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/chart/">chart</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/d3/">d3</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac/">mac</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nvd3/">nvd3</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/">shell</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssh/">ssh</a><span class="tag-list-count">1</span></li></ul>
-    </div>
-  </div>
 
+  <article class="photo">
   
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/ESL/" style="font-size: 20px;">ESL</a><a href="/tags/chart/" style="font-size: 10px;">chart</a><a href="/tags/d3/" style="font-size: 10px;">d3</a><a href="/tags/git/" style="font-size: 10px;">git</a><a href="/tags/mac/" style="font-size: 10px;">mac</a><a href="/tags/nvd3/" style="font-size: 10px;">nvd3</a><a href="/tags/shell/" style="font-size: 20px;">shell</a><a href="/tags/ssh/" style="font-size: 10px;">ssh</a>
-    </div>
-  </div>
-
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-03-24T17:39:06.000Z"><a href="/2015/03/24/nvd3-nice-scale/">2015-03-24</a></time>
+      
+      
   
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">links</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="http://hexo.io">Hexo</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-        <section id="main">
-  
-    <article id="photo-nvd3-nice-scale" class="article article-type-photo" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/03/24/nvd3-nice-scale/" class="article-date">
-  <time datetime="2015-03-24T17:39:06.000Z" itemprop="datePublished">2015-03-24</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/d3/">d3</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/03/24/nvd3-nice-scale/">nvd3中计算坐标轴的nice domain</a>
-    </h1>
+    <h1 class="title"><a href="/2015/03/24/nvd3-nice-scale/">nvd3中计算坐标轴的nice domain</a></h1>
   
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
+    </header>
+    <div class="entry">
       
         <p>最近用<a href="https://github.com/novus/nvd3" target="_blank" rel="external">nvd3</a>以及<a href="https://github.com/angularjs-nvd3-directives/angularjs-nvd3-directives" target="_blank" rel="external">angularjs-nvd3-directives</a>做chart遇到一个问题，如下图，y轴中的最大值是3.8。nvd3只会在坐标轴显示到数据最大值，但是有些情况下最大值并不是很好看，我们需要在这种情况下显示4.0。<br><img src="/2015/03/24/nvd3-nice-scale/nvd3_axis_1.png"><br>最开始查了下d3的文档，发现有个<a href="https://github.com/mbostock/d3/wiki/Quantitative-Scales" target="_blank" rel="external">nice()</a>方法可能会做到，但是尝试了下，不生效。查了下，可能是nvd3的<a href="https://github.com/novus/nvd3/issues/594" target="_blank" rel="external">bug</a>。要控制坐标轴的显示还可以通过xDomain(),yDomain()来实现，关键问题是如何计算domain的nice值。</p>
 <h3 id="计算数据中的最小值，最大值">计算数据中的最小值，最大值</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> yAxisValues = [<span class="number">1</span>,<span class="number">2.4</span>,<span class="number">3.6</span>,<span class="number">7.8</span>,<span class="number">9.2</span>];</span><br><span class="line"><span class="keyword">var</span> yAxisMax = d3.max(yAxisValues)</span><br><span class="line"><span class="keyword">var</span> yAxisMin= d3.min(yAxisValues)</span><br></pre></td></tr></table></figure>
@@ -193,44 +107,34 @@
 
       
     </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/03/24/nvd3-nice-scale/" data-id="ci7noatih000ey1td3kix5r12" class="article-share-link">Share</a>
+    <footer>
       
+        
+        
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/chart/">chart</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/d3/">d3</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nvd3/">nvd3</a></li></ul>
-
+      <div class="clearfix"></div>
     </footer>
   </div>
-  
 </article>
 
 
-  
-    <article id="post-ESL-1088-Selling-a-Business" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/03/23/ESL-1088-Selling-a-Business/" class="article-date">
-  <time datetime="2015-03-23T16:26:19.000Z" itemprop="datePublished">2015-03-23</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/English/">English</a>
-  </div>
 
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
+
+  <article class="post">
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/03/23/ESL-1088-Selling-a-Business/">ESL_1088 Selling a Business</a>
-    </h1>
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-03-23T16:26:19.000Z"><a href="/2015/03/23/ESL-1088-Selling-a-Business/">2015-03-23</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2015/03/23/ESL-1088-Selling-a-Business/">ESL_1088 Selling a Business</a></h1>
   
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
+    </header>
+    <div class="entry">
       
         <h3 id="sell_up">sell up</h3><p>为还债而变卖；卖完<br><em>I can’t belive you’re really selling up</em></p>
 <h3 id="stick_out">stick out</h3><p>突出；坚持；醒目<br><em>I thought you would stick it out for another year</em></p>
@@ -242,44 +146,34 @@
 <h3 id="Bussiness_has_been_slow_for_three_years_running">Bussiness has been slow for three years running</h3>
       
     </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/03/23/ESL-1088-Selling-a-Business/" data-id="ci7noatiq000ty1tdw6jbn6rd" class="article-share-link">Share</a>
+    <footer>
       
+        
+        
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ESL/">ESL</a></li></ul>
-
+      <div class="clearfix"></div>
     </footer>
   </div>
-  
 </article>
 
 
-  
-    <article id="post-ESL-1087-Selecting-Window-Treatments" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/03/21/ESL-1087-Selecting-Window-Treatments/" class="article-date">
-  <time datetime="2015-03-21T12:43:06.000Z" itemprop="datePublished">2015-03-21</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/English/">English</a>
-  </div>
 
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
+
+  <article class="post">
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/03/21/ESL-1087-Selecting-Window-Treatments/">ESL_1087 Selecting Window Treatments</a>
-    </h1>
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-03-21T12:43:06.000Z"><a href="/2015/03/21/ESL-1087-Selecting-Window-Treatments/">2015-03-21</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2015/03/21/ESL-1087-Selecting-Window-Treatments/">ESL_1087 Selecting Window Treatments</a></h1>
   
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
+    </header>
+    <div class="entry">
       
         <h3 id="Window_treatment">Window treatment</h3><h3 id="wooden_shutter">wooden shutter</h3><p>n. 快门；百叶窗；关闭物；遮板<br>vt. 为…装百叶窗；以百叶窗遮闭</p>
 <h3 id="blind">blind</h3><p>n. 掩饰，借口；百叶窗<br>adj. 盲目的；瞎的<br>vt. 使失明；使失去理智<br>adv. 盲目地；看不见地</p>
@@ -294,44 +188,34 @@
 <h3 id="shutter,shuttle,shadow_pronunciation_difference"><em>shutter</em>,<em>shuttle</em>,<em>shadow</em> pronunciation difference</h3>
       
     </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/03/21/ESL-1087-Selecting-Window-Treatments/" data-id="ci7noati90000y1tdkzvm1x8h" class="article-share-link">Share</a>
+    <footer>
       
+        
+        
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ESL/">ESL</a></li></ul>
-
+      <div class="clearfix"></div>
     </footer>
   </div>
-  
 </article>
 
 
-  
-    <article id="post-git-operation" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2014/04/30/git-operation/" class="article-date">
-  <time datetime="2014-04-30T06:41:35.000Z" itemprop="datePublished">2014-04-30</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/git/">git</a>
-  </div>
 
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
+
+  <article class="post">
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/04/30/git-operation/">git常用操作</a>
-    </h1>
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2014-04-30T06:41:35.000Z"><a href="/2014/04/30/git-operation/">2014-04-30</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2014/04/30/git-operation/">git常用操作</a></h1>
   
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
+    </header>
+    <div class="entry">
       
         <p>这里是一些自己经常用到的git命令</p>
 <h2 id="git_全局配置">git 全局配置</h2><h4 id="配置全局user">配置全局user</h4><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global user<span class="class">.name</span> <span class="string">"Your Name"</span></span><br></pre></td></tr></table></figure>
@@ -361,44 +245,34 @@
 
       
     </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/04/30/git-operation/" data-id="ci7noatio000ny1td3tkidnp3" class="article-share-link">Share</a>
+    <footer>
       
+        
+        
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/shell/">shell</a></li></ul>
-
+      <div class="clearfix"></div>
     </footer>
   </div>
-  
 </article>
 
 
-  
-    <article id="post-ssh-key-config" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2014/04/25/ssh-key-config/" class="article-date">
-  <time datetime="2014-04-25T12:20:15.000Z" itemprop="datePublished">2014-04-25</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/shell/">shell</a>
-  </div>
 
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
+
+  <article class="post">
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/04/25/ssh-key-config/">SSH通过密钥访问远程机器</a>
-    </h1>
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2014-04-25T12:20:15.000Z"><a href="/2014/04/25/ssh-key-config/">2014-04-25</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2014/04/25/ssh-key-config/">SSH通过密钥访问远程机器</a></h1>
   
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
+    </header>
+    <div class="entry">
       
         <p>以下描述的步骤是通过mac访问远程Linux服务器</p>
 <h4 id="生成ssh密钥文件">生成ssh密钥文件</h4><p>在~/.ssh中生成相关密钥文件</p>
@@ -420,45 +294,115 @@
 
       
     </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/04/25/ssh-key-config/" data-id="ci7noatie0005y1tdplfmg8dm" class="article-share-link">Share</a>
+    <footer>
       
+        
+        
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mac/">mac</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/shell/">shell</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ssh/">ssh</a></li></ul>
-
+      <div class="clearfix"></div>
     </footer>
   </div>
-  
 </article>
 
 
+
+
+
+<nav id="pagination">
   
   
-</section>
-      </div>
-      <footer id="footer">
+  <div class="clearfix"></div>
+</nav></div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Search">
+    <input type="hidden" name="q" value="site:yoursite.com">
+  </form>
+</div>
+
   
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      <!--<a href="/" class="logo">Hui&#39;s blog</a>-->
-      &copy; 2015 Hui<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
-    </div>
+<div class="widget tag">
+  <h3 class="title">Categories</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/English/">English</a><small>2</small></li>
+  
+    <li><a href="/categories/angularjs/">angularjs</a><small>1</small></li>
+  
+    <li><a href="/categories/d3/">d3</a><small>1</small></li>
+  
+    <li><a href="/categories/git/">git</a><small>1</small></li>
+  
+    <li><a href="/categories/shell/">shell</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">Tags</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/ESL/">ESL</a><small>2</small></li>
+  
+    <li><a href="/tags/angularjs/">angularjs</a><small>1</small></li>
+  
+    <li><a href="/tags/chart/">chart</a><small>1</small></li>
+  
+    <li><a href="/tags/d3/">d3</a><small>1</small></li>
+  
+    <li><a href="/tags/git/">git</a><small>1</small></li>
+  
+    <li><a href="/tags/mac/">mac</a><small>1</small></li>
+  
+    <li><a href="/tags/ng-gird/">ng-gird</a><small>1</small></li>
+  
+    <li><a href="/tags/nvd3/">nvd3</a><small>1</small></li>
+  
+    <li><a href="/tags/shell/">shell</a><small>2</small></li>
+  
+    <li><a href="/tags/ssh/">ssh</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
   </div>
-</footer>
-    </div>
-    
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2015 Hui
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
 
-<script src="/js/jquery.min.js" type="text/javascript"></script>
-<script src="/js/jquery.scrollLoading.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+var disqus_shortname = 'dixon629githubio';
+
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
 
 
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
-  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
 
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
 
-<script src="/js/script.js" type="text/javascript"></script>
-
-  </div>
 </body>
 </html>

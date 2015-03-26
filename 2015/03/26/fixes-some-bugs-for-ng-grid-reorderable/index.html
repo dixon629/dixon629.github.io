@@ -1,0 +1,199 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Fixes some bugs for ng-grid-reorderable | Hui&#39;s blog</title>
+  <meta name="author" content="Hui">
+  
+  <meta name="description" content="ng-grid-reorderable is a drag-drop plugin for ng-gird. I found some bugs when I was using this plugin.
+Bug 1: Can drag a row to the other ng-gridTo fi">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Fixes some bugs for ng-grid-reorderable"/>
+  <meta property="og:site_name" content="Hui&#39;s blog"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Hui&#39;s blog" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">Hui&#39;s blog</a></h1>
+  <h2><a href="/">Make progress a little bit every day</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/abouts.html">About</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-03-26T18:00:47.000Z"><a href="/2015/03/26/fixes-some-bugs-for-ng-grid-reorderable/">2015-03-26</a></time>
+      
+      
+  
+    <h1 class="title">Fixes some bugs for ng-grid-reorderable</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p><a href="https://github.com/angular-ui/ng-grid/tree/2.x/plugins" target="_blank" rel="external">ng-grid-reorderable</a> is a drag-drop plugin for <a href="https://github.com/angular-ui/ng-grid" target="_blank" rel="external">ng-gird</a>. I found some bugs when I was using this plugin.</p>
+<h3 id="Bug_1:_Can_drag_a_row_to_the_other_ng-grid">Bug 1: Can drag a row to the other ng-grid</h3><p>To fix this bug, it needs to compare grid id on drop event.<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> prevRow = self.services.DomUtilityService.eventStorage.rowToMove;</span><br><span class="line"><span class="keyword">if</span> (prevRow.gridId != self.myGrid.gridId) <span class="keyword">return</span>;</span><br></pre></td></tr></table></figure></p>
+<h3 id="Bug_2:_Can’t_select_all_texts_when_at_edting_status">Bug 2: Can’t select all texts when at edting status</h3><p>To fix this bug, it needs to disable drag-drop feature.<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//It should disable drag/drop feature when editing</span></span><br><span class="line">rowScope.$on(<span class="string">'ngGridEventStartCellEdit'</span>, <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">    targetRow.attr(<span class="string">'draggable'</span>, <span class="string">'false'</span>);</span><br><span class="line">    targetRow.off(<span class="string">'dragstart'</span>, onDragStart);</span><br><span class="line">&#125;);</span><br><span class="line">rowScope.$on(<span class="string">'ngGridEventEndCellEdit'</span>, <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">    targetRow.attr(<span class="string">'draggable'</span>, <span class="string">'true'</span>);</span><br><span class="line">    targetRow.on(<span class="string">'dragstart'</span>, onDragStart);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<h3 id="Bug_3:_Can_select_some_texts_and_then_drag_and_drop_it_on_the_ng-gird">Bug 3: Can select some texts and then drag and drop it on the ng-gird</h3><p>To fix this bug, it needs to remove dragover and drop event for the $viewport when editing<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">rowScope.$on(<span class="string">'ngGridEventStartCellEdit'</span>, <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">    self.myGrid.$viewport.off(<span class="string">'dragover'</span>, self.dragOver).off(<span class="string">'drop'</span>, self.onRowDrop);</span><br><span class="line">&#125;);</span><br><span class="line">rowScope.$on(<span class="string">'ngGridEventEndCellEdit'</span>, <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">    self.myGrid.$viewport.on(<span class="string">'dragover'</span>, self.dragOver).on(<span class="string">'drop'</span>, self.onRowDrop);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<h3 id="The_codes_in_gist">The codes in gist</h3><script src="//gist.github.com/a77d1507f0e65c0e2908.js?file=ng-grid-reorderable.js"></script>
+
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/angularjs/">angularjs</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/angularjs/">angularjs</a>, <a href="/tags/ng-gird/">ng-gird</a>
+  </div>
+
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+<section id="comment">
+  <h1 class="title">Comments</h1>
+
+  
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+  
+</section>
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Search">
+    <input type="hidden" name="q" value="site:yoursite.com">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">Categories</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/English/">English</a><small>2</small></li>
+  
+    <li><a href="/categories/angularjs/">angularjs</a><small>1</small></li>
+  
+    <li><a href="/categories/d3/">d3</a><small>1</small></li>
+  
+    <li><a href="/categories/git/">git</a><small>1</small></li>
+  
+    <li><a href="/categories/shell/">shell</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">Tags</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/ESL/">ESL</a><small>2</small></li>
+  
+    <li><a href="/tags/angularjs/">angularjs</a><small>1</small></li>
+  
+    <li><a href="/tags/chart/">chart</a><small>1</small></li>
+  
+    <li><a href="/tags/d3/">d3</a><small>1</small></li>
+  
+    <li><a href="/tags/git/">git</a><small>1</small></li>
+  
+    <li><a href="/tags/mac/">mac</a><small>1</small></li>
+  
+    <li><a href="/tags/ng-gird/">ng-gird</a><small>1</small></li>
+  
+    <li><a href="/tags/nvd3/">nvd3</a><small>1</small></li>
+  
+    <li><a href="/tags/shell/">shell</a><small>2</small></li>
+  
+    <li><a href="/tags/ssh/">ssh</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2015 Hui
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+<script type="text/javascript">
+var disqus_shortname = 'dixon629githubio';
+
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>
