@@ -3,13 +3,15 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Hui&#39;s blog</title>
+  <title>How to download file on .NET OWIN | Hui&#39;s blog</title>
   <meta name="author" content="Hui">
+  
+  <meta name="description" content="Sometimes we need to use browser navigation or iframe mechanisam to download file as some old browsers don’t support html5 file API. But there’s a pro">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  
+  <meta property="og:title" content="How to download file on .NET OWIN"/>
   <meta property="og:site_name" content="Hui&#39;s blog"/>
 
   
@@ -44,26 +46,40 @@
 </nav>
 <div class="clearfix"></div></header>
   <div id="content" class="inner">
-    <div id="main-col" class="alignleft"><div id="wrapper"><article class="page">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
   
   <div class="post-content">
     <header>
       
+        <div class="icon"></div>
+        <time datetime="2015-04-03T11:57:34.000Z"><a href="/2015/04/03/How-to-download-file-on-NET-OWIN/">2015-04-03</a></time>
+      
       
   
-    <h1 class="title"></h1>
+    <h1 class="title">How to download file on .NET OWIN</h1>
   
 
     </header>
     <div class="entry">
       
-        
+        <p>Sometimes we need to use browser navigation or iframe mechanisam to download file as some old browsers don’t support html5 file API. But there’s a problem that most of applications has access control, thus you can’t access the server source directly. How to do it on .NET OWIN? My solution is to append access token to parameters of http request, then parse the token and wrap it to header of http request on the server-side.<br>The code snippet in the StartUp.Auth.cs<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">app.Use(<span class="keyword">async</span> (context, next) =&gt;</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (context.Request.QueryString.HasValue)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">string</span>.IsNullOrWhiteSpace(context.Request.Headers.Get(<span class="string">"Authorization"</span>)))</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">var</span> queryString = HttpUtility.ParseQueryString(context.Request.QueryString.Value);</span><br><span class="line">            <span class="keyword">string</span> token = queryString.Get(<span class="string">"accessToken"</span>);</span><br><span class="line">            <span class="keyword">if</span> (!<span class="keyword">string</span>.IsNullOrWhiteSpace(token))</span><br><span class="line">            &#123;</span><br><span class="line">                context.Request.Headers.Add(<span class="string">"Authorization"</span>, <span class="keyword">new</span>[] &#123; <span class="keyword">string</span>.Format(<span class="string">"Bearer &#123;0&#125;"</span>, token) &#125;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">await</span> next.Invoke();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+
       
     </div>
     <footer>
       
         
+  
+  <div class="categories">
+    <a href="/categories/NET/">.NET</a>
+  </div>
+
         
+  
+  <div class="tags">
+    <a href="/tags/OWIN/">OWIN</a>
+  </div>
+
         
       
       <div class="clearfix"></div>
