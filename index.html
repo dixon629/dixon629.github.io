@@ -51,6 +51,45 @@
     <header>
       
         <div class="icon"></div>
+        <time datetime="2015-04-03T13:33:35.000Z"><a href="/2015/04/03/add-customized-button-text-angularjs-dropdown-mulitipselect/">2015-04-03</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2015/04/03/add-customized-button-text-angularjs-dropdown-mulitipselect/">Customized button text for angularjs-dropdown-mulitipselect</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>Recently I was using <a href="https://github.com/dotansimha/angularjs-dropdown-multiselect" target="_blank" rel="external">angularjs-dropdown-multiselect</a> for multiple select. It’s a good library, but it doesn’t support customizing button text very well, so I forked it and added the customized button text feature.<br>The forked repository is <a href="https://github.com/dixon629/angularjs-dropdown-multiselect" target="_blank" rel="external">https://github.com/dixon629/angularjs-dropdown-multiselect</a><br>It’s very easy to use it to customize button text, just specify <strong>buttonTextFunction</strong> in the <strong>extraSettings</strong>.<br>It passes three parameters: <em>options</em>, <em>selectedModel</em>, <em>settings</em></p>
+<ol>
+<li><strong>options</strong>: the data provider of dropdown list</li>
+<li><strong>selectedModel</strong>: the selected model of dropdown list</li>
+<li><strong>settings</strong>: the settings of dropdown list</li>
+</ol>
+<p>This is a demo to show “All” when you check the all for the dropdown<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">dropdownButtonTextFunction</span><span class="params">(options,selectedModel,settings)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(selectedModel &amp;&amp; selectedModel.length == options.length)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">'All'</span>;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> selectedModel.length+<span class="string">' checked'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">$scope.myExtraSettings = &#123;buttonTextFunction: dropdownButtonTextFunction&#125;;</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
         <time datetime="2015-04-03T11:57:34.000Z"><a href="/2015/04/03/How-to-download-file-on-NET-OWIN/">2015-04-03</a></time>
       
       
@@ -61,7 +100,7 @@
     </header>
     <div class="entry">
       
-        <p>Sometimes we need to use browser navigation or iframe mechanism to download file as some old browsers don’t support html5 file API. But there’s a problem that most of applications has access control, thus you can’t access the server source directly. How to do it on .NET OWIN? My solution is to append access token to parameters of http request, then parse the token and wrap it to header of http request on the server-side.<br>The code snippet in the StartUp.Auth.cs<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">app.Use(<span class="keyword">async</span> (context, next) =&gt;</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (context.Request.QueryString.HasValue)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">string</span>.IsNullOrWhiteSpace(context.Request.Headers.Get(<span class="string">"Authorization"</span>)))</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">var</span> queryString = HttpUtility.ParseQueryString(context.Request.QueryString.Value);</span><br><span class="line">            <span class="keyword">string</span> token = queryString.Get(<span class="string">"accessToken"</span>);</span><br><span class="line">            <span class="keyword">if</span> (!<span class="keyword">string</span>.IsNullOrWhiteSpace(token))</span><br><span class="line">            &#123;</span><br><span class="line">                context.Request.Headers.Add(<span class="string">"Authorization"</span>, <span class="keyword">new</span>[] &#123; <span class="keyword">string</span>.Format(<span class="string">"Bearer &#123;0&#125;"</span>, token) &#125;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">await</span> next.Invoke();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+        <p>Sometimes we need to use browser navigation or iframe mechanism to download file as some old browsers don’t support html5 file API.<br>But there’s a problem that most of applications has access control, thus you can’t access the server source directly.<br><strong>How to do it on .NET OWIN?</strong><br>My solution is to append access token to parameters of http request, then parse the token and wrap it to header of http request on the server-side.<br>The code snippet in the StartUp.Auth.cs<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">app.Use(<span class="keyword">async</span> (context, next) =&gt;</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (context.Request.QueryString.HasValue)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">string</span>.IsNullOrWhiteSpace(context.Request.Headers.Get(<span class="string">"Authorization"</span>)))</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">var</span> queryString = HttpUtility.ParseQueryString(context.Request.QueryString.Value);</span><br><span class="line">            <span class="keyword">string</span> token = queryString.Get(<span class="string">"accessToken"</span>);</span><br><span class="line">            <span class="keyword">if</span> (!<span class="keyword">string</span>.IsNullOrWhiteSpace(token))</span><br><span class="line">            &#123;</span><br><span class="line">                context.Request.Headers.Add(<span class="string">"Authorization"</span>, <span class="keyword">new</span>[] &#123; <span class="keyword">string</span>.Format(<span class="string">"Bearer &#123;0&#125;"</span>, token) &#125;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">await</span> next.Invoke();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -421,58 +460,11 @@
 
 
 
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2014-04-25T12:20:15.000Z"><a href="/2014/04/25/ssh-key-config/">2014-04-25</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2014/04/25/ssh-key-config/">SSH通过密钥访问远程机器</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>以下描述的步骤是通过mac访问远程Linux服务器</p>
-<h4 id="生成ssh密钥文件">生成ssh密钥文件</h4><p>在~/.ssh中生成相关密钥文件</p>
-<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">cd</span> ~/.ssh</span><br><span class="line">ssh-keygen -t rsa -C <span class="string">"xxxxx<span class="variable">@xxx</span>.com"</span></span><br></pre></td></tr></table></figure>
-<p><strong>-t</strong> 后面参数为ssh加密类型，这里是<strong>RSA</strong>类型<br><strong>-C</strong> 后面为comments  </p>
-<p>提示输入文件名和密码，密码可以为空。运行完后在.ssh目录下生成了2个文件，xxx和xxx.pub,后缀为.pub的文件为公有密钥文件，另外一个为私有文件。</p>
-<h4 id="加入ssh密钥文件">加入ssh密钥文件</h4><p>通过命令<strong>ssh-add</strong>加入刚刚生成的私有密钥文件到ssh-agent</p>
-<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-<span class="keyword">add</span> xxx</span><br></pre></td></tr></table></figure>
-<h4 id="加入公有密钥到远程客服端">加入公有密钥到远程客服端</h4><p>通过命令<strong>scp</strong>上传.pub文件到远程客服端<strong>.ssh</strong>目录</p>
-<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp ~<span class="regexp">/.ssh/xxx</span>.pub  user<span class="variable">@192</span>.<span class="number">168.1</span>.<span class="number">110</span><span class="symbol">:~/</span>.ssh</span><br></pre></td></tr></table></figure>
-<p>登入远程客服端,然后把密钥内容加入到<strong>authorized_keys</strong>文件</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ssh user@<span class="number">192.168</span>.<span class="number">1.110</span></span><br><span class="line">cd ~/<span class="class">.ssh</span></span><br><span class="line">cat xxx<span class="class">.pub</span> &gt;&gt; authorized_keys</span><br><span class="line">rm  xxx.pub</span><br></pre></td></tr></table></figure>
-<p>修改 ssh 的配置文件（默认是在 etc/ssh/sshd_config）, <strong>PubkeyAuthentication</strong> 设置成 <strong>yes</strong>。这样完成后可以直接这样访问，不用再输入密码</p>
-<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">ssh</span> user@<span class="number">192.168.1.110</span></span><br></pre></td></tr></table></figure>
-<p>我们还可以在本地config文件中进行配置，让访问变的更简单</p>
-<h4 id="配置本地ssh的config文件">配置本地ssh的config文件</h4><p>配置.ssh/config文件，加入以下内容<br><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">Host</span> localserver  </span><br><span class="line">     HostName <span class="number">192.168.1.110</span>  </span><br><span class="line">     User uname  </span><br><span class="line">     IdentityFile ~/.ssh/xxx</span><br></pre></td></tr></table></figure></p>
-<p>localserver为host的别名，可以随意取。IdentityFile指定生成在本地的私有密钥文件。这样就完成了配置,以后我们可以直接这样访问,不需要输入用户名和密码</p>
-<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">ssh</span> localserver</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
 
 <nav id="pagination">
   
+  
+    <a href="/page/2/" class="alignright next">Next</a>
   
   <div class="clearfix"></div>
 </nav></div></div>
@@ -495,7 +487,7 @@
   
     <li><a href="/categories/git/">git</a><small>1</small></li>
   
-    <li><a href="/categories/javascript/">javascript</a><small>3</small></li>
+    <li><a href="/categories/javascript/">javascript</a><small>4</small></li>
   
     <li><a href="/categories/shell/">shell</a><small>1</small></li>
   
@@ -512,7 +504,7 @@
   
     <li><a href="/tags/OWIN/">OWIN</a><small>1</small></li>
   
-    <li><a href="/tags/angularjs/">angularjs</a><small>3</small></li>
+    <li><a href="/tags/angularjs/">angularjs</a><small>4</small></li>
   
     <li><a href="/tags/canvg/">canvg</a><small>1</small></li>
   

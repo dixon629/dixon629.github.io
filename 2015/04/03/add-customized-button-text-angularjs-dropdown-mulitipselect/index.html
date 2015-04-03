@@ -3,17 +3,15 @@
 <head>
   <meta charset="utf-8">
   
-  <title>ESL_1088 Selling a Business | Hui&#39;s blog</title>
+  <title>Customized button text for angularjs-dropdown-mulitipselect | Hui&#39;s blog</title>
   <meta name="author" content="Hui">
   
-  <meta name="description" content="1. sell up为还债而变卖；卖完I can’t belive you’re really selling up
-2. stick out突出；坚持；醒目I thought you would stick it out for another year
-3. count on指望；依靠Count">
+  <meta name="description" content="Recently I was using angularjs-dropdown-multiselect for multiple select. It’s a good library, but it doesn’t support customizing button text very well">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="ESL_1088 Selling a Business"/>
+  <meta property="og:title" content="Customized button text for angularjs-dropdown-mulitipselect"/>
   <meta property="og:site_name" content="Hui&#39;s blog"/>
 
   
@@ -54,24 +52,24 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2015-03-23T16:26:19.000Z"><a href="/2015/03/23/ESL-1088-Selling-a-Business/">2015-03-23</a></time>
+        <time datetime="2015-04-03T13:33:35.000Z"><a href="/2015/04/03/add-customized-button-text-angularjs-dropdown-mulitipselect/">2015-04-03</a></time>
       
       
   
-    <h1 class="title">ESL_1088 Selling a Business</h1>
+    <h1 class="title">Customized button text for angularjs-dropdown-mulitipselect</h1>
   
 
     </header>
     <div class="entry">
       
-        <h3 id="1-_sell_up">1. sell up</h3><p>为还债而变卖；卖完<br><em>I can’t belive you’re really selling up</em></p>
-<h3 id="2-_stick_out">2. stick out</h3><p>突出；坚持；醒目<br><em>I thought you would stick it out for another year</em></p>
-<h3 id="3-_count_on">3. count on</h3><p>指望；依靠<br><em>Count on me.</em></p>
-<h3 id="4-_sweeten_the_pot">4. sweeten the pot</h3><p>增加有利条件；增加利诱成本；增加赌注，冒更大的险<br><em>I plan to sweeten the pot by offering my consulting service as part of the deal.</em></p>
-<h3 id="5-_go_over">5. go over</h3><p>复习，重温；仔细检查；转变；润色<br><em>go over the <strong>books</strong></em><br>The “books” means the financial statement and something like that here.</p>
-<h3 id="6-_jump-start">6. jump-start</h3><h3 id="7-_clause">7. clause</h3><p>n. 条款；[计] 子句<br><em>Non-compete clause</em> </p>
-<h3 id="8-_try_my_hand">8. try my hand</h3><p>To attempt to do something for the first time<br><em>I tried my hand at skiing.</em><br><em>I might try my hand at something entirely differently.</em></p>
-<h3 id="9-_Business_has_been_slow_for_three_years_running">9. Business has been slow for three years running</h3>
+        <p>Recently I was using <a href="https://github.com/dotansimha/angularjs-dropdown-multiselect" target="_blank" rel="external">angularjs-dropdown-multiselect</a> for multiple select. It’s a good library, but it doesn’t support customizing button text very well, so I forked it and added the customized button text feature.<br>The forked repository is <a href="https://github.com/dixon629/angularjs-dropdown-multiselect" target="_blank" rel="external">https://github.com/dixon629/angularjs-dropdown-multiselect</a><br>It’s very easy to use it to customize button text, just specify <strong>buttonTextFunction</strong> in the <strong>extraSettings</strong>.<br>It passes three parameters: <em>options</em>, <em>selectedModel</em>, <em>settings</em></p>
+<ol>
+<li><strong>options</strong>: the data provider of dropdown list</li>
+<li><strong>selectedModel</strong>: the selected model of dropdown list</li>
+<li><strong>settings</strong>: the settings of dropdown list</li>
+</ol>
+<p>This is a demo to show “All” when you check the all for the dropdown<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">dropdownButtonTextFunction</span><span class="params">(options,selectedModel,settings)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(selectedModel &amp;&amp; selectedModel.length == options.length)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">'All'</span>;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> selectedModel.length+<span class="string">' checked'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">$scope.myExtraSettings = &#123;buttonTextFunction: dropdownButtonTextFunction&#125;;</span><br></pre></td></tr></table></figure></p>
+
       
     </div>
     <footer>
@@ -79,13 +77,13 @@
         
   
   <div class="categories">
-    <a href="/categories/English/">English</a>
+    <a href="/categories/javascript/">javascript</a>
   </div>
 
         
   
   <div class="tags">
-    <a href="/tags/ESL/">ESL</a>
+    <a href="/tags/angularjs/">angularjs</a>
   </div>
 
         
