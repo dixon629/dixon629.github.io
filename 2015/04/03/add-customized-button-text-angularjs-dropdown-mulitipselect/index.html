@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Customized button text for angularjs-dropdown-mulitipselect | Hui&#39;s blog</title>
+  <title>Customize button text for angularjs-dropdown-mulitipselect | Hui&#39;s blog</title>
   <meta name="author" content="Hui">
   
   <meta name="description" content="Recently I was using angularjs-dropdown-multiselect for multiple select. It’s a good library, but it doesn’t support customizing button text very well">
@@ -11,7 +11,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="Customized button text for angularjs-dropdown-mulitipselect"/>
+  <meta property="og:title" content="Customize button text for angularjs-dropdown-mulitipselect"/>
   <meta property="og:site_name" content="Hui&#39;s blog"/>
 
   
@@ -56,19 +56,19 @@
       
       
   
-    <h1 class="title">Customized button text for angularjs-dropdown-mulitipselect</h1>
+    <h1 class="title">Customize button text for angularjs-dropdown-mulitipselect</h1>
   
 
     </header>
     <div class="entry">
       
-        <p>Recently I was using <a href="https://github.com/dotansimha/angularjs-dropdown-multiselect" target="_blank" rel="external">angularjs-dropdown-multiselect</a> for multiple select. It’s a good library, but it doesn’t support customizing button text very well, so I forked it and added the customized button text feature.<br>The forked repository is <a href="https://github.com/dixon629/angularjs-dropdown-multiselect" target="_blank" rel="external">https://github.com/dixon629/angularjs-dropdown-multiselect</a><br>It’s very easy to use it to customize button text, just specify <strong>buttonTextFunction</strong> in the <strong>extraSettings</strong>.<br>It passes three parameters: <em>options</em>, <em>selectedModel</em>, <em>settings</em></p>
+        <p>Recently I was using <a href="https://github.com/dotansimha/angularjs-dropdown-multiselect" target="_blank" rel="external">angularjs-dropdown-multiselect</a> for multiple select. It’s a good library, but it doesn’t support customizing button text very well, so I forked it and added the customized button text feature.<br>The forked repository is <a href="https://github.com/dixon629/angularjs-dropdown-multiselect" target="_blank" rel="external">https://github.com/dixon629/angularjs-dropdown-multiselect</a>.<br>It’s easy to use it, just specify <strong>buttonTextFunction</strong> in the <strong>extraSettings</strong>.<br>It passes three parameters: <em>options</em>, <em>selectedModel</em>, <em>settings</em></p>
 <ol>
 <li><strong>options</strong>: the data provider of dropdown list</li>
 <li><strong>selectedModel</strong>: the selected model of dropdown list</li>
 <li><strong>settings</strong>: the settings of dropdown list</li>
 </ol>
-<p>This is a demo to show “All” when you check the all for the dropdown<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">dropdownButtonTextFunction</span><span class="params">(options,selectedModel,settings)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(selectedModel &amp;&amp; selectedModel.length == options.length)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">'All'</span>;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> selectedModel.length+<span class="string">' checked'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">$scope.myExtraSettings = &#123;buttonTextFunction: dropdownButtonTextFunction&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>This is a demo to how to display “All” when you check the all items for the dropdown<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">dropdownButtonTextFunction</span><span class="params">(options,selectedModel,settings)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(selectedModel &amp;&amp; selectedModel.length == options.length)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">'All'</span>;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> selectedModel.length+<span class="string">' checked'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">$scope.myExtraSettings = &#123;buttonTextFunction: dropdownButtonTextFunction&#125;;</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
