@@ -51,6 +51,42 @@
     <header>
       
         <div class="icon"></div>
+        <time datetime="2015-04-15T18:18:20.000Z"><a href="/2015/04/15/How-to-generate-same-chart-on-web-page-and-PDF/">2015-04-15</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2015/04/15/How-to-generate-same-chart-on-web-page-and-PDF/">How to generate identical chart in html and PDF</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>I’m working on PDF stuff recently. I got a requirement that the chart in PDF should be identical with in html. </p>
+<p>At the beginning, we were trying to generate chart of PDF through .NET  and make same styles with html. But we found it’s very hard to make them identical as they used different technology, d3js for client-side, Microsoft charts for server-side.</p>
+<p>Then I found out Phantomjs. We planned to generate whole PDF by Phantomjs. But we got the other issue, there were some table in the PDF, and we needed to repeat the table header when table crossing pages, but Phantomjs doesn’t support this feature. Finally we decided to use Phantomjs to convert chart to image and then generate PDF through itextSharp.</p>
+<p><em>This is my codes to call Phantomjs on .NET to covert html to image.</em><br><script src="//gist.github.com/548cb3ddb842fc3fc48d.js?file=PhantomjsHelper.cs"></script></p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
         <time datetime="2015-04-03T13:33:35.000Z"><a href="/2015/04/03/add-customized-button-text-angularjs-dropdown-mulitipselect/">2015-04-03</a></time>
       
       
@@ -403,63 +439,6 @@
 
 
 
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2014-04-30T06:41:35.000Z"><a href="/2014/04/30/git-operation/">2014-04-30</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2014/04/30/git-operation/">git常用操作</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>这里是一些自己经常用到的git命令</p>
-<h2 id="git_全局配置">git 全局配置</h2><h4 id="配置全局user">配置全局user</h4><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global user<span class="class">.name</span> <span class="string">"Your Name"</span></span><br></pre></td></tr></table></figure>
-<h4 id="配置全局Email">配置全局Email</h4><figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --<span class="built_in">global</span> user.email your.email<span class="property">@example</span>.com</span><br></pre></td></tr></table></figure>
-<h4 id="配置别名">配置别名</h4><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --<span class="keyword">global</span> alias.<span class="keyword">co</span> checkout   </span><br><span class="line">这里<span class="keyword">co</span> 代替字数较多的 checkout 命令</span><br></pre></td></tr></table></figure>
-<h4 id="配置默认编辑器">配置默认编辑器</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git config --global core.editor <span class="string">"subl -w"</span>  </span><br><span class="line">这里设置的是sublime,</span><br><span class="line">如果使用其他编辑器，请使用以下代码替换 subl -w：TextMate 用 mate -w，gVim 用 gvim <span class="operator">-f</span>，MacVim 用 mvim <span class="operator">-f</span></span><br></pre></td></tr></table></figure>
-<h2 id="git_本地操作">git 本地操作</h2><h4 id="初始化项目">初始化项目</h4><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">git</span> init</span><br></pre></td></tr></table></figure>
-<h4 id="加入文件">加入文件</h4><figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">add</span></span><br></pre></td></tr></table></figure>
-<h4 id="加入所有文件">加入所有文件</h4><figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">add</span> <span class="comment">--all</span></span><br></pre></td></tr></table></figure>
-<h4 id="提交变更">提交变更</h4><figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git commit -<span class="literal">a</span>  -m <span class="string">"comments"</span>   </span><br><span class="line">-<span class="literal">a</span>表示提交所有更改</span><br></pre></td></tr></table></figure>
-<h4 id="创建并且切换到一个分支">创建并且切换到一个分支</h4><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git checkout -<span class="tag">b</span> modify-README  </span><br><span class="line">创建一个新分支modify-README，然后切换到这个分支</span><br></pre></td></tr></table></figure>
-<h4 id="切换到分支">切换到分支</h4><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">git</span> checkout master   </span><br><span class="line">切换到分支master</span><br></pre></td></tr></table></figure>
-<h4 id="revert文件">revert文件</h4><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git checkout <span class="comment">-- file  </span></span><br><span class="line">把文件<span class="type">file</span>恢复到当前head版本</span><br></pre></td></tr></table></figure>
-<h4 id="撤销所有更改">撤销所有更改</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git checkout <span class="operator">-f</span>  </span><br><span class="line"><span class="operator">-f</span> 意思是覆盖当前的改动</span><br></pre></td></tr></table></figure>
-<h4 id="显示所有分支">显示所有分支</h4><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">git</span> branch</span><br></pre></td></tr></table></figure>
-<h4 id="删除分支">删除分支</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git branch <span class="operator">-d</span> modify-README    </span><br><span class="line"> 删除分支modify-README</span><br></pre></td></tr></table></figure>
-<h4 id="删除所有分支">删除所有分支</h4><figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -<span class="keyword">D</span></span><br></pre></td></tr></table></figure>
-<h4 id="显示比较差异">显示比较差异</h4><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">git</span> diff</span><br></pre></td></tr></table></figure>
-<h4 id="显示当前状态">显示当前状态</h4><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">git</span> status</span><br></pre></td></tr></table></figure>
-<h4 id="显示日志">显示日志</h4><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git <span class="command">log</span>  </span><br><span class="line">q退出</span><br></pre></td></tr></table></figure>
-<h2 id="git_remote仓库操作">git remote仓库操作</h2><h4 id="加入远程仓库">加入远程仓库</h4><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin git@github<span class="class">.com</span>:username/first_app<span class="class">.git</span>     </span><br><span class="line">origin为自定义的远程仓库名称   </span><br><span class="line">git@github<span class="class">.com</span>:username/first_app<span class="class">.git</span> 为远程git地址</span><br></pre></td></tr></table></figure>
-<h4 id="提交远程仓库">提交远程仓库</h4><figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">push</span> origin master  </span><br><span class="line">origin为远程仓库名称   </span><br><span class="line">master为项目分支</span><br></pre></td></tr></table></figure>
-<h4 id="显示当前remote仓库列表">显示当前remote仓库列表</h4><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">git</span> remote</span><br></pre></td></tr></table></figure>
-<h4 id="删除一个remote仓库列表">删除一个remote仓库列表</h4><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote remove <span class="property">name</span></span><br></pre></td></tr></table></figure>
-<h4 id="从远程仓库更新并且合并">从远程仓库更新并且合并</h4><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">git</span> pull</span><br></pre></td></tr></table></figure>
-<h4 id="从远程仓库更新">从远程仓库更新</h4><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">git</span> fetch</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
 
 <nav id="pagination">
   
@@ -481,7 +460,7 @@
   <h3 class="title">Categories</h3>
   <ul class="entry">
   
-    <li><a href="/categories/NET/">.NET</a><small>1</small></li>
+    <li><a href="/categories/NET/">.NET</a><small>2</small></li>
   
     <li><a href="/categories/English/">English</a><small>4</small></li>
   
@@ -503,6 +482,8 @@
     <li><a href="/tags/ESL/">ESL</a><small>4</small></li>
   
     <li><a href="/tags/OWIN/">OWIN</a><small>1</small></li>
+  
+    <li><a href="/tags/Phantomjs/">Phantomjs</a><small>1</small></li>
   
     <li><a href="/tags/angularjs/">angularjs</a><small>4</small></li>
   
