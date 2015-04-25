@@ -3,13 +3,15 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Hui&#39;s blog</title>
+  <title>How to make dependent drop-down list through Apache POI | Hui&#39;s blog</title>
   <meta name="author" content="Hui">
+  
+  <meta name="description" content="In some situation, we need to use dependent drop-down list in Excel. For example, there’re two drop-down list, parent cateogory list and subcategory l">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  
+  <meta property="og:title" content="How to make dependent drop-down list through Apache POI"/>
   <meta property="og:site_name" content="Hui&#39;s blog"/>
 
   
@@ -44,26 +46,82 @@
 </nav>
 <div class="clearfix"></div></header>
   <div id="content" class="inner">
-    <div id="main-col" class="alignleft"><div id="wrapper"><article class="page">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
   
   <div class="post-content">
     <header>
       
+        <div class="icon"></div>
+        <time datetime="2015-04-25T10:45:56.000Z"><a href="/2015/04/25/How-to-make-dependent-drop-down-list-through-Apache-POI/">2015-04-25</a></time>
+      
       
   
-    <h1 class="title"></h1>
+    <h1 class="title">How to make dependent drop-down list through Apache POI</h1>
   
 
     </header>
     <div class="entry">
       
-        
+        <p>In some situation, we need to use dependent drop-down list in Excel. For example, there’re two drop-down list, parent cateogory list and subcategory list. The subcategory list depends on which item parent selected. How to make it through <a href="https://poi.apache.org/" target="_blank" rel="external">Apache POI</a>?<br>First, we need to figure out how to make it in Excel. We can use function <strong>INDIRECT</strong> and <strong>VLOOkUP</strong> to achieve it. <a href="http://www.contextures.com/xlDataVal02.html" target="_blank" rel="external">Create Dependent Drop Down Lists</a> is a good tutorial to show you how to do it in Excel.<br>Then, we need to figure out how to build this formula in POI. We can’t set the explicit validation list as the list is from database and can be populated.<br>So we need to generate the parent list and subcategory list in sepecified column first. When we create the subcategory list, we need to add extra field to indicate which parent it belongs. Something likes this in Excel.</p>
+<table>
+<thead>
+<tr>
+<th>Parent Category</th>
+<th></th>
+<th>SubCateogry</th>
+<th>Belongs</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Parent A</td>
+<td></td>
+<td>Sub A</td>
+<td>Parent A</td>
+<td></td>
+</tr>
+<tr>
+<td>Parent B</td>
+<td></td>
+<td>Sub B</td>
+<td>Parent A</td>
+<td></td>
+</tr>
+<tr>
+<td>Parent C</td>
+<td></td>
+<td>Sub C</td>
+<td>Parent B</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>Sub D</td>
+<td>Parent C</td>
+</tr>
+</tbody>
+</table>
+<p>For parent list, we create drop-down list directly. For example,<br><strong><em>dvConstraint = DVConstraint.createFormulaListConstraint(“$A$1:$A$3”);</em></strong><br>It will set validation list from A1 to A3.<br>When you select “Parent A”, we need to look up the subcategoires belongs to it.<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">String searchTable = <span class="string">"$"</span> + sublcategoryCol + <span class="string">"$"</span> + (rowStart + <span class="number">1</span>) + <span class="string">":"</span> + <span class="string">"$"</span> + rangeCol + <span class="string">"$"</span> + (rowEnd + <span class="number">1</span>);</span><br><span class="line">String lookupValue = <span class="string">"$"</span> + valueCol + <span class="string">"$"</span> + (valueRowIndex + <span class="number">1</span>);</span><br><span class="line">String formula = <span class="string">"VLOOKUP("</span> + lookupValue + <span class="string">","</span> + searchTable + <span class="string">",2,FALSE)"</span>;</span><br></pre></td></tr></table></figure></p>
+<p>The <em>searchTable</em> is a table range it will look up for the parent.<br>The <em>lookupValue</em> is the selected value of parent list.<br>After looking up the subcategories, we can use <strong>INDIRECT</strong> to add refrence for subcategory cell.<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String formula = <span class="string">"INDIRECT("</span> + formula + <span class="string">")"</span>;</span><br></pre></td></tr></table></figure></p>
+
       
     </div>
     <footer>
       
         
+  
+  <div class="categories">
+    <a href="/categories/Java/">Java</a>
+  </div>
+
         
+  
+  <div class="tags">
+    <a href="/tags/Apache-POI/">Apache POI</a>, <a href="/tags/EXCEL/">EXCEL</a>
+  </div>
+
         
       
       <div class="clearfix"></div>

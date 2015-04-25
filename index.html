@@ -51,6 +51,81 @@
     <header>
       
         <div class="icon"></div>
+        <time datetime="2015-04-25T10:45:56.000Z"><a href="/2015/04/25/How-to-make-dependent-drop-down-list-through-Apache-POI/">2015-04-25</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2015/04/25/How-to-make-dependent-drop-down-list-through-Apache-POI/">How to make dependent drop-down list through Apache POI</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>In some situation, we need to use dependent drop-down list in Excel. For example, there’re two drop-down list, parent cateogory list and subcategory list. The subcategory list depends on which item parent selected. How to make it through <a href="https://poi.apache.org/" target="_blank" rel="external">Apache POI</a>?<br>First, we need to figure out how to make it in Excel. We can use function <strong>INDIRECT</strong> and <strong>VLOOkUP</strong> to achieve it. <a href="http://www.contextures.com/xlDataVal02.html" target="_blank" rel="external">Create Dependent Drop Down Lists</a> is a good tutorial to show you how to do it in Excel.<br>Then, we need to figure out how to build this formula in POI. We can’t set the explicit validation list as the list is from database and can be populated.<br>So we need to generate the parent list and subcategory list in sepecified column first. When we create the subcategory list, we need to add extra field to indicate which parent it belongs. Something likes this in Excel.</p>
+<table>
+<thead>
+<tr>
+<th>Parent Category</th>
+<th></th>
+<th>SubCateogry</th>
+<th>Belongs</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Parent A</td>
+<td></td>
+<td>Sub A</td>
+<td>Parent A</td>
+<td></td>
+</tr>
+<tr>
+<td>Parent B</td>
+<td></td>
+<td>Sub B</td>
+<td>Parent A</td>
+<td></td>
+</tr>
+<tr>
+<td>Parent C</td>
+<td></td>
+<td>Sub C</td>
+<td>Parent B</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>Sub D</td>
+<td>Parent C</td>
+</tr>
+</tbody>
+</table>
+<p>For parent list, we create drop-down list directly. For example,<br><strong><em>dvConstraint = DVConstraint.createFormulaListConstraint(“$A$1:$A$3”);</em></strong><br>It will set validation list from A1 to A3.<br>When you select “Parent A”, we need to look up the subcategoires belongs to it.<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">String searchTable = <span class="string">"$"</span> + sublcategoryCol + <span class="string">"$"</span> + (rowStart + <span class="number">1</span>) + <span class="string">":"</span> + <span class="string">"$"</span> + rangeCol + <span class="string">"$"</span> + (rowEnd + <span class="number">1</span>);</span><br><span class="line">String lookupValue = <span class="string">"$"</span> + valueCol + <span class="string">"$"</span> + (valueRowIndex + <span class="number">1</span>);</span><br><span class="line">String formula = <span class="string">"VLOOKUP("</span> + lookupValue + <span class="string">","</span> + searchTable + <span class="string">",2,FALSE)"</span>;</span><br></pre></td></tr></table></figure></p>
+<p>The <em>searchTable</em> is a table range it will look up for the parent.<br>The <em>lookupValue</em> is the selected value of parent list.<br>After looking up the subcategories, we can use <strong>INDIRECT</strong> to add refrence for subcategory cell.<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String formula = <span class="string">"INDIRECT("</span> + formula + <span class="string">")"</span>;</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
         <time datetime="2015-04-18T09:07:42.000Z"><a href="/2015/04/18/Append-page-header-and-footer-through-itextsharp-xmlworker/">2015-04-18</a></time>
       
       
@@ -395,45 +470,6 @@
 
 
 
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2015-03-23T16:26:19.000Z"><a href="/2015/03/23/ESL-1088-Selling-a-Business/">2015-03-23</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2015/03/23/ESL-1088-Selling-a-Business/">ESL_1088 Selling a Business</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <h3 id="1-_sell_up">1. sell up</h3><p>为还债而变卖；卖完<br><em>I can’t belive you’re really selling up</em></p>
-<h3 id="2-_stick_out">2. stick out</h3><p>突出；坚持；醒目<br><em>I thought you would stick it out for another year</em></p>
-<h3 id="3-_count_on">3. count on</h3><p>指望；依靠<br><em>Count on me.</em></p>
-<h3 id="4-_sweeten_the_pot">4. sweeten the pot</h3><p>增加有利条件；增加利诱成本；增加赌注，冒更大的险<br><em>I plan to sweeten the pot by offering my consulting service as part of the deal.</em></p>
-<h3 id="5-_go_over">5. go over</h3><p>复习，重温；仔细检查；转变；润色<br><em>go over the <strong>books</strong></em><br>The “books” means the financial statement and something like that here.</p>
-<h3 id="6-_jump-start">6. jump-start</h3><h3 id="7-_clause">7. clause</h3><p>n. 条款；[计] 子句<br><em>Non-compete clause</em> </p>
-<h3 id="8-_try_my_hand">8. try my hand</h3><p>To attempt to do something for the first time<br><em>I tried my hand at skiing.</em><br><em>I might try my hand at something entirely differently.</em></p>
-<h3 id="9-_Business_has_been_slow_for_three_years_running">9. Business has been slow for three years running</h3>
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
 
 <nav id="pagination">
   
@@ -459,6 +495,8 @@
   
     <li><a href="/categories/English/">English</a><small>4</small></li>
   
+    <li><a href="/categories/Java/">Java</a><small>1</small></li>
+  
     <li><a href="/categories/git/">git</a><small>1</small></li>
   
     <li><a href="/categories/javascript/">javascript</a><small>4</small></li>
@@ -474,7 +512,11 @@
   <h3 class="title">Tags</h3>
   <ul class="entry">
   
+    <li><a href="/tags/Apache-POI/">Apache POI</a><small>1</small></li>
+  
     <li><a href="/tags/ESL/">ESL</a><small>4</small></li>
+  
+    <li><a href="/tags/EXCEL/">EXCEL</a><small>1</small></li>
   
     <li><a href="/tags/OWIN/">OWIN</a><small>1</small></li>
   
