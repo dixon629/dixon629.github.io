@@ -1,0 +1,240 @@
+<!doctype html>
+
+<html lang="en-us">
+
+<head>
+  <title>Hui&#39;s blog</title>
+  <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Kiera: A Hugo theme for creative and technical writing." />
+<meta name="author" content="Hui" /><meta property="og:title" content="nvd3中计算坐标轴的nice domain" />
+<meta property="og:description" content="最近用nvd3以及angularjs-nvd3-directives做chart遇到一个问题，如下图，y轴中的最大值是3.8。nvd3只会在坐标轴显示到数据最大值，但是有些情况下最大值并不是很好看，我们需要在这种情况下显示4.0。
+最开始查了下d3的文档，发现有个nice()方法可能会做到，但是尝试了下，不生效。查了下，可能是nvd3的bug。要控制坐标轴的显示还可以通过xDomain(),yDomain()来实现，关键问题是如何计算domain的nice值。
+计算数据中的最小值，最大值 var yAxisValues = [1,2.4,3.6,7.8,9.2]; var yAxisMax = d3.max(yAxisValues) var yAxisMin= d3.min(yAxisValues)  我们可以通过d3中提供的max方法得到数据中的最小值，最大值
+根据给定的最小值和最大值计算出nice值 app.factory(&#39;niceScale&#39;, [function () { var factory = {}; /// &lt;summary&gt;  /// Returns a &#34;nice&#34; number approximately equal to range Rounds  /// the number if round = true Takes the ceiling if round = false." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://dixon629.github.io/posts/nvd3-nice-scale/" />
+<meta property="article:published_time" content="2014-12-24T21:39:06+08:00" />
+<meta property="article:modified_time" content="2014-12-24T21:39:06+08:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="nvd3中计算坐标轴的nice domain"/>
+<meta name="twitter:description" content="最近用nvd3以及angularjs-nvd3-directives做chart遇到一个问题，如下图，y轴中的最大值是3.8。nvd3只会在坐标轴显示到数据最大值，但是有些情况下最大值并不是很好看，我们需要在这种情况下显示4.0。
+最开始查了下d3的文档，发现有个nice()方法可能会做到，但是尝试了下，不生效。查了下，可能是nvd3的bug。要控制坐标轴的显示还可以通过xDomain(),yDomain()来实现，关键问题是如何计算domain的nice值。
+计算数据中的最小值，最大值 var yAxisValues = [1,2.4,3.6,7.8,9.2]; var yAxisMax = d3.max(yAxisValues) var yAxisMin= d3.min(yAxisValues)  我们可以通过d3中提供的max方法得到数据中的最小值，最大值
+根据给定的最小值和最大值计算出nice值 app.factory(&#39;niceScale&#39;, [function () { var factory = {}; /// &lt;summary&gt;  /// Returns a &#34;nice&#34; number approximately equal to range Rounds  /// the number if round = true Takes the ceiling if round = false."/>
+
+<meta name="generator" content="Hugo 0.59.1" />
+    
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://dixon629.github.io/fontawesome/css/all.min.css" />
+  <link rel="stylesheet" href="https://hui-resources.oss-cn-beijing.aliyuncs.com/fonts-google.Roboto-Slab-Ruda.css" />
+  
+  <link rel="stylesheet" type="text/css" href="https://dixon629.github.io/css/styles.css" /></head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="https://dixon629.github.io/">Hui&rsquo;s blog</a>
+            </h1>
+
+      <ul id="social-media">
+             <li>
+               <a href="https://github.com/dixon629" title="GitHub">
+               <i class="fab fa-github fa-lg"></i>
+               </a>
+             </li>
+             <li>
+               <a href="https://linkedin.com/in/%e8%be%89-%e5%85%b3-52a96098" title="LinkedIn">
+               <i class="fab fa-linkedin fa-lg"></i>
+               </a>
+             </li>
+      </ul>
+      
+      <p><em>A Hugo theme for creative and technical writing</em></p>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+        <li>
+            <a class="" href="https://dixon629.github.io/categories">
+                <i class="fa-li fa  fa-lg"></i><span>Categories</span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="" href="https://dixon629.github.io/posts/">
+                <i class="fa-li fa  fa-lg"></i><span>Posts</span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="" href="https://dixon629.github.io/about/">
+                <i class="fa-li fa  fa-lg"></i><span>About Me</span>
+            </a>
+        </li>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>nvd3中计算坐标轴的nice domain</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2014-12-24T21:39:06&#43;08:00">Dec 24, 2014</time>
+        </li>
+        
+        <li>
+            Categories:
+            <em>
+                
+                    
+                    <a href="https://dixon629.github.io/categories/d3">d3</a>
+                
+                    , 
+                    <a href="https://dixon629.github.io/categories/nvd3">nvd3</a>
+                
+                    , 
+                    <a href="https://dixon629.github.io/categories/chart">chart</a>
+                
+                    , 
+                    <a href="https://dixon629.github.io/categories/angularjs">angularjs</a>
+                
+            </em>
+        </li>
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="https://dixon629.github.io/tags/javascript">#javascript</a>
+                
+            </em>
+        </li>
+        
+
+        <li>2 minutes read</li>
+    </ul>
+</aside>
+
+    
+
+    
+
+<p>最近用<a href="https://github.com/novus/nvd3">nvd3</a>以及<a href="https://github.com/angularjs-nvd3-directives/angularjs-nvd3-directives">angularjs-nvd3-directives</a>做chart遇到一个问题，如下图，y轴中的最大值是3.8。nvd3只会在坐标轴显示到数据最大值，但是有些情况下最大值并不是很好看，我们需要在这种情况下显示4.0。</p>
+
+<p><img src="https://dixon629.github.io/images/nvd3_axis_1.png" alt="" /></p>
+
+<p>最开始查了下d3的文档，发现有个<a href="https://github.com/mbostock/d3/wiki/Quantitative-Scales">nice()</a>方法可能会做到，但是尝试了下，不生效。查了下，可能是nvd3的<a href="https://github.com/novus/nvd3/issues/594">bug</a>。要控制坐标轴的显示还可以通过xDomain(),yDomain()来实现，关键问题是如何计算domain的nice值。</p>
+
+<h3 id="计算数据中的最小值-最大值">计算数据中的最小值，最大值</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">yAxisValues</span> <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2.4</span>,<span style="color:#ae81ff">3.6</span>,<span style="color:#ae81ff">7.8</span>,<span style="color:#ae81ff">9.2</span>];
+<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">yAxisMax</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">d3</span>.<span style="color:#a6e22e">max</span>(<span style="color:#a6e22e">yAxisValues</span>)
+<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">yAxisMin</span><span style="color:#f92672">=</span> <span style="color:#a6e22e">d3</span>.<span style="color:#a6e22e">min</span>(<span style="color:#a6e22e">yAxisValues</span>)
+</code></pre></div>
+<p>我们可以通过d3中提供的max方法得到数据中的最小值，最大值</p>
+
+<h3 id="根据给定的最小值和最大值计算出nice值">根据给定的最小值和最大值计算出nice值</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">factory</span>(<span style="color:#e6db74">&#39;niceScale&#39;</span>, [<span style="color:#66d9ef">function</span> () {
+        <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">factory</span> <span style="color:#f92672">=</span> {};
+
+        <span style="color:#75715e">/// &lt;summary&gt;
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">///  Returns a &#34;nice&#34; number approximately equal to range Rounds
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">///  the number if round = true Takes the ceiling if round = false.
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// &lt;/summary&gt;
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// &lt;param name=&#34;range&#34;&gt;the minimum data point on the axis&lt;/param&gt;
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">/// &lt;param name=&#34;round&#34;&gt;the maximum data point on the axis&lt;/param&gt;
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">niceNum</span>(<span style="color:#a6e22e">range</span>, <span style="color:#a6e22e">round</span>) {
+            <span style="color:#75715e">// exponent of range
+</span><span style="color:#75715e"></span>            <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">exponent</span>;
+            <span style="color:#75715e">// fractional part of range
+</span><span style="color:#75715e"></span>            <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">fraction</span>;
+            <span style="color:#75715e">// nice, rounded fraction
+</span><span style="color:#75715e"></span>            <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">niceFraction</span>;
+            <span style="color:#a6e22e">exponent</span> <span style="color:#f92672">=</span> Math.<span style="color:#a6e22e">floor</span>(Math.<span style="color:#a6e22e">log10</span>(<span style="color:#a6e22e">range</span>));
+            <span style="color:#a6e22e">fraction</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">range</span> <span style="color:#f92672">/</span> Math.<span style="color:#a6e22e">pow</span>(<span style="color:#ae81ff">10</span>, <span style="color:#a6e22e">exponent</span>);
+
+            <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">round</span>) {
+                <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">fraction</span> <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">1.5</span>) <span style="color:#a6e22e">niceFraction</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+                <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">fraction</span> <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">3</span>) <span style="color:#a6e22e">niceFraction</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>;
+                <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">fraction</span> <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">7</span>) <span style="color:#a6e22e">niceFraction</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>;
+                <span style="color:#66d9ef">else</span> <span style="color:#a6e22e">niceFraction</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>;
+            } <span style="color:#66d9ef">else</span> {
+                <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">fraction</span> <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">1</span>) <span style="color:#a6e22e">niceFraction</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+                <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">fraction</span> <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">2</span>) <span style="color:#a6e22e">niceFraction</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>;
+                <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">fraction</span> <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">5</span>) <span style="color:#a6e22e">niceFraction</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>;
+                <span style="color:#66d9ef">else</span> <span style="color:#a6e22e">niceFraction</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>;
+            }
+            <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">niceFraction</span> <span style="color:#f92672">*</span> Math.<span style="color:#a6e22e">pow</span>(<span style="color:#ae81ff">10</span>, <span style="color:#a6e22e">exponent</span>);
+        }
+
+        <span style="color:#a6e22e">factory</span>.<span style="color:#a6e22e">calculate</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">min</span>, <span style="color:#a6e22e">max</span>, <span style="color:#a6e22e">maxTicks</span>) {
+            <span style="color:#a6e22e">maxTicks</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">maxTicks</span> <span style="color:#f92672">?</span> <span style="color:#a6e22e">maxTicks</span> <span style="color:#f92672">:</span> <span style="color:#ae81ff">10</span>;
+            <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">range</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">niceNum</span>(<span style="color:#a6e22e">max</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">min</span>, <span style="color:#66d9ef">false</span>);
+            <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">tickSpacing</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">niceNum</span>(<span style="color:#a6e22e">range</span> <span style="color:#f92672">/</span> (<span style="color:#a6e22e">maxTicks</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>), <span style="color:#66d9ef">true</span>);
+            <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">niceMin</span> <span style="color:#f92672">=</span> Math.<span style="color:#a6e22e">floor</span>(<span style="color:#a6e22e">min</span> <span style="color:#f92672">/</span> <span style="color:#a6e22e">tickSpacing</span>) <span style="color:#f92672">*</span> <span style="color:#a6e22e">tickSpacing</span>;
+            <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">niceMax</span> <span style="color:#f92672">=</span> Math.<span style="color:#a6e22e">ceil</span>(<span style="color:#a6e22e">max</span> <span style="color:#f92672">/</span> <span style="color:#a6e22e">tickSpacing</span>) <span style="color:#f92672">*</span> <span style="color:#a6e22e">tickSpacing</span>;
+            <span style="color:#66d9ef">return</span> [<span style="color:#a6e22e">niceMin</span>, <span style="color:#a6e22e">niceMax</span>];
+        }
+
+        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">factory</span>;
+    }]);
+</code></pre></div>
+<p>上面定义了一个angular中的service用来处理算法</p>
+
+<h3 id="设置chart的domain">设置chart的domain</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">    <span style="color:#a6e22e">chart</span>.<span style="color:#a6e22e">yDomain</span>([<span style="color:#a6e22e">niceMin</span>,<span style="color:#a6e22e">niceMax</span>]);
+</code></pre></div>
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="https://dixon629.github.io/posts/git-operation/"><i class="fa fa-chevron-circle-left"></i> git常用操作</a>
+        </li>
+        
+        
+        <li>
+            <a href="https://dixon629.github.io/posts/svg-to-png/">How to export nvd3 chart to PNG <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6>Copyright &copy; 2020 - Hui |
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="https://dixon629.github.io/index.xml">Subscribe </a></h6>
+    </footer>
+</div>
+<script src="https://dixon629.github.io/js/scripts.js"></script>
+
+</body>
+
+</html>
+

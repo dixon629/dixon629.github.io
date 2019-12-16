@@ -1,0 +1,711 @@
+
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+ <channel>
+   <title>OWIN on Hui&#39;s blog</title>
+   <link>https://dixon629.github.io/tags/owin/</link>
+   <description>Recent content in OWIN on Hui&#39;s blog</description>
+   <generator>Hugo -- gohugo.io</generator>
+   <language>en-us</language>
+   <copyright>Copyright &amp;copy; 2020 - Hui</copyright>
+   <lastBuildDate>Fri, 03 Apr 2015 15:57:34 +0800</lastBuildDate>
+   
+       <atom:link href="https://dixon629.github.io/tags/owin/index.xml" rel="self" type="application/rss+xml" />
+   
+   
+     <item>
+       <title>Customize button text for angularjs-dropdown-mulitipselect</title>
+       <link>https://dixon629.github.io/posts/add-customized-button-text-angularjs-dropdown-mulitipselect/</link>
+       <pubDate>Sun, 03 Apr 2016 17:33:35 +0800</pubDate>
+       
+       <guid>https://dixon629.github.io/posts/add-customized-button-text-angularjs-dropdown-mulitipselect/</guid>
+       <description>&lt;p&gt;Recently I was using &lt;a href=&#34;https://github.com/dotansimha/angularjs-dropdown-multiselect&#34;&gt;angularjs-dropdown-multiselect&lt;/a&gt; for multiple select. It&amp;rsquo;s a good library, but it doesn&amp;rsquo;t support customizing button text very well, so I forked it and added the customized button text feature.&lt;/p&gt;
+
+&lt;p&gt;The forked repository is &lt;a href=&#34;https://github.com/dixon629/angularjs-dropdown-multiselect&#34;&gt;https://github.com/dixon629/angularjs-dropdown-multiselect&lt;/a&gt;.
+It&amp;rsquo;s easy to use it, just specify &lt;strong&gt;buttonTextFunction&lt;/strong&gt; in the &lt;strong&gt;extraSettings&lt;/strong&gt;.
+It passes three parameters: &lt;em&gt;options&lt;/em&gt;, &lt;em&gt;selectedModel&lt;/em&gt;, &lt;em&gt;settings&lt;/em&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;options&lt;/strong&gt;: the data provider of dropdown list&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;selectedModel&lt;/strong&gt;: the selected model of dropdown list&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;settings&lt;/strong&gt;: the settings of dropdown list&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;This is a demo: how to display &amp;ldquo;All&amp;rdquo; when you check the all items for the dropdown&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;dropdownButtonTextFunction&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;options&lt;/span&gt;,&lt;span style=&#34;color:#a6e22e&#34;&gt;selectedModel&lt;/span&gt;,&lt;span style=&#34;color:#a6e22e&#34;&gt;settings&lt;/span&gt;){
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;selectedModel&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;selectedModel&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;options&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt;){
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;All&amp;#39;&lt;/span&gt;;
+    }&lt;span style=&#34;color:#66d9ef&#34;&gt;else&lt;/span&gt;{
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;selectedModel&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39; checked&amp;#39;&lt;/span&gt;;
+    }
+}
+&lt;span style=&#34;color:#a6e22e&#34;&gt;$scope&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;myExtraSettings&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; {&lt;span style=&#34;color:#a6e22e&#34;&gt;buttonTextFunction&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;dropdownButtonTextFunction&lt;/span&gt;};
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+     </item>
+   
+     <item>
+       <title>Fixes some bugs for ng-grid-reorderable</title>
+       <link>https://dixon629.github.io/posts/fixes-some-bugs-for-ng-grid-reorderable/</link>
+       <pubDate>Sat, 26 Mar 2016 22:00:47 +0800</pubDate>
+       
+       <guid>https://dixon629.github.io/posts/fixes-some-bugs-for-ng-grid-reorderable/</guid>
+       <description>
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/angular-ui/ng-grid/tree/2.x/plugins&#34;&gt;ng-grid-reorderable&lt;/a&gt; is a drag-drop plugin for &lt;a href=&#34;https://github.com/angular-ui/ng-grid&#34;&gt;ng-gird&lt;/a&gt;. I found some bugs when I was using this plugin.&lt;/p&gt;
+
+&lt;h3 id=&#34;bug-1-it-doesn-t-work-on-firefox&#34;&gt;Bug 1: It doesn&amp;rsquo;t work on firefox&lt;/h3&gt;
+
+&lt;p&gt;The plugin use html5 drag-drop, firefox needs to set data for dataTransfer.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;//set dataTransfer as it&amp;#39;s required by firefox
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;onDragStart&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; (&lt;span style=&#34;color:#a6e22e&#34;&gt;event&lt;/span&gt;) {
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;event&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;originalEvent&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;dataTransfer&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;setData&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;gridId&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;self&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;myGrid&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;gridId&lt;/span&gt;);
+};
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&#34;bug-2-can-drag-a-row-to-the-other-ng-grid&#34;&gt;Bug 2: Can drag a row to the other ng-grid&lt;/h3&gt;
+
+&lt;p&gt;To fix this bug, it needs to compare grid id on drop event.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;prevRow&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;self&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;services&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;DomUtilityService&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;eventStorage&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;rowToMove&lt;/span&gt;;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; (&lt;span style=&#34;color:#a6e22e&#34;&gt;prevRow&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;gridId&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;!=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;self&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;myGrid&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;gridId&lt;/span&gt;) &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt;;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&#34;bug-3-can-t-select-all-texts-when-at-edting-status&#34;&gt;Bug 3: Can&amp;rsquo;t select all texts when at edting status&lt;/h3&gt;
+
+&lt;p&gt;To fix this bug, it needs to disable drag-drop feature.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;//It should disable drag/drop feature when editing
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;rowScope&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;$on&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;ngGridEventStartCellEdit&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; () {
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;targetRow&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;attr&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;draggable&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;false&amp;#39;&lt;/span&gt;);
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;targetRow&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;off&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;dragstart&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;onDragStart&lt;/span&gt;);
+});
+&lt;span style=&#34;color:#a6e22e&#34;&gt;rowScope&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;$on&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;ngGridEventEndCellEdit&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; () {
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;targetRow&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;attr&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;draggable&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;true&amp;#39;&lt;/span&gt;);
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;targetRow&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;on&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;dragstart&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;onDragStart&lt;/span&gt;);
+});
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&#34;bug-4-can-select-some-texts-and-then-drag-and-drop-it-on-the-ng-gird&#34;&gt;Bug 4: Can select some texts and then drag and drop it on the ng-gird&lt;/h3&gt;
+
+&lt;p&gt;To fix this bug, it needs to remove dragover and drop event for the $viewport when editing&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;rowScope&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;$on&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;ngGridEventStartCellEdit&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; () {
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;self&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;myGrid&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;$viewport&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;off&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;dragover&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;self&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;dragOver&lt;/span&gt;).&lt;span style=&#34;color:#a6e22e&#34;&gt;off&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;drop&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;self&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;onRowDrop&lt;/span&gt;);
+});
+&lt;span style=&#34;color:#a6e22e&#34;&gt;rowScope&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;$on&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;ngGridEventEndCellEdit&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; () {
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;self&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;myGrid&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;$viewport&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;on&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;dragover&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;self&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;dragOver&lt;/span&gt;).&lt;span style=&#34;color:#a6e22e&#34;&gt;on&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;drop&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;self&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;onRowDrop&lt;/span&gt;);
+});
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&#34;the-codes-in-gist&#34;&gt;The codes in gist&lt;/h3&gt;
+
+&lt;script type=&#34;application/javascript&#34; src=&#34;https://gist.github.com/dixon629/a77d1507f0e65c0e2908.js&#34;&gt;&lt;/script&gt;
+
+</description>
+     </item>
+   
+     <item>
+       <title>How to make dependent drop-down list in Excel through Apache POI</title>
+       <link>https://dixon629.github.io/posts/how-to-make-dependent-drop-down-list-through-apache-poi/</link>
+       <pubDate>Sat, 25 Apr 2015 14:45:56 +0800</pubDate>
+       
+       <guid>https://dixon629.github.io/posts/how-to-make-dependent-drop-down-list-through-apache-poi/</guid>
+       <description>&lt;p&gt;In some situation, we need to use dependent drop-down list in Excel. For example, there&amp;rsquo;re two drop-down list, parent cateogory list and subcategory list. The subcategory list depends on which item parent selected. How to make it through &lt;a href=&#34;https://poi.apache.org/&#34;&gt;Apache POI&lt;/a&gt;?&lt;/p&gt;
+
+&lt;p&gt;First, we need to figure out how to make it in Excel. We can use function &lt;strong&gt;INDIRECT&lt;/strong&gt; and &lt;strong&gt;VLOOkUP&lt;/strong&gt; to achieve it. &lt;a href=&#34;http://www.contextures.com/xlDataVal02.html&#34;&gt;Create Dependent Drop Down Lists&lt;/a&gt; is a good tutorial to show you how to do it in Excel.
+Then, we need to figure out how to build this formula in POI. We can&amp;rsquo;t set the explicit validation list as the list is from database and can be populated.&lt;/p&gt;
+
+&lt;p&gt;So we need to generate the parent list and subcategory list in sepecified column first. When we create the subcategory list, we need to add extra field to indicate which parent it belongs. Something likes this in Excel.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Parent Category&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;SubCateogry&lt;/th&gt;
+&lt;th&gt;Belongs&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Parent A&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;Sub A&lt;/td&gt;
+&lt;td&gt;Parent A&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Parent B&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;Sub B&lt;/td&gt;
+&lt;td&gt;Parent A&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Parent C&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;Sub C&lt;/td&gt;
+&lt;td&gt;Parent B&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;Sub D&lt;/td&gt;
+&lt;td&gt;Parent C&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;For parent list, we create drop-down list directly. For example,
+&lt;strong&gt;&lt;em&gt;dvConstraint = DVConstraint.createFormulaListConstraint(&amp;ldquo;$A$1:$A$3&amp;rdquo;);&lt;/em&gt;&lt;/strong&gt;
+It will set validation list from A1 to A3.
+When you select &amp;ldquo;Parent A&amp;rdquo;, we need to look up the subcategoires belongs to it.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;String searchTable &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;$&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; sublcategoryCol &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;$&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; (rowStart &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; 1) &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;:&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;$&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; rangeCol &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;$&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; (rowEnd &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; 1);
+&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;String lookupValue &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;$&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; valueCol &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;$&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; (valueRowIndex &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; 1);
+&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;String formula &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;VLOOKUP(&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; lookupValue &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;,&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; searchTable &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;,2,FALSE)&amp;#34;&lt;/span&gt;;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;The &lt;em&gt;searchTable&lt;/em&gt; is a table range it will look up for the parent.
+The &lt;em&gt;lookupValue&lt;/em&gt; is the selected value of parent list.
+After looking up the subcategories, we can use &lt;strong&gt;INDIRECT&lt;/strong&gt; to add refrence for subcategory cell.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;String formula &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;INDIRECT(&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; formula &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;)&amp;#34;&lt;/span&gt;;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+     </item>
+   
+     <item>
+       <title>Append page header and footer through itextsharp xmlworker</title>
+       <link>https://dixon629.github.io/posts/append-page-header-and-footer-through-itextsharp-xmlworker/</link>
+       <pubDate>Sat, 18 Apr 2015 13:07:42 +0800</pubDate>
+       
+       <guid>https://dixon629.github.io/posts/append-page-header-and-footer-through-itextsharp-xmlworker/</guid>
+       <description>&lt;p&gt;We’re using itextSharp xmlworker to convert html to PDF.  And we need to append page header and footer for PDF, but xmlworker doesn’t support this. So how to do it? Actually xmlworker still use itextsharp to generate PDF, thus we’re able to use page event to do it as well.&lt;/p&gt;
+
+&lt;p&gt;We want to specify the header and footer as html. So we need to parse html to itext elements first. XMLWorkerHelper only supports to parse html to elements with &lt;strong&gt;css string&lt;/strong&gt;, so I add this below method to support &lt;strong&gt;css path&lt;/strong&gt;.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-c#&#34; data-lang=&#34;c#&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;/// &amp;lt;summary&amp;gt;
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;/// Parse html to PDF element list by html content and css path
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;/// &amp;lt;/summary&amp;gt;
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;/// &amp;lt;param name=&amp;#34;html&amp;#34;&amp;gt;html&amp;lt;/param&amp;gt;
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;/// &amp;lt;param name=&amp;#34;cssPath&amp;#34;&amp;gt;css full path&amp;lt;/param&amp;gt;
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;/// &amp;lt;returns&amp;gt;PDF element list&amp;lt;/returns&amp;gt;
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;static&lt;/span&gt; ElementList ParseToElementListByCssPath(&lt;span style=&#34;color:#66d9ef&#34;&gt;string&lt;/span&gt; html, &lt;span style=&#34;color:#66d9ef&#34;&gt;string&lt;/span&gt; cssPath)
+{
+    ICSSResolver cssResolver = &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; StyleAttrCSSResolver();
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; (cssPath != &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;)
+        cssResolver.AddCssFile(cssPath, &lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;);
+
+    &lt;span style=&#34;color:#75715e&#34;&gt;//HTML
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    HtmlPipelineContext htmlContext = &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; HtmlPipelineContext(&lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;);
+    htmlContext.SetTagFactory(Tags.GetHtmlTagProcessorFactory());
+    htmlContext.AutoBookmark(&lt;span style=&#34;color:#66d9ef&#34;&gt;false&lt;/span&gt;);
+
+    &lt;span style=&#34;color:#75715e&#34;&gt;// Pipelines
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    ElementList elements = &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; ElementList();
+    ElementHandlerPipeline end = &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; ElementHandlerPipeline(elements, &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;);
+    HtmlPipeline htmlPipeline = &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; HtmlPipeline(htmlContext, end);
+    CssResolverPipeline cssPipeline = &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; CssResolverPipeline(cssResolver, htmlPipeline);
+
+    &lt;span style=&#34;color:#75715e&#34;&gt;// XML Worker
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    XMLWorker worker = &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; XMLWorker(cssPipeline, &lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;);
+    XMLParser parser = &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; XMLParser(worker);
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;using&lt;/span&gt; (&lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; reader = &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; StringReader(html))
+    {
+        parser.Parse(reader);
+    }
+
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; elements;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Once we parse the html to the itext elements, we can process it in PDF page event. And then we need to set the page event when xmlworker parse html.
+This is a demo how to set page event.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-c#&#34; data-lang=&#34;c#&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;/// &amp;lt;summary&amp;gt;
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;/// Convert html to PDF
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;/// &amp;lt;/summary&amp;gt;
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;/// &amp;lt;param name=&amp;#34;html&amp;#34;&amp;gt;html content&amp;lt;/param&amp;gt;
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;/// &amp;lt;param name=&amp;#34;pageEvent&amp;#34;&amp;gt;PDF page event&amp;lt;/param&amp;gt;
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;/// &amp;lt;param name=&amp;#34;cssPath&amp;#34;&amp;gt;css full path&amp;lt;/param&amp;gt;
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;/// &amp;lt;returns&amp;gt;PDF binary data&amp;lt;/returns&amp;gt;
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;byte&lt;/span&gt;[] convert(&lt;span style=&#34;color:#66d9ef&#34;&gt;string&lt;/span&gt; html, &lt;span style=&#34;color:#66d9ef&#34;&gt;string&lt;/span&gt; cssPath, IPdfPageEvent pageEvent)
+{
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;using&lt;/span&gt; (Document document = &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; Document())
+    {
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;using&lt;/span&gt; (&lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; outStream = &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; MemoryStream())
+        {
+            PdfWriter writer = PdfWriter.GetInstance(document, outStream);
+            &lt;span style=&#34;color:#75715e&#34;&gt;// page event
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;            &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; (pageEvent != &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;)
+                writer.PageEvent = pageEvent;
+
+            writer.InitialLeading = &lt;span style=&#34;color:#ae81ff&#34;&gt;12.5f&lt;/span&gt;;
+            document.Open();
+
+            &lt;span style=&#34;color:#75715e&#34;&gt;// css
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;            ICSSResolver cssResolver = XMLWorkerHelper.GetInstance().GetDefaultCssResolver(&lt;span style=&#34;color:#66d9ef&#34;&gt;false&lt;/span&gt;);
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; (cssPath != &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;)
+                cssResolver.AddCssFile(cssPath, &lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;);
+
+            &lt;span style=&#34;color:#75715e&#34;&gt;// html 
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;            &lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; htmlContext = &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; HtmlPipelineContext(&lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;);
+            htmlContext.SetTagFactory(Tags.GetHtmlTagProcessorFactory());
+
+            &lt;span style=&#34;color:#75715e&#34;&gt;// pipelines
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;            PdfWriterPipeline pdfPipeline = &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; PdfWriterPipeline(document, writer);
+            HtmlPipeline htmlPipeline = &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; HtmlPipeline(htmlContext, pdfPipeline);
+            CssResolverPipeline cssPipeline = &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; CssResolverPipeline(cssResolver, htmlPipeline);
+
+            &lt;span style=&#34;color:#75715e&#34;&gt;// parse
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;            XMLWorker worker = &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; XMLWorker(cssPipeline, &lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;);
+            XMLParser parser = &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; XMLParser(worker);
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;using&lt;/span&gt; (&lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; reader = &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; StringReader(html))
+            {
+                parser.Parse(reader);
+            }
+
+            document.Close();
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; outStream.ToArray();
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+     </item>
+   
+     <item>
+       <title>How to generate identical chart in html and PDF</title>
+       <link>https://dixon629.github.io/posts/how-to-generate-same-chart-on-web-page-and-pdf/</link>
+       <pubDate>Wed, 15 Apr 2015 22:18:20 +0800</pubDate>
+       
+       <guid>https://dixon629.github.io/posts/how-to-generate-same-chart-on-web-page-and-pdf/</guid>
+       <description>&lt;p&gt;I’m working on PDF stuff recently. I got a requirement that the chart in PDF should be identical with in html.&lt;/p&gt;
+
+&lt;p&gt;At the beginning, we were trying to generate chart of PDF through .NET  and make same styles with html. But we found it’s very hard to make them identical as they used different technology, d3js for client-side, Microsoft charts for server-side.&lt;/p&gt;
+
+&lt;p&gt;Then I found out Phantomjs. We planned to generate whole PDF by Phantomjs. But we got the other issue, there were some table in the PDF, and we needed to repeat the table header when table crossing pages, but Phantomjs doesn’t support this feature. Finally we decided to use Phantomjs to convert chart to image and then generate PDF through itextSharp.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;This is my codes to call Phantomjs on .NET to covert html to image.&lt;/em&gt;
+&lt;script type=&#34;application/javascript&#34; src=&#34;https://gist.github.com/dixon629/548cb3ddb842fc3fc48d.js&#34;&gt;&lt;/script&gt;
+&lt;/p&gt;
+</description>
+     </item>
+   
+     <item>
+       <title>How to download file on .NET OWIN</title>
+       <link>https://dixon629.github.io/posts/how-to-download-file-on-net-owin/</link>
+       <pubDate>Fri, 03 Apr 2015 15:57:34 +0800</pubDate>
+       
+       <guid>https://dixon629.github.io/posts/how-to-download-file-on-net-owin/</guid>
+       <description>&lt;p&gt;Sometimes we need to use browser navigation or iframe mechanism to download file as some old browsers don&amp;rsquo;t support html5 file API.
+But there&amp;rsquo;s a problem that most of applications has access control, thus you can&amp;rsquo;t access the server source directly.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;How to do it on .NET OWIN?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;My solution is to append access token to parameters of http request, then parse the token and wrap it to header of http request on the server-side.
+The code snippet in the StartUp.Auth.cs&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-c#&#34; data-lang=&#34;c#&#34;&gt;app.Use(&lt;span style=&#34;color:#66d9ef&#34;&gt;async&lt;/span&gt; (context, next) =&amp;gt;
+{
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; (context.Request.QueryString.HasValue)
+    {
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; (&lt;span style=&#34;color:#66d9ef&#34;&gt;string&lt;/span&gt;.IsNullOrWhiteSpace(context.Request.Headers.Get(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Authorization&amp;#34;&lt;/span&gt;)))
+        {
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; queryString = HttpUtility.ParseQueryString(context.Request.QueryString.Value);
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;string&lt;/span&gt; token = queryString.Get(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;accessToken&amp;#34;&lt;/span&gt;);
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; (!&lt;span style=&#34;color:#66d9ef&#34;&gt;string&lt;/span&gt;.IsNullOrWhiteSpace(token))
+            {
+                context.Request.Headers.Add(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Authorization&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt;[] { &lt;span style=&#34;color:#66d9ef&#34;&gt;string&lt;/span&gt;.Format(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Bearer {0}&amp;#34;&lt;/span&gt;, token) });
+            }
+        }
+    }
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;await&lt;/span&gt; next.Invoke();
+});
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+     </item>
+   
+     <item>
+       <title>How to export nvd3 chart to PNG</title>
+       <link>https://dixon629.github.io/posts/svg-to-png/</link>
+       <pubDate>Sat, 28 Mar 2015 16:41:23 +0800</pubDate>
+       
+       <guid>https://dixon629.github.io/posts/svg-to-png/</guid>
+       <description>
+
+&lt;p&gt;Recently I was working on NVD3. I got a task to export &lt;a href=&#34;https://github.com/novus/nvd3&#34;&gt;nvd3&lt;/a&gt; chart to PNG file.
+It needs to support IE9+, Chrome, Firefox. I encountered some problems when I was doing this task, it took me some time to figure it out. I think it is better to share my experience for who has similar requirements.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;nvd3&lt;/em&gt; is base on &lt;a href=&#34;http://d3js.org/&#34;&gt;d3js&lt;/a&gt;. &lt;em&gt;d3js&lt;/em&gt; uses SVG to render data. So the key issue is how to covert SVG to PNG, and the other issue is how to download the PNG file.&lt;/p&gt;
+
+&lt;h2 id=&#34;solution-1-send-svg-to-server-convert-it-to-png-and-generate-link-to-download&#34;&gt;Solution 1: send SVG  to Server , convert it to PNG and generate link to download&lt;/h2&gt;
+
+&lt;p&gt;Our server-side is Asp.net, so I did some research how to convert SVG to PNG on .net. I got three options,&lt;a href=&#34;https://github.com/vvvv/SVG&#34;&gt;SVG.NET&lt;/a&gt;,&lt;a href=&#34;http://imagemagick.codeplex.com/&#34;&gt; ImageMagick.NET&lt;/a&gt;,&lt;a href=&#34;https://inkscape.org/&#34;&gt;inkscape&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;I tried them out, but no one can generate the PNG perfectly. The &lt;em&gt;nvd3&lt;/em&gt; uses some CSS class for SVG, but &lt;em&gt;SVG.NET&lt;/em&gt; and &lt;em&gt;mageMagick.NET&lt;/em&gt; don&amp;rsquo;t support it very well. And the PNG file that &lt;em&gt;inkscape&lt;/em&gt; generates are  different with browsers render. I tried to add the styles to SVG file manually without CSS, but PNG file they generated still looks different with browsers render.&lt;/p&gt;
+
+&lt;p&gt;Finally I found &lt;a href=&#34;http://phantomjs.org/&#34;&gt;PhantomJs&lt;/a&gt; out. &lt;em&gt;PhantomJS&lt;/em&gt; is a headless WebKit scriptable with a JavaScript API. &lt;em&gt;PhantomJS&lt;/em&gt; is a perfect solution to render SVG and can export to image and PDF. It can generate PNG exactly same with browsers render. But I have to install it on the server and write some API to call it.
+&lt;strong&gt;I discussed with my leader, but she didn&amp;rsquo;t like this solution, so I have to turn to Solution 2.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;solution-2-convert-svg-to-html5-canvas-then-convert-canvas-to-png-and-download-it&#34;&gt;Solution 2: convert SVG to html5 canvas , then convert canvas to PNG and download it&lt;/h2&gt;
+
+&lt;h3 id=&#34;step-1-convert-svg-to-canvas&#34;&gt;Step 1: convert SVG to canvas&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/exupero/saveSvgAsPng&#34;&gt;saveSvgAsPng&lt;/a&gt; is a library to export SVG to PNG on the client-side. But unfortunately, it doesn&amp;rsquo;t work on IE and safari. There is a security error on IE. And besides,It can&amp;rsquo;t download the PNG file on safari, safari open the file on the new tab instead of downloading it. So I have to give up this scenario.&lt;/p&gt;
+
+&lt;p&gt;And then I found &lt;a href=&#34;https://github.com/gabelerner/canvg&#34;&gt;canvg&lt;/a&gt; out, &lt;em&gt;canvg&lt;/em&gt; can parse SVG and render it on Canvas. But *canvg *doesn&amp;rsquo;t support external CSS on the SVG.&lt;/p&gt;
+
+&lt;p&gt;Eventually I was inspired by the &lt;em&gt;saveSvgAsPng&lt;/em&gt;. &lt;em&gt;saveSvgAsPng&lt;/em&gt; will read the used external CSS for SVG and put it into the SVG. So I create a new function in &lt;em&gt;saveSvgAsPng&lt;/em&gt; called &lt;strong&gt;saveAsSVGWithStyle&lt;/strong&gt;.It will return a new SVG with CSS.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;out$&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;saveAsSVGWithStyle&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; (&lt;span style=&#34;color:#a6e22e&#34;&gt;el&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;options&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;cb&lt;/span&gt;) {
+      &lt;span style=&#34;color:#a6e22e&#34;&gt;options&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;options&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;||&lt;/span&gt; {};
+      &lt;span style=&#34;color:#a6e22e&#34;&gt;options&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;scale&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;options&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;scale&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;||&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;;
+      &lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;xmlns&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;http://www.w3.org/2000/xmlns/&amp;#34;&lt;/span&gt;;
+
+      &lt;span style=&#34;color:#a6e22e&#34;&gt;inlineImages&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;el&lt;/span&gt;, &lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt;() {
+          &lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;outer&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; document.&lt;span style=&#34;color:#a6e22e&#34;&gt;createElement&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;div&amp;#34;&lt;/span&gt;);
+          &lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;clone&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;el&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;cloneNode&lt;/span&gt;(&lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;);
+          &lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;width&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;height&lt;/span&gt;;
+          &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;el&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;tagName&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;svg&amp;#39;&lt;/span&gt;) {
+              &lt;span style=&#34;color:#a6e22e&#34;&gt;width&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; parseInt(&lt;span style=&#34;color:#a6e22e&#34;&gt;clone&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;getAttribute&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;width&amp;#39;&lt;/span&gt;) &lt;span style=&#34;color:#f92672&#34;&gt;||&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;clone&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;style&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;width&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;||&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;out$&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;getComputedStyle&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;el&lt;/span&gt;).&lt;span style=&#34;color:#a6e22e&#34;&gt;getPropertyValue&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;width&amp;#39;&lt;/span&gt;));
+              &lt;span style=&#34;color:#a6e22e&#34;&gt;height&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; parseInt(&lt;span style=&#34;color:#a6e22e&#34;&gt;clone&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;getAttribute&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;height&amp;#39;&lt;/span&gt;) &lt;span style=&#34;color:#f92672&#34;&gt;||&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;clone&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;style&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;height&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;||&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;out$&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;getComputedStyle&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;el&lt;/span&gt;).&lt;span style=&#34;color:#a6e22e&#34;&gt;getPropertyValue&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;height&amp;#39;&lt;/span&gt;));
+          } &lt;span style=&#34;color:#66d9ef&#34;&gt;else&lt;/span&gt; {
+              &lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;box&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;el&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;getBBox&lt;/span&gt;();
+              &lt;span style=&#34;color:#a6e22e&#34;&gt;width&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;box&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;x&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;box&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;width&lt;/span&gt;;
+              &lt;span style=&#34;color:#a6e22e&#34;&gt;height&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;box&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;y&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;box&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;height&lt;/span&gt;;
+              &lt;span style=&#34;color:#a6e22e&#34;&gt;clone&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;setAttribute&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;transform&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;clone&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;getAttribute&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;transform&amp;#39;&lt;/span&gt;).&lt;span style=&#34;color:#a6e22e&#34;&gt;replace&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;/translate\(.*?\)/&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&amp;#39;&lt;/span&gt;));
+
+              &lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;svg&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; document.&lt;span style=&#34;color:#a6e22e&#34;&gt;createElementNS&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;http://www.w3.org/2000/svg&amp;#39;&lt;/span&gt;,&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;svg&amp;#39;&lt;/span&gt;)
+              &lt;span style=&#34;color:#a6e22e&#34;&gt;svg&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;appendChild&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;clone&lt;/span&gt;)
+              &lt;span style=&#34;color:#a6e22e&#34;&gt;clone&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;svg&lt;/span&gt;;
+          }
+
+          &lt;span style=&#34;color:#a6e22e&#34;&gt;clone&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;setAttribute&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;version&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;1.1&amp;#34;&lt;/span&gt;);
+          &lt;span style=&#34;color:#a6e22e&#34;&gt;clone&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;setAttributeNS&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;xmlns&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;xmlns&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;http://www.w3.org/2000/svg&amp;#34;&lt;/span&gt;);
+          &lt;span style=&#34;color:#a6e22e&#34;&gt;clone&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;setAttributeNS&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;xmlns&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;xmlns:xlink&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;http://www.w3.org/1999/xlink&amp;#34;&lt;/span&gt;);
+          &lt;span style=&#34;color:#a6e22e&#34;&gt;clone&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;setAttribute&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;width&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;width&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;options&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;scale&lt;/span&gt;);
+          &lt;span style=&#34;color:#a6e22e&#34;&gt;clone&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;setAttribute&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;height&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;height&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;options&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;scale&lt;/span&gt;);
+          &lt;span style=&#34;color:#a6e22e&#34;&gt;clone&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;setAttribute&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;viewBox&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;0 0 &amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;width&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34; &amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;height&lt;/span&gt;);
+          &lt;span style=&#34;color:#a6e22e&#34;&gt;outer&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;appendChild&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;clone&lt;/span&gt;);
+
+          &lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;css&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;styles&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;el&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;options&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;selectorRemap&lt;/span&gt;);
+          &lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;s&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; document.&lt;span style=&#34;color:#a6e22e&#34;&gt;createElement&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;style&amp;#39;&lt;/span&gt;);
+          &lt;span style=&#34;color:#a6e22e&#34;&gt;s&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;setAttribute&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;type&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;text/css&amp;#39;&lt;/span&gt;);
+          &lt;span style=&#34;color:#a6e22e&#34;&gt;s&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;innerHTML&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&amp;lt;![CDATA[\n&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;css&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;\n]]&amp;gt;&amp;#34;&lt;/span&gt;;
+          &lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;defs&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; document.&lt;span style=&#34;color:#a6e22e&#34;&gt;createElement&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;defs&amp;#39;&lt;/span&gt;);
+          &lt;span style=&#34;color:#a6e22e&#34;&gt;defs&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;appendChild&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;s&lt;/span&gt;);
+          &lt;span style=&#34;color:#a6e22e&#34;&gt;clone&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;insertBefore&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;defs&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;clone&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;firstChild&lt;/span&gt;);
+
+          &lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;svg&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;doctype&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;outer&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;innerHTML&lt;/span&gt;;
+          &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; (&lt;span style=&#34;color:#a6e22e&#34;&gt;cb&lt;/span&gt;) {
+              &lt;span style=&#34;color:#a6e22e&#34;&gt;cb&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;svg&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;width&lt;/span&gt;,&lt;span style=&#34;color:#a6e22e&#34;&gt;height&lt;/span&gt;);
+          }
+      });
+  }
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Then we can convert SVG with CSS to canvas through &lt;em&gt;canvg&lt;/em&gt;.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;saveAsSVGWithStyle&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;svgElement&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;node&lt;/span&gt;(), {}, &lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; (&lt;span style=&#34;color:#a6e22e&#34;&gt;svgWithStyle&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;width&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;height&lt;/span&gt;) {
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;canvas&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; document.&lt;span style=&#34;color:#a6e22e&#34;&gt;createElement&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;canvas&amp;#39;&lt;/span&gt;);
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;canvas&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;width&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;scale&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;width&lt;/span&gt;;
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;canvas&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;height&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;scale&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;height&lt;/span&gt;;
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;canvg&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;canvas&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;svgWithStyle&lt;/span&gt;, { &lt;span style=&#34;color:#a6e22e&#34;&gt;scaleWidth&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;canvas&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;width&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;scaleHeight&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;canvas&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;height&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;ignoreDimensions&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;ignoreMouse&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;ignoreClear&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt; });
+});
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;When I tested on different browsers. I found that IE9 doesn&amp;rsquo;t support  SVG &lt;strong&gt;defs&lt;/strong&gt;. So I can&amp;rsquo;t just define &lt;em&gt;defs and put CSS in defs&lt;/em&gt;. I have to add style property to the SVG manually like this.
+&lt;strong&gt;If you have a better solution to make external CSS into the DOM style property, let me know, thank you.&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;_appendStylesToSVG&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; (&lt;span style=&#34;color:#a6e22e&#34;&gt;svgElement&lt;/span&gt;) {
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;svgElement&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;selectAll&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;.nvd3 .nv-axis&amp;#39;&lt;/span&gt;).&lt;span style=&#34;color:#a6e22e&#34;&gt;style&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;pointer-events&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;none&amp;#39;&lt;/span&gt;);
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;svgElement&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;selectAll&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;.nvd3 .nv-axis path&amp;#39;&lt;/span&gt;).&lt;span style=&#34;color:#a6e22e&#34;&gt;style&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;fill&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;none&amp;#39;&lt;/span&gt;);
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;svgElement&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;selectAll&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;.nvd3 .nv-axis path&amp;#39;&lt;/span&gt;).&lt;span style=&#34;color:#a6e22e&#34;&gt;style&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;stroke&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;rgb(204, 204, 204)&amp;#39;&lt;/span&gt;);
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;svgElement&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;selectAll&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;.nvd3 .nv-axis path&amp;#39;&lt;/span&gt;).&lt;span style=&#34;color:#a6e22e&#34;&gt;style&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;stroke-opacity&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;0.75&amp;#39;&lt;/span&gt;);
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;svgElement&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;selectAll&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;.nvd3 .nv-axis path&amp;#39;&lt;/span&gt;).&lt;span style=&#34;color:#a6e22e&#34;&gt;style&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;shape-rendering&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;crispedges&amp;#39;&lt;/span&gt;);
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;svgElement&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;selectAll&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;.nvd3 .nv-axis path.domain&amp;#39;&lt;/span&gt;).&lt;span style=&#34;color:#a6e22e&#34;&gt;style&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;stroke-opacity&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;0.75&amp;#39;&lt;/span&gt;);
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;svgElement&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;selectAll&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;.nvd3 .nv-axis.nv-x path.domain&amp;#39;&lt;/span&gt;).&lt;span style=&#34;color:#a6e22e&#34;&gt;style&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;stroke-opacity&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;0&amp;#39;&lt;/span&gt;);
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;svgElement&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;selectAll&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;.nvd3 .nv-axis line&amp;#39;&lt;/span&gt;).&lt;span style=&#34;color:#a6e22e&#34;&gt;style&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;fill&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;none&amp;#39;&lt;/span&gt;);
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;svgElement&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;selectAll&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;.nvd3 .nv-axis line&amp;#39;&lt;/span&gt;).&lt;span style=&#34;color:#a6e22e&#34;&gt;style&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;stroke&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;rgb(229, 229, 229)&amp;#39;&lt;/span&gt;);
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;svgElement&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;selectAll&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;.nvd3 .nv-axis line&amp;#39;&lt;/span&gt;).&lt;span style=&#34;color:#a6e22e&#34;&gt;style&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;shape-rendering&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;crispedges&amp;#39;&lt;/span&gt;);
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;svgElement&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;selectAll&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;.nvd3 .nv-axis .zero line, .nvd3 .nv-axis line.zero&amp;#39;&lt;/span&gt;).&lt;span style=&#34;color:#a6e22e&#34;&gt;style&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;stroke-opacity&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;0.75&amp;#39;&lt;/span&gt;);
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;svgElement&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;selectAll&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;.nvd3 .nv-multibar .nv-groups rect&amp;#39;&lt;/span&gt;).&lt;span style=&#34;color:#a6e22e&#34;&gt;style&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;stroke-opacity&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;0&amp;#39;&lt;/span&gt;);
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;svgElement&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;selectAll&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;.nvd3 .nv-multibar .nv-groups rect&amp;#39;&lt;/span&gt;).&lt;span style=&#34;color:#a6e22e&#34;&gt;style&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;transition&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;fill-opacity 250ms linear 0s&amp;#39;&lt;/span&gt;);
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;svgElement&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;selectAll&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;.nvd3 .nv-multibarHorizontal .nv-groups rect&amp;#39;&lt;/span&gt;).&lt;span style=&#34;color:#a6e22e&#34;&gt;style&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;stroke-opacity&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;0&amp;#39;&lt;/span&gt;);
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;svgElement&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;selectAll&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;.nvd3 .nv-multibarHorizontal .nv-groups rect&amp;#39;&lt;/span&gt;).&lt;span style=&#34;color:#a6e22e&#34;&gt;style&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;transition&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;fill-opacity 250ms linear 0s&amp;#39;&lt;/span&gt;);
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;svgElement&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;selectAll&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;.nvd3 .nv-discretebar .nv-groups rect&amp;#39;&lt;/span&gt;).&lt;span style=&#34;color:#a6e22e&#34;&gt;style&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;stroke-opacity&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;0&amp;#39;&lt;/span&gt;);
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;svgElement&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;selectAll&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;.nvd3 .nv-discretebar .nv-groups rect&amp;#39;&lt;/span&gt;).&lt;span style=&#34;color:#a6e22e&#34;&gt;style&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;transition&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;fill-opacity 250ms linear 0s&amp;#39;&lt;/span&gt;);
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;svgElement&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;selectAll&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;.nv-x .tick line&amp;#39;&lt;/span&gt;).&lt;span style=&#34;color:#a6e22e&#34;&gt;style&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;display&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;none&amp;#39;&lt;/span&gt;);
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;svgElement&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;selectAll&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;.statistics-title&amp;#39;&lt;/span&gt;).&lt;span style=&#34;color:#a6e22e&#34;&gt;style&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;fill&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;rgba(107, 156, 188, 1)&amp;#39;&lt;/span&gt;);
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;svgElement&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;selectAll&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;.statistics-title&amp;#39;&lt;/span&gt;).&lt;span style=&#34;color:#a6e22e&#34;&gt;style&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;font-size&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;21px&amp;#39;&lt;/span&gt;);
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;svgElement&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;selectAll&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;.statistics-title&amp;#39;&lt;/span&gt;).&lt;span style=&#34;color:#a6e22e&#34;&gt;style&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;font-weight&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;300&amp;#39;&lt;/span&gt;);
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;svgElement&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;selectAll&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;.statistics-title-total&amp;#39;&lt;/span&gt;).&lt;span style=&#34;color:#a6e22e&#34;&gt;style&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;font-size&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;14px&amp;#39;&lt;/span&gt;);
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;svgElement&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;selectAll&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;.statistics-title-total&amp;#39;&lt;/span&gt;).&lt;span style=&#34;color:#a6e22e&#34;&gt;style&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;fill&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;rgb(153, 153, 153)&amp;#39;&lt;/span&gt;);
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;svgElement&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;selectAll&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;.statistics-title-total&amp;#39;&lt;/span&gt;).&lt;span style=&#34;color:#a6e22e&#34;&gt;style&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;font-weight&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;300&amp;#39;&lt;/span&gt;);
+};
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&#34;step-2-downloading-png&#34;&gt;Step 2: downloading PNG&lt;/h3&gt;
+
+&lt;p&gt;We have to support IE9, but IE9 doesn&amp;rsquo;t support html5 file API. So I did a trik, I sent  base64 string of the image to server-side, server-side would generate a link to client-side, and then download it. The completed codes is&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;$scope&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;exportToPNG&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; (&lt;span style=&#34;color:#a6e22e&#34;&gt;chartId&lt;/span&gt;,&lt;span style=&#34;color:#a6e22e&#34;&gt;scale&lt;/span&gt;) {
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;svgElement&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;d3&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;select&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;#&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;chartId&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34; svg&amp;#34;&lt;/span&gt;);
+    &lt;span style=&#34;color:#75715e&#34;&gt;//Append styles as there are some problems when drawing PNG on IE 9
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#a6e22e&#34;&gt;_appendStylesToSVG&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;svgElement&lt;/span&gt;);
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;fileName&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;_buildPNGName&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;chartId&lt;/span&gt;);
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;scale&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;scale&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;?&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;scale&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1.5&lt;/span&gt;;
+
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;saveAsSVGWithStyle&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;svgElement&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;node&lt;/span&gt;(), {}, &lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; (&lt;span style=&#34;color:#a6e22e&#34;&gt;svgWithStyle&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;width&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;height&lt;/span&gt;) {
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;canvas&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; document.&lt;span style=&#34;color:#a6e22e&#34;&gt;createElement&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;canvas&amp;#39;&lt;/span&gt;);
+        &lt;span style=&#34;color:#a6e22e&#34;&gt;canvas&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;width&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;scale&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;width&lt;/span&gt;;
+            &lt;span style=&#34;color:#a6e22e&#34;&gt;canvas&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;height&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;scale&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;height&lt;/span&gt;;
+            &lt;span style=&#34;color:#a6e22e&#34;&gt;canvg&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;canvas&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;svgWithStyle&lt;/span&gt;, { &lt;span style=&#34;color:#a6e22e&#34;&gt;scaleWidth&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;canvas&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;width&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;scaleHeight&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;canvas&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;height&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;ignoreDimensions&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;ignoreMouse&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;ignoreClear&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt; });
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;imageData&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;canvas&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;toDataURL&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;image/png&amp;#34;&lt;/span&gt;);
+            &lt;span style=&#34;color:#a6e22e&#34;&gt;imageData&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;imageData&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;replace&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;/^data:image\/(png|jpg);base64,/&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;);
+            &lt;span style=&#34;color:#a6e22e&#34;&gt;statisticalChartsService&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;saveChartCache&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;imageData&lt;/span&gt;).&lt;span style=&#34;color:#a6e22e&#34;&gt;then&lt;/span&gt;(&lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; (&lt;span style=&#34;color:#a6e22e&#34;&gt;response&lt;/span&gt;) {
+                &lt;span style=&#34;color:#a6e22e&#34;&gt;statisticalChartsService&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;getChartCache&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;fileName&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;response&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;data&lt;/span&gt;);
+            });
+        });
+};
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;If you&amp;rsquo;d like to export SVG to PNG on the server-side, &lt;strong&gt;PhantomJs&lt;/strong&gt; is a good choise. If you&amp;rsquo;d like to SVG to PNG on the client-side, you can use &lt;strong&gt;canvg&lt;/strong&gt;.  But for &lt;strong&gt;nvd3&lt;/strong&gt;, you have to figure out how to add external CSS class to SVG.&lt;/p&gt;
+</description>
+     </item>
+   
+     <item>
+       <title>nvd3中计算坐标轴的nice domain</title>
+       <link>https://dixon629.github.io/posts/nvd3-nice-scale/</link>
+       <pubDate>Wed, 24 Dec 2014 21:39:06 +0800</pubDate>
+       
+       <guid>https://dixon629.github.io/posts/nvd3-nice-scale/</guid>
+       <description>
+
+&lt;p&gt;最近用&lt;a href=&#34;https://github.com/novus/nvd3&#34;&gt;nvd3&lt;/a&gt;以及&lt;a href=&#34;https://github.com/angularjs-nvd3-directives/angularjs-nvd3-directives&#34;&gt;angularjs-nvd3-directives&lt;/a&gt;做chart遇到一个问题，如下图，y轴中的最大值是3.8。nvd3只会在坐标轴显示到数据最大值，但是有些情况下最大值并不是很好看，我们需要在这种情况下显示4.0。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://dixon629.github.io/images/nvd3_axis_1.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;最开始查了下d3的文档，发现有个&lt;a href=&#34;https://github.com/mbostock/d3/wiki/Quantitative-Scales&#34;&gt;nice()&lt;/a&gt;方法可能会做到，但是尝试了下，不生效。查了下，可能是nvd3的&lt;a href=&#34;https://github.com/novus/nvd3/issues/594&#34;&gt;bug&lt;/a&gt;。要控制坐标轴的显示还可以通过xDomain(),yDomain()来实现，关键问题是如何计算domain的nice值。&lt;/p&gt;
+
+&lt;h3 id=&#34;计算数据中的最小值-最大值&#34;&gt;计算数据中的最小值，最大值&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;yAxisValues&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; [&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;2.4&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;3.6&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;7.8&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;9.2&lt;/span&gt;];
+&lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;yAxisMax&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;d3&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;max&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;yAxisValues&lt;/span&gt;)
+&lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;yAxisMin&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;d3&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;min&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;yAxisValues&lt;/span&gt;)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;我们可以通过d3中提供的max方法得到数据中的最小值，最大值&lt;/p&gt;
+
+&lt;h3 id=&#34;根据给定的最小值和最大值计算出nice值&#34;&gt;根据给定的最小值和最大值计算出nice值&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;app&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;factory&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;niceScale&amp;#39;&lt;/span&gt;, [&lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; () {
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;factory&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; {};
+
+        &lt;span style=&#34;color:#75715e&#34;&gt;/// &amp;lt;summary&amp;gt;
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        &lt;span style=&#34;color:#75715e&#34;&gt;///  Returns a &amp;#34;nice&amp;#34; number approximately equal to range Rounds
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        &lt;span style=&#34;color:#75715e&#34;&gt;///  the number if round = true Takes the ceiling if round = false.
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        &lt;span style=&#34;color:#75715e&#34;&gt;/// &amp;lt;/summary&amp;gt;
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        &lt;span style=&#34;color:#75715e&#34;&gt;/// &amp;lt;param name=&amp;#34;range&amp;#34;&amp;gt;the minimum data point on the axis&amp;lt;/param&amp;gt;
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        &lt;span style=&#34;color:#75715e&#34;&gt;/// &amp;lt;param name=&amp;#34;round&amp;#34;&amp;gt;the maximum data point on the axis&amp;lt;/param&amp;gt;
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;niceNum&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;range&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;round&lt;/span&gt;) {
+            &lt;span style=&#34;color:#75715e&#34;&gt;// exponent of range
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;            &lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;exponent&lt;/span&gt;;
+            &lt;span style=&#34;color:#75715e&#34;&gt;// fractional part of range
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;            &lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;fraction&lt;/span&gt;;
+            &lt;span style=&#34;color:#75715e&#34;&gt;// nice, rounded fraction
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;            &lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;niceFraction&lt;/span&gt;;
+            &lt;span style=&#34;color:#a6e22e&#34;&gt;exponent&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; Math.&lt;span style=&#34;color:#a6e22e&#34;&gt;floor&lt;/span&gt;(Math.&lt;span style=&#34;color:#a6e22e&#34;&gt;log10&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;range&lt;/span&gt;));
+            &lt;span style=&#34;color:#a6e22e&#34;&gt;fraction&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;range&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt; Math.&lt;span style=&#34;color:#a6e22e&#34;&gt;pow&lt;/span&gt;(&lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;exponent&lt;/span&gt;);
+
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; (&lt;span style=&#34;color:#a6e22e&#34;&gt;round&lt;/span&gt;) {
+                &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; (&lt;span style=&#34;color:#a6e22e&#34;&gt;fraction&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1.5&lt;/span&gt;) &lt;span style=&#34;color:#a6e22e&#34;&gt;niceFraction&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;;
+                &lt;span style=&#34;color:#66d9ef&#34;&gt;else&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; (&lt;span style=&#34;color:#a6e22e&#34;&gt;fraction&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;) &lt;span style=&#34;color:#a6e22e&#34;&gt;niceFraction&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;;
+                &lt;span style=&#34;color:#66d9ef&#34;&gt;else&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; (&lt;span style=&#34;color:#a6e22e&#34;&gt;fraction&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;7&lt;/span&gt;) &lt;span style=&#34;color:#a6e22e&#34;&gt;niceFraction&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;5&lt;/span&gt;;
+                &lt;span style=&#34;color:#66d9ef&#34;&gt;else&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;niceFraction&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;;
+            } &lt;span style=&#34;color:#66d9ef&#34;&gt;else&lt;/span&gt; {
+                &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; (&lt;span style=&#34;color:#a6e22e&#34;&gt;fraction&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;) &lt;span style=&#34;color:#a6e22e&#34;&gt;niceFraction&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;;
+                &lt;span style=&#34;color:#66d9ef&#34;&gt;else&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; (&lt;span style=&#34;color:#a6e22e&#34;&gt;fraction&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;) &lt;span style=&#34;color:#a6e22e&#34;&gt;niceFraction&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;;
+                &lt;span style=&#34;color:#66d9ef&#34;&gt;else&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; (&lt;span style=&#34;color:#a6e22e&#34;&gt;fraction&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;5&lt;/span&gt;) &lt;span style=&#34;color:#a6e22e&#34;&gt;niceFraction&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;5&lt;/span&gt;;
+                &lt;span style=&#34;color:#66d9ef&#34;&gt;else&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;niceFraction&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;;
+            }
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;niceFraction&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; Math.&lt;span style=&#34;color:#a6e22e&#34;&gt;pow&lt;/span&gt;(&lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;exponent&lt;/span&gt;);
+        }
+
+        &lt;span style=&#34;color:#a6e22e&#34;&gt;factory&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;calculate&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; (&lt;span style=&#34;color:#a6e22e&#34;&gt;min&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;max&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;maxTicks&lt;/span&gt;) {
+            &lt;span style=&#34;color:#a6e22e&#34;&gt;maxTicks&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;maxTicks&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;?&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;maxTicks&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;;
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;range&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;niceNum&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;max&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;min&lt;/span&gt;, &lt;span style=&#34;color:#66d9ef&#34;&gt;false&lt;/span&gt;);
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;tickSpacing&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;niceNum&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;range&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt; (&lt;span style=&#34;color:#a6e22e&#34;&gt;maxTicks&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;), &lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;);
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;niceMin&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; Math.&lt;span style=&#34;color:#a6e22e&#34;&gt;floor&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;min&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;tickSpacing&lt;/span&gt;) &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;tickSpacing&lt;/span&gt;;
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;niceMax&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; Math.&lt;span style=&#34;color:#a6e22e&#34;&gt;ceil&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;max&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;tickSpacing&lt;/span&gt;) &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;tickSpacing&lt;/span&gt;;
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; [&lt;span style=&#34;color:#a6e22e&#34;&gt;niceMin&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;niceMax&lt;/span&gt;];
+        }
+
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;factory&lt;/span&gt;;
+    }]);
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;上面定义了一个angular中的service用来处理算法&lt;/p&gt;
+
+&lt;h3 id=&#34;设置chart的domain&#34;&gt;设置chart的domain&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;    &lt;span style=&#34;color:#a6e22e&#34;&gt;chart&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;yDomain&lt;/span&gt;([&lt;span style=&#34;color:#a6e22e&#34;&gt;niceMin&lt;/span&gt;,&lt;span style=&#34;color:#a6e22e&#34;&gt;niceMax&lt;/span&gt;]);
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+     </item>
+   
+     <item>
+       <title>git常用操作</title>
+       <link>https://dixon629.github.io/posts/git-operation/</link>
+       <pubDate>Wed, 30 Apr 2014 10:41:35 +0800</pubDate>
+       
+       <guid>https://dixon629.github.io/posts/git-operation/</guid>
+       <description>
+
+&lt;p&gt;这里是一些自己经常用到的git命令&lt;/p&gt;
+
+&lt;h2 id=&#34;git-全局配置&#34;&gt;git 全局配置&lt;/h2&gt;
+
+&lt;h4 id=&#34;配置全局user&#34;&gt;配置全局user&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;git config --global user.name &amp;quot;Your Name&amp;quot;
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;配置全局email&#34;&gt;配置全局Email&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;git config --global user.email your.email@example.com 
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;配置别名&#34;&gt;配置别名&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;git config --global alias.co checkout   
+这里co 代替字数较多的 checkout 命令
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;配置默认编辑器&#34;&gt;配置默认编辑器&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;git config --global core.editor &amp;quot;subl -w&amp;quot;  
+这里设置的是sublime,
+如果使用其他编辑器，请使用以下代码替换 subl -w：TextMate 用 mate -w，gVim 用 gvim -f，MacVim 用 mvim -f
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;git-本地操作&#34;&gt;git 本地操作&lt;/h2&gt;
+
+&lt;h4 id=&#34;初始化项目&#34;&gt;初始化项目&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;git init
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;加入文件&#34;&gt;加入文件&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;git add
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;加入所有文件&#34;&gt;加入所有文件&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;git add --all
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;提交变更&#34;&gt;提交变更&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;git commit -a  -m &amp;quot;comments&amp;quot;   
+-a表示提交所有更改
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;创建并且切换到一个分支&#34;&gt;创建并且切换到一个分支&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;git checkout -b modify-README  
+创建一个新分支modify-README，然后切换到这个分支 
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;切换到分支&#34;&gt;切换到分支&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;git checkout master   
+切换到分支master
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;revert文件&#34;&gt;revert文件&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;git checkout -- file  
+把文件file恢复到当前head版本
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;撤销所有更改&#34;&gt;撤销所有更改&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;git checkout -f  
+-f 意思是覆盖当前的改动
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;显示所有分支&#34;&gt;显示所有分支&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;git branch
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;删除分支&#34;&gt;删除分支&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;git branch -d modify-README    
+ 删除分支modify-README
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;删除所有分支&#34;&gt;删除所有分支&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt; git branch -D
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;显示比较差异&#34;&gt;显示比较差异&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;git diff
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;显示当前状态&#34;&gt;显示当前状态&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;git status
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;显示日志&#34;&gt;显示日志&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;git log  
+q退出
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;git-remote仓库操作&#34;&gt;git remote仓库操作&lt;/h2&gt;
+
+&lt;h4 id=&#34;加入远程仓库&#34;&gt;加入远程仓库&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;git remote add origin git@github.com:username/first_app.git     
+origin为自定义的远程仓库名称   
+git@github.com:username/first_app.git 为远程git地址 
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;提交远程仓库&#34;&gt;提交远程仓库&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;git push origin master  
+origin为远程仓库名称   
+master为项目分支
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;显示当前remote仓库列表&#34;&gt;显示当前remote仓库列表&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;git remote 
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;删除一个remote仓库列表&#34;&gt;删除一个remote仓库列表&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;git remote remove name
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;从远程仓库更新并且合并&#34;&gt;从远程仓库更新并且合并&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;git pull
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;从远程仓库更新&#34;&gt;从远程仓库更新&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;git fetch
+
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+     </item>
+   
+ </channel>
+</rss>

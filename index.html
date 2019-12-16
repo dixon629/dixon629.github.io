@@ -1,591 +1,506 @@
-<!DOCTYPE HTML>
-<html>
+<!doctype html>
+
+<html lang="en-us">
+
 <head>
-  <meta charset="utf-8">
-  
   <title>Hui&#39;s blog</title>
-  <meta name="author" content="Hui">
-  
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Kiera: A Hugo theme for creative and technical writing." />
+<meta name="author" content="Hui" /><link rel="alternate" type="application/rss+xml+xml" href="https://dixon629.github.io/index.xml" title="Hui's blog" /><meta property="og:title" content="Hui&#39;s blog" />
+<meta property="og:description" content="Kiera: A Hugo theme for creative and technical writing." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://dixon629.github.io/" />
 
-  
-  <meta property="og:site_name" content="Hui&#39;s blog"/>
+<meta property="og:updated_time" content="2016-04-03T17:33:35+08:00" />
 
-  
-    <meta property="og:image" content="undefined"/>
-  
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Hui&#39;s blog"/>
+<meta name="twitter:description" content="Kiera: A Hugo theme for creative and technical writing."/>
 
-  <link href="/favicon.png" rel="icon">
-  <link rel="alternate" href="/atom.xml" title="Hui&#39;s blog" type="application/atom+xml">
-  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
-  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+<meta name="generator" content="Hugo 0.59.1" />
+    
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://dixon629.github.io/fontawesome/css/all.min.css" />
+  <link rel="stylesheet" href="https://hui-resources.oss-cn-beijing.aliyuncs.com/fonts-google.Roboto-Slab-Ruda.css" />
   
-
-</head>
-
+  <link rel="stylesheet" type="text/css" href="https://dixon629.github.io/css/styles.css" /></head>
 
 <body>
-  <header id="header" class="inner"><div class="alignleft">
-  <h1><a href="/">Hui&#39;s blog</a></h1>
-  <h2><a href="/">Make progress a little bit every day</a></h2>
-</div>
-<nav id="main-nav" class="alignright">
-  <ul>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="https://dixon629.github.io/">Hui&rsquo;s blog</a>
+            </h1>
+
+      <ul id="social-media">
+             <li>
+               <a href="https://github.com/dixon629" title="GitHub">
+               <i class="fab fa-github fa-lg"></i>
+               </a>
+             </li>
+             <li>
+               <a href="https://linkedin.com/in/%e8%be%89-%e5%85%b3-52a96098" title="LinkedIn">
+               <i class="fab fa-linkedin fa-lg"></i>
+               </a>
+             </li>
+      </ul>
+      
+      <p><em>A Hugo theme for creative and technical writing</em></p>
+      
+    </header>
+
     
-      <li><a href="/">Home</a></li>
-    
-      <li><a href="/archives">Archives</a></li>
-    
-    
-  </ul>
-  <div class="clearfix"></div>
+<nav>
+    <ul>
+        
+        <li>
+            <a class="" href="https://dixon629.github.io/categories">
+                <i class="fa-li fa  fa-lg"></i><span>Categories</span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="" href="https://dixon629.github.io/posts/">
+                <i class="fa-li fa  fa-lg"></i><span>Posts</span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="" href="https://dixon629.github.io/about/">
+                <i class="fa-li fa  fa-lg"></i><span>About Me</span>
+            </a>
+        </li>
+        
+    </ul>
 </nav>
-<div class="clearfix"></div>
-</header>
-  <div id="content" class="inner">
-    <div id="main-col" class="alignleft"><div id="wrapper">
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2015-04-25T06:45:56.000Z"><a href="/2015/04/25/How-to-make-dependent-drop-down-list-through-Apache-POI/">2015-04-25</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2015/04/25/How-to-make-dependent-drop-down-list-through-Apache-POI/">How to make dependent drop-down list in Excel through Apache POI</a></h1>
-  
 
-    </header>
-    <div class="entry">
-      
-        <p>In some situation, we need to use dependent drop-down list in Excel. For example, there’re two drop-down list, parent cateogory list and subcategory list. The subcategory list depends on which item parent selected. How to make it through <a href="https://poi.apache.org/" target="_blank" rel="external">Apache POI</a>?<br>First, we need to figure out how to make it in Excel. We can use function <strong>INDIRECT</strong> and <strong>VLOOkUP</strong> to achieve it. <a href="http://www.contextures.com/xlDataVal02.html" target="_blank" rel="external">Create Dependent Drop Down Lists</a> is a good tutorial to show you how to do it in Excel.<br>Then, we need to figure out how to build this formula in POI. We can’t set the explicit validation list as the list is from database and can be populated.<br>So we need to generate the parent list and subcategory list in sepecified column first. When we create the subcategory list, we need to add extra field to indicate which parent it belongs. Something likes this in Excel.</p>
-<table>
-<thead>
-<tr>
-<th>Parent Category</th>
-<th></th>
-<th>SubCateogry</th>
-<th>Belongs</th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Parent A</td>
-<td></td>
-<td>Sub A</td>
-<td>Parent A</td>
-<td></td>
-</tr>
-<tr>
-<td>Parent B</td>
-<td></td>
-<td>Sub B</td>
-<td>Parent A</td>
-<td></td>
-</tr>
-<tr>
-<td>Parent C</td>
-<td></td>
-<td>Sub C</td>
-<td>Parent B</td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td>Sub D</td>
-<td>Parent C</td>
-</tr>
-</tbody>
-</table>
-<p>For parent list, we create drop-down list directly. For example,<br><strong><em>dvConstraint = DVConstraint.createFormulaListConstraint(“$A$1:$A$3”);</em></strong><br>It will set validation list from A1 to A3.<br>When you select “Parent A”, we need to look up the subcategoires belongs to it.<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">String searchTable = <span class="string">"$"</span> + sublcategoryCol + <span class="string">"$"</span> + (rowStart + <span class="number">1</span>) + <span class="string">":"</span> + <span class="string">"$"</span> + rangeCol + <span class="string">"$"</span> + (rowEnd + <span class="number">1</span>);</span><br><span class="line">String lookupValue = <span class="string">"$"</span> + valueCol + <span class="string">"$"</span> + (valueRowIndex + <span class="number">1</span>);</span><br><span class="line">String formula = <span class="string">"VLOOKUP("</span> + lookupValue + <span class="string">","</span> + searchTable + <span class="string">",2,FALSE)"</span>;</span><br></pre></td></tr></table></figure></p>
-<p>The <em>searchTable</em> is a table range it will look up for the parent.<br>The <em>lookupValue</em> is the selected value of parent list.<br>After looking up the subcategories, we can use <strong>INDIRECT</strong> to add refrence for subcategory cell.<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String formula = <span class="string">"INDIRECT("</span> + formula + <span class="string">")"</span>;</span><br></pre></td></tr></table></figure></p>
+    <main>
 
-      
-    </div>
-    <footer>
-      
+
+
+
+<section id="home">
+        <ul>
+          
+          <li class="first">
+            <h1><a href="https://dixon629.github.io/posts/add-customized-button-text-angularjs-dropdown-mulitipselect/" title="Customize button text for angularjs-dropdown-mulitipselect">Customize button text for angularjs-dropdown-mulitipselect</a></h1>
+            <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2016-04-03T17:33:35&#43;08:00">Apr 3, 2016</time>
+        </li>
         
+        <li>
+            Categories:
+            <em>
+                
+                    
+                    <a href="https://dixon629.github.io/categories/javascript">javascript</a>
+                
+            </em>
+        </li>
         
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
 
-
-
-
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2015-04-18T05:07:42.000Z"><a href="/2015/04/18/Append-page-header-and-footer-through-itextsharp-xmlworker/">2015-04-18</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2015/04/18/Append-page-header-and-footer-through-itextsharp-xmlworker/">Append page header and footer through itextsharp xmlworker</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>We’re using itextSharp xmlworker to convert html to PDF.  And we need to append page header and footer for PDF, but xmlworker doesn’t support this. So how to do it? Actually xmlworker still use itextsharp to generate PDF, thus we’re able to use page event to do it as well.</p>
-<p>We want to specify the header and footer as html. So we need to parse html to itext elements first. XMLWorkerHelper only supports to parse html to elements with <strong>css string</strong>, so I add this below method to support <strong>css path</strong>.</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> Parse html to PDF element list by html content and css path</span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name="html"&gt;</span>html<span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name="cssPath"&gt;</span>css full path<span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;returns&gt;</span>PDF element list<span class="doctag">&lt;/returns&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> ElementList <span class="title">ParseToElementListByCssPath</span>(<span class="params"><span class="keyword">string</span> html, <span class="keyword">string</span> cssPath</span>)</span><br><span class="line"></span>&#123;</span><br><span class="line">    ICSSResolver cssResolver = <span class="keyword">new</span> StyleAttrCSSResolver();</span><br><span class="line">    <span class="keyword">if</span> (cssPath != <span class="keyword">null</span>)</span><br><span class="line">        cssResolver.AddCssFile(cssPath, <span class="keyword">true</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//HTML</span></span><br><span class="line">    HtmlPipelineContext htmlContext = <span class="keyword">new</span> HtmlPipelineContext(<span class="keyword">null</span>);</span><br><span class="line">    htmlContext.SetTagFactory(Tags.GetHtmlTagProcessorFactory());</span><br><span class="line">    htmlContext.AutoBookmark(<span class="keyword">false</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Pipelines</span></span><br><span class="line">    ElementList elements = <span class="keyword">new</span> ElementList();</span><br><span class="line">    ElementHandlerPipeline end = <span class="keyword">new</span> ElementHandlerPipeline(elements, <span class="keyword">null</span>);</span><br><span class="line">    HtmlPipeline htmlPipeline = <span class="keyword">new</span> HtmlPipeline(htmlContext, end);</span><br><span class="line">    CssResolverPipeline cssPipeline = <span class="keyword">new</span> CssResolverPipeline(cssResolver, htmlPipeline);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// XML Worker</span></span><br><span class="line">    XMLWorker worker = <span class="keyword">new</span> XMLWorker(cssPipeline, <span class="keyword">true</span>);</span><br><span class="line">    XMLParser parser = <span class="keyword">new</span> XMLParser(worker);</span><br><span class="line">    <span class="keyword">using</span> (<span class="keyword">var</span> reader = <span class="keyword">new</span> StringReader(html))</span><br><span class="line">    &#123;</span><br><span class="line">        parser.Parse(reader);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> elements;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>Once we parse the html to the itext elements, we can process it in PDF page event. And then we need to set the page event when xmlworker parse html.<br>This is a demo how to set page event.</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> Convert html to PDF</span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name="html"&gt;</span>html content<span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name="pageEvent"&gt;</span>PDF page event<span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name="cssPath"&gt;</span>css full path<span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;returns&gt;</span>PDF binary data<span class="doctag">&lt;/returns&gt;</span></span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">byte</span>[] convert(<span class="keyword">string</span> html, <span class="keyword">string</span> cssPath, IPdfPageEvent pageEvent)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">using</span> (Document document = <span class="keyword">new</span> Document())</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">using</span> (<span class="keyword">var</span> outStream = <span class="keyword">new</span> MemoryStream())</span><br><span class="line">        &#123;</span><br><span class="line">            PdfWriter writer = PdfWriter.GetInstance(document, outStream);</span><br><span class="line">            <span class="comment">// page event</span></span><br><span class="line">            <span class="keyword">if</span> (pageEvent != <span class="keyword">null</span>)</span><br><span class="line">                writer.PageEvent = pageEvent;</span><br><span class="line"></span><br><span class="line">            writer.InitialLeading = <span class="number">12.5</span>f;</span><br><span class="line">            document.Open();</span><br><span class="line"></span><br><span class="line">            <span class="comment">// css</span></span><br><span class="line">            ICSSResolver cssResolver = XMLWorkerHelper.GetInstance().GetDefaultCssResolver(<span class="keyword">false</span>);</span><br><span class="line">            <span class="keyword">if</span> (cssPath != <span class="keyword">null</span>)</span><br><span class="line">                cssResolver.AddCssFile(cssPath, <span class="keyword">true</span>);</span><br><span class="line"></span><br><span class="line">            <span class="comment">// html </span></span><br><span class="line">            <span class="keyword">var</span> htmlContext = <span class="keyword">new</span> HtmlPipelineContext(<span class="keyword">null</span>);</span><br><span class="line">            htmlContext.SetTagFactory(Tags.GetHtmlTagProcessorFactory());</span><br><span class="line"></span><br><span class="line">            <span class="comment">// pipelines</span></span><br><span class="line">            PdfWriterPipeline pdfPipeline = <span class="keyword">new</span> PdfWriterPipeline(document, writer);</span><br><span class="line">            HtmlPipeline htmlPipeline = <span class="keyword">new</span> HtmlPipeline(htmlContext, pdfPipeline);</span><br><span class="line">            CssResolverPipeline cssPipeline = <span class="keyword">new</span> CssResolverPipeline(cssResolver, htmlPipeline);</span><br><span class="line"></span><br><span class="line">            <span class="comment">// parse</span></span><br><span class="line">            XMLWorker worker = <span class="keyword">new</span> XMLWorker(cssPipeline, <span class="keyword">true</span>);</span><br><span class="line">            XMLParser parser = <span class="keyword">new</span> XMLParser(worker);</span><br><span class="line">            <span class="keyword">using</span> (<span class="keyword">var</span> reader = <span class="keyword">new</span> StringReader(html))</span><br><span class="line">            &#123;</span><br><span class="line">                parser.Parse(reader);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            document.Close();</span><br><span class="line">            <span class="keyword">return</span> outStream.ToArray();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer>
-      
         
+        <li>
+            <em>
+                
+                    
+                    <a href="https://dixon629.github.io/tags/angularjs">#angularjs</a>
+                
+            </em>
+        </li>
         
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
 
-
-
-
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2015-04-15T14:18:20.000Z"><a href="/2015/04/15/How-to-generate-same-chart-on-web-page-and-PDF/">2015-04-15</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2015/04/15/How-to-generate-same-chart-on-web-page-and-PDF/">How to generate identical chart in html and PDF</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>I’m working on PDF stuff recently. I got a requirement that the chart in PDF should be identical with in html. </p>
-<p>At the beginning, we were trying to generate chart of PDF through .NET  and make same styles with html. But we found it’s very hard to make them identical as they used different technology, d3js for client-side, Microsoft charts for server-side.</p>
-<p>Then I found out Phantomjs. We planned to generate whole PDF by Phantomjs. But we got the other issue, there were some table in the PDF, and we needed to repeat the table header when table crossing pages, but Phantomjs doesn’t support this feature. Finally we decided to use Phantomjs to convert chart to image and then generate PDF through itextSharp.</p>
-<p><em>This is my codes to call Phantomjs on .NET to covert html to image.</em><br><script src="//gist.github.com/548cb3ddb842fc3fc48d.js?file=PhantomjsHelper.cs"></script></p>
-
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2015-04-03T09:33:35.000Z"><a href="/2015/04/03/add-customized-button-text-angularjs-dropdown-mulitipselect/">2015-04-03</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2015/04/03/add-customized-button-text-angularjs-dropdown-mulitipselect/">Customize button text for angularjs-dropdown-mulitipselect</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>Recently I was using <a href="https://github.com/dotansimha/angularjs-dropdown-multiselect" target="_blank" rel="external">angularjs-dropdown-multiselect</a> for multiple select. It’s a good library, but it doesn’t support customizing button text very well, so I forked it and added the customized button text feature.<br>The forked repository is <a href="https://github.com/dixon629/angularjs-dropdown-multiselect" target="_blank" rel="external">https://github.com/dixon629/angularjs-dropdown-multiselect</a>.<br>It’s easy to use it, just specify <strong>buttonTextFunction</strong> in the <strong>extraSettings</strong>.<br>It passes three parameters: <em>options</em>, <em>selectedModel</em>, <em>settings</em></p>
-<ol>
-<li><strong>options</strong>: the data provider of dropdown list</li>
-<li><strong>selectedModel</strong>: the selected model of dropdown list</li>
-<li><strong>settings</strong>: the settings of dropdown list</li>
-</ol>
-<p>This is a demo: how to display “All” when you check the all items for the dropdown<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">dropdownButtonTextFunction</span>(<span class="params">options,selectedModel,settings</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(selectedModel &amp;&amp; selectedModel.length == options.length)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">'All'</span>;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> selectedModel.length+<span class="string">' checked'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">$scope.myExtraSettings = &#123;buttonTextFunction: dropdownButtonTextFunction&#125;;</span><br></pre></td></tr></table></figure></p>
-
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2015-04-03T07:57:34.000Z"><a href="/2015/04/03/How-to-download-file-on-NET-OWIN/">2015-04-03</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2015/04/03/How-to-download-file-on-NET-OWIN/">How to download file on .NET OWIN</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>Sometimes we need to use browser navigation or iframe mechanism to download file as some old browsers don’t support html5 file API.<br>But there’s a problem that most of applications has access control, thus you can’t access the server source directly.<br><strong>How to do it on .NET OWIN?</strong><br>My solution is to append access token to parameters of http request, then parse the token and wrap it to header of http request on the server-side.<br>The code snippet in the StartUp.Auth.cs<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">app.Use(<span class="keyword">async</span> (context, next) =&gt;</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (context.Request.QueryString.HasValue)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">string</span>.IsNullOrWhiteSpace(context.Request.Headers.Get(<span class="string">"Authorization"</span>)))</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">var</span> queryString = HttpUtility.ParseQueryString(context.Request.QueryString.Value);</span><br><span class="line">            <span class="keyword">string</span> token = queryString.Get(<span class="string">"accessToken"</span>);</span><br><span class="line">            <span class="keyword">if</span> (!<span class="keyword">string</span>.IsNullOrWhiteSpace(token))</span><br><span class="line">            &#123;</span><br><span class="line">                context.Request.Headers.Add(<span class="string">"Authorization"</span>, <span class="keyword">new</span>[] &#123; <span class="keyword">string</span>.Format(<span class="string">"Bearer &#123;0&#125;"</span>, token) &#125;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">await</span> next.Invoke();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
-
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2015-03-31T14:18:22.000Z"><a href="/2015/03/31/ESL-1090-Speaking-About-the-Future/">2015-03-31</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2015/03/31/ESL-1090-Speaking-About-the-Future/">ESL_1090 Speaking About the Future</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>###1. futuristic<br>adj.of or relating to the future<br><em>These designs are really <strong>futuristic- looking.</strong></em></p>
-<p>###2. forward-thinking<br>planning or tending to plan for the future; forward-looking.</p>
-<p>###3. space-age<br>the period in modern history characterized by space exploration, usually considered as beginning October 4, 1957, when the Soviet Union launched the first artificial satellite, Sputnik I, into orbit around the earth.</p>
-<p>###4. gadget<br>a small mechanical device or appliance</p>
-<p>###5. evolution<br>any process of formation or growth; development</p>
-<p>###6. labor-saving<br>designed or intended to reduce or replace human labor </p>
-<p>###7. artificial<br>made by human skill; produced by humans (opposed to natural )<br><em>artificial intelligence</em> 人工智能</p>
-<p>###8. impersonal<br>lacking human emotion or warmth</p>
-<p>###9. have a fear of the unknown</p>
-<p>###10. in a nutshell<br>in a nutshell, in very brief form; in a few words:<br><em>Just tell me the story in a nutshell.</em></p>
-<p>###11. sanitation<br>卫生系统或设备</p>
-<p>###12. time travel<br>hypothetical transport through time into the past or the future.</p>
-
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2015-03-29T13:46:58.000Z"><a href="/2015/03/29/ESL-1089-Unconventional-Marriages/">2015-03-29</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2015/03/29/ESL-1089-Unconventional-Marriages/">ESL_1089 Unconventional Marriages</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <h3 id="1-have-been-dating-for-over-a-year"><a href="#1-have-been-dating-for-over-a-year" class="headerlink" title="1. have been dating for over a year"></a>1. have been dating for over a year</h3><p>已经交往一年多了，交往可以用 <em>date</em></p>
-<h3 id="2-tie-the-knot"><a href="#2-tie-the-knot" class="headerlink" title="2. tie the knot"></a>2. tie the knot</h3><p>[法] 结婚,<em>tie现在分词 <strong>tying</strong></em></p>
-<h3 id="3-open-minded"><a href="#3-open-minded" class="headerlink" title="3. open-minded"></a>3. open-minded</h3><p>adj.虚心的； 思想开明的； 无先入之见的； 无偏见的</p>
-<h3 id="4-polygamy"><a href="#4-polygamy" class="headerlink" title="4. polygamy"></a>4. polygamy</h3><p>n.多配偶（制），一夫多妻（制）或一妻多夫（制）； 多妻制； 多偶制； 一夫多妻制 </p>
-<h3 id="5-spouse"><a href="#5-spouse" class="headerlink" title="5. spouse"></a>5. spouse</h3><p>n.配偶</p>
-<h3 id="6-picture-image"><a href="#6-picture-image" class="headerlink" title="6. picture/image"></a>6. picture/image</h3><p>“想象”的意思</p>
-<h3 id="7-somehow"><a href="#7-somehow" class="headerlink" title="7. somehow"></a>7. somehow</h3><p>adv.以某种方式，用某种方法； &lt;非正&gt;不知怎么地，不知道怎样，不晓得什么缘故； 设法，想办法，想个方法； 莫明其妙地</p>
-<p><em>Somehow, he’d managed to persuade Kay to buy one for him.</em><br><em>不知用了什么方法，他成功说服凯给他买了一个。</em></p>
-<h3 id="8-arranged-marriage"><a href="#8-arranged-marriage" class="headerlink" title="8. arranged marriage"></a>8. arranged marriage</h3><p>n.包办婚姻</p>
-<h3 id="9-May-December-romances"><a href="#9-May-December-romances" class="headerlink" title="9. May-December romances"></a>9. May-December romances</h3><p>老夫少妻或者老妻少夫</p>
-<h3 id="10-Am-I-missing-something"><a href="#10-Am-I-missing-something" class="headerlink" title="10. Am I missing something?"></a>10. Am I missing something?</h3><p>我错过什么吗？<em>常用口语</em></p>
-<h3 id="11-cohabit"><a href="#11-cohabit" class="headerlink" title="11. cohabit"></a>11. cohabit</h3><p>vi.（未婚者）同居</p>
-<h3 id="12-What-are-differents-between-fear-scare-afraid-and-frighten"><a href="#12-What-are-differents-between-fear-scare-afraid-and-frighten" class="headerlink" title="12. What are differents between: fear, scare, afraid and frighten?"></a>12. What are differents between: fear, scare, afraid and frighten?</h3><p>Fear is a noun and is what you feel when you are scared or uneasy about something:<br>I have a fear of heights. </p>
-<p>Scare and Frighten are verbs and usually mean the same thing, to cause fear in something or someone:<br>It really frightened me to be up on that ladder. Or, heights really scare me.</p>
-<p>Afraid is an adjective and is how you feel when you are scared:<br>I am afraid of heights.</p>
-
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2015-03-28T08:41:23.000Z"><a href="/2015/03/28/svg-to-png/">2015-03-28</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2015/03/28/svg-to-png/">How to export nvd3 chart to PNG</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>Recently I was working on NVD3. I got a task to export <a href="https://github.com/novus/nvd3" target="_blank" rel="external">nvd3</a> chart to PNG file.<br>It needs to support IE9+, Chrome, Firefox. I encountered some problems when I was doing this task, it took me some time to figure it out. I think it is better to share my experience for who has similar requirements.<br><em>nvd3</em> is base on <a href="http://d3js.org/" target="_blank" rel="external">d3js</a>. <em>d3js</em> uses SVG to render data. So the key issue is how to covert SVG to PNG, and the other issue is how to download the PNG file.</p>
-<p>##Solution 1: send SVG  to Server , convert it to PNG and generate link to download<br>Our server-side is Asp.net, so I did some research how to convert SVG to PNG on .net. I got three options,<a href="https://github.com/vvvv/SVG" target="_blank" rel="external">SVG.NET</a>,<a href="http://imagemagick.codeplex.com/" target="_blank" rel="external"> ImageMagick.NET</a>,<a href="https://inkscape.org/" target="_blank" rel="external">inkscape</a>.<br>I tried them out, but no one can generate the PNG perfectly. The <em>nvd3</em> uses some CSS class for SVG, but <em>SVG.NET</em> and <em>mageMagick.NET</em> don’t support it very well. And the PNG file that <em>inkscape</em> generates are  different with browsers render. I tried to add the styles to SVG file manually without CSS, but PNG file they generated still looks different with browsers render.<br>Finally I found <a href="http://phantomjs.org/" target="_blank" rel="external">PhantomJs</a> out. <em>PhantomJS</em> is a headless WebKit scriptable with a JavaScript API. <em>PhantomJS</em> is a perfect solution to render SVG and can export to image and PDF. It can generate PNG exactly same with browsers render. But I have to install it on the server and write some API to call it.<br><strong>I discussed with my leader, but she didn’t like this solution, so I have to turn to Solution 2.</strong></p>
-<p>##Solution 2: convert SVG to html5 canvas , then convert canvas to PNG and download it</p>
-<p>###Step 1: convert SVG to canvas<br><a href="https://github.com/exupero/saveSvgAsPng" target="_blank" rel="external">saveSvgAsPng</a> is a library to export SVG to PNG on the client-side. But unfortunately, it doesn’t work on IE and safari. There is a security error on IE. And besides,It can’t download the PNG file on safari, safari open the file on the new tab instead of downloading it. So I have to give up this scenario.<br>And then I found <a href="https://github.com/gabelerner/canvg" target="_blank" rel="external">canvg</a> out, <em>canvg</em> can parse SVG and render it on Canvas. But <em>canvg </em>doesn’t support external CSS on the SVG.<br>Eventually I was inspired by the <em>saveSvgAsPng</em>. <em>saveSvgAsPng</em> will read the used external CSS for SVG and put it into the SVG. So I create a new function in <em>saveSvgAsPng</em> called <strong>saveAsSVGWithStyle</strong>.It will return a new SVG with CSS.<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">out$.saveAsSVGWithStyle = <span class="function"><span class="keyword">function</span> (<span class="params">el, options, cb</span>) </span>&#123;</span><br><span class="line">      options = options || &#123;&#125;;</span><br><span class="line">      options.scale = options.scale || <span class="number">1</span>;</span><br><span class="line">      <span class="keyword">var</span> xmlns = <span class="string">"http://www.w3.org/2000/xmlns/"</span>;</span><br><span class="line"></span><br><span class="line">      inlineImages(el, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">          <span class="keyword">var</span> outer = <span class="built_in">document</span>.createElement(<span class="string">"div"</span>);</span><br><span class="line">          <span class="keyword">var</span> clone = el.cloneNode(<span class="literal">true</span>);</span><br><span class="line">          <span class="keyword">var</span> width, height;</span><br><span class="line">          <span class="keyword">if</span>(el.tagName == <span class="string">'svg'</span>) &#123;</span><br><span class="line">              width = <span class="built_in">parseInt</span>(clone.getAttribute(<span class="string">'width'</span>) || clone.style.width || out$.getComputedStyle(el).getPropertyValue(<span class="string">'width'</span>));</span><br><span class="line">              height = <span class="built_in">parseInt</span>(clone.getAttribute(<span class="string">'height'</span>) || clone.style.height || out$.getComputedStyle(el).getPropertyValue(<span class="string">'height'</span>));</span><br><span class="line">          &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">              <span class="keyword">var</span> box = el.getBBox();</span><br><span class="line">              width = box.x + box.width;</span><br><span class="line">              height = box.y + box.height;</span><br><span class="line">              clone.setAttribute(<span class="string">'transform'</span>, clone.getAttribute(<span class="string">'transform'</span>).replace(<span class="regexp">/translate\(.*?\)/</span>, <span class="string">''</span>));</span><br><span class="line"></span><br><span class="line">              <span class="keyword">var</span> svg = <span class="built_in">document</span>.createElementNS(<span class="string">'http://www.w3.org/2000/svg'</span>,<span class="string">'svg'</span>)</span><br><span class="line">              svg.appendChild(clone)</span><br><span class="line">              clone = svg;</span><br><span class="line">          &#125;</span><br><span class="line"></span><br><span class="line">          clone.setAttribute(<span class="string">"version"</span>, <span class="string">"1.1"</span>);</span><br><span class="line">          clone.setAttributeNS(xmlns, <span class="string">"xmlns"</span>, <span class="string">"http://www.w3.org/2000/svg"</span>);</span><br><span class="line">          clone.setAttributeNS(xmlns, <span class="string">"xmlns:xlink"</span>, <span class="string">"http://www.w3.org/1999/xlink"</span>);</span><br><span class="line">          clone.setAttribute(<span class="string">"width"</span>, width * options.scale);</span><br><span class="line">          clone.setAttribute(<span class="string">"height"</span>, height * options.scale);</span><br><span class="line">          clone.setAttribute(<span class="string">"viewBox"</span>, <span class="string">"0 0 "</span> + width + <span class="string">" "</span> + height);</span><br><span class="line">          outer.appendChild(clone);</span><br><span class="line"></span><br><span class="line">          <span class="keyword">var</span> css = styles(el, options.selectorRemap);</span><br><span class="line">          <span class="keyword">var</span> s = <span class="built_in">document</span>.createElement(<span class="string">'style'</span>);</span><br><span class="line">          s.setAttribute(<span class="string">'type'</span>, <span class="string">'text/css'</span>);</span><br><span class="line">          s.innerHTML = <span class="string">"&lt;![CDATA[\n"</span> + css + <span class="string">"\n]]&gt;"</span>;</span><br><span class="line">          <span class="keyword">var</span> defs = <span class="built_in">document</span>.createElement(<span class="string">'defs'</span>);</span><br><span class="line">          defs.appendChild(s);</span><br><span class="line">          clone.insertBefore(defs, clone.firstChild);</span><br><span class="line"></span><br><span class="line">          <span class="keyword">var</span> svg = doctype + outer.innerHTML;</span><br><span class="line">          <span class="keyword">if</span> (cb) &#123;</span><br><span class="line">              cb(svg, width,height);</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></p>
-<p>Then we can convert SVG with CSS to canvas through <em>canvg</em>.<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">saveAsSVGWithStyle(svgElement.node(), &#123;&#125;, <span class="function"><span class="keyword">function</span> (<span class="params">svgWithStyle, width, height</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">var</span> canvas = <span class="built_in">document</span>.createElement(<span class="string">'canvas'</span>);</span><br><span class="line">      canvas.width = scale * width;</span><br><span class="line">      canvas.height = scale * height;</span><br><span class="line">      canvg(canvas, svgWithStyle, &#123; scaleWidth: canvas.width, scaleHeight: canvas.height, ignoreDimensions: <span class="literal">true</span>, ignoreMouse: <span class="literal">true</span>, ignoreClear: <span class="literal">true</span> &#125;);</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure></p>
-<p>When I tested on different browsers. I found that IE9 doesn’t support  SVG <strong>defs</strong>. So I can’t just define <em>defs and put CSS in defs</em>. I have to add style property to the SVG manually like this.<br><strong>If you have a better solution to make external CSS into the DOM style property, let me know, thank you.</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> _appendStylesToSVG = <span class="function"><span class="keyword">function</span> (<span class="params">svgElement</span>) </span>&#123;</span><br><span class="line">    svgElement.selectAll(<span class="string">'.nvd3 .nv-axis'</span>).style(<span class="string">'pointer-events'</span>, <span class="string">'none'</span>);</span><br><span class="line">    svgElement.selectAll(<span class="string">'.nvd3 .nv-axis path'</span>).style(<span class="string">'fill'</span>, <span class="string">'none'</span>);</span><br><span class="line">    svgElement.selectAll(<span class="string">'.nvd3 .nv-axis path'</span>).style(<span class="string">'stroke'</span>, <span class="string">'rgb(204, 204, 204)'</span>);</span><br><span class="line">    svgElement.selectAll(<span class="string">'.nvd3 .nv-axis path'</span>).style(<span class="string">'stroke-opacity'</span>, <span class="string">'0.75'</span>);</span><br><span class="line">    svgElement.selectAll(<span class="string">'.nvd3 .nv-axis path'</span>).style(<span class="string">'shape-rendering'</span>, <span class="string">'crispedges'</span>);</span><br><span class="line">    svgElement.selectAll(<span class="string">'.nvd3 .nv-axis path.domain'</span>).style(<span class="string">'stroke-opacity'</span>, <span class="string">'0.75'</span>);</span><br><span class="line">    svgElement.selectAll(<span class="string">'.nvd3 .nv-axis.nv-x path.domain'</span>).style(<span class="string">'stroke-opacity'</span>, <span class="string">'0'</span>);</span><br><span class="line">    svgElement.selectAll(<span class="string">'.nvd3 .nv-axis line'</span>).style(<span class="string">'fill'</span>, <span class="string">'none'</span>);</span><br><span class="line">    svgElement.selectAll(<span class="string">'.nvd3 .nv-axis line'</span>).style(<span class="string">'stroke'</span>, <span class="string">'rgb(229, 229, 229)'</span>);</span><br><span class="line">    svgElement.selectAll(<span class="string">'.nvd3 .nv-axis line'</span>).style(<span class="string">'shape-rendering'</span>, <span class="string">'crispedges'</span>);</span><br><span class="line">    svgElement.selectAll(<span class="string">'.nvd3 .nv-axis .zero line, .nvd3 .nv-axis line.zero'</span>).style(<span class="string">'stroke-opacity'</span>, <span class="string">'0.75'</span>);</span><br><span class="line">    svgElement.selectAll(<span class="string">'.nvd3 .nv-multibar .nv-groups rect'</span>).style(<span class="string">'stroke-opacity'</span>, <span class="string">'0'</span>);</span><br><span class="line">    svgElement.selectAll(<span class="string">'.nvd3 .nv-multibar .nv-groups rect'</span>).style(<span class="string">'transition'</span>, <span class="string">'fill-opacity 250ms linear 0s'</span>);</span><br><span class="line">    svgElement.selectAll(<span class="string">'.nvd3 .nv-multibarHorizontal .nv-groups rect'</span>).style(<span class="string">'stroke-opacity'</span>, <span class="string">'0'</span>);</span><br><span class="line">    svgElement.selectAll(<span class="string">'.nvd3 .nv-multibarHorizontal .nv-groups rect'</span>).style(<span class="string">'transition'</span>, <span class="string">'fill-opacity 250ms linear 0s'</span>);</span><br><span class="line">    svgElement.selectAll(<span class="string">'.nvd3 .nv-discretebar .nv-groups rect'</span>).style(<span class="string">'stroke-opacity'</span>, <span class="string">'0'</span>);</span><br><span class="line">    svgElement.selectAll(<span class="string">'.nvd3 .nv-discretebar .nv-groups rect'</span>).style(<span class="string">'transition'</span>, <span class="string">'fill-opacity 250ms linear 0s'</span>);</span><br><span class="line">    svgElement.selectAll(<span class="string">'.nv-x .tick line'</span>).style(<span class="string">'display'</span>, <span class="string">'none'</span>);</span><br><span class="line">    svgElement.selectAll(<span class="string">'.statistics-title'</span>).style(<span class="string">'fill'</span>, <span class="string">'rgba(107, 156, 188, 1)'</span>);</span><br><span class="line">    svgElement.selectAll(<span class="string">'.statistics-title'</span>).style(<span class="string">'font-size'</span>, <span class="string">'21px'</span>);</span><br><span class="line">    svgElement.selectAll(<span class="string">'.statistics-title'</span>).style(<span class="string">'font-weight'</span>, <span class="string">'300'</span>);</span><br><span class="line">    svgElement.selectAll(<span class="string">'.statistics-title-total'</span>).style(<span class="string">'font-size'</span>, <span class="string">'14px'</span>);</span><br><span class="line">    svgElement.selectAll(<span class="string">'.statistics-title-total'</span>).style(<span class="string">'fill'</span>, <span class="string">'rgb(153, 153, 153)'</span>);</span><br><span class="line">    svgElement.selectAll(<span class="string">'.statistics-title-total'</span>).style(<span class="string">'font-weight'</span>, <span class="string">'300'</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-<p>###Step 2: downloading PNG<br>We have to support IE9, but IE9 doesn’t support html5 file API. So I did a trik, I sent  base64 string of the image to server-side, server-side would generate a link to client-side, and then download it. The completed codes is<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">$scope.exportToPNG = <span class="function"><span class="keyword">function</span> (<span class="params">chartId,scale</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> svgElement = d3.select(<span class="string">"#"</span> + chartId + <span class="string">" svg"</span>);</span><br><span class="line">    <span class="comment">//Append styles as there are some problems when drawing PNG on IE 9</span></span><br><span class="line">    _appendStylesToSVG(svgElement);</span><br><span class="line">    <span class="keyword">var</span> fileName = _buildPNGName(chartId);</span><br><span class="line">    scale = scale ? scale : <span class="number">1.5</span>;</span><br><span class="line"></span><br><span class="line">    saveAsSVGWithStyle(svgElement.node(), &#123;&#125;, <span class="function"><span class="keyword">function</span> (<span class="params">svgWithStyle, width, height</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">var</span> canvas = <span class="built_in">document</span>.createElement(<span class="string">'canvas'</span>);</span><br><span class="line">        canvas.width = scale * width;</span><br><span class="line">            canvas.height = scale * height;</span><br><span class="line">            canvg(canvas, svgWithStyle, &#123; scaleWidth: canvas.width, scaleHeight: canvas.height, ignoreDimensions: <span class="literal">true</span>, ignoreMouse: <span class="literal">true</span>, ignoreClear: <span class="literal">true</span> &#125;);</span><br><span class="line">            <span class="keyword">var</span> imageData = canvas.toDataURL(<span class="string">"image/png"</span>);</span><br><span class="line">            imageData = imageData.replace(<span class="regexp">/^data:image\/(png|jpg);base64,/</span>, <span class="string">""</span>);</span><br><span class="line">            statisticalChartsService.saveChartCache(imageData).then(<span class="function"><span class="keyword">function</span> (<span class="params">response</span>) </span>&#123;</span><br><span class="line">                statisticalChartsService.getChartCache(fileName, response.data);</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-<p>##Conclusion<br>If you’d like to export SVG to PNG on the server-side, <strong>PhantomJs</strong> is a good choise. If you’d like to SVG to PNG on the client-side, you can use <strong>canvg</strong>.  But for <strong>nvd3</strong>, you have to figure out how to add external CSS class to SVG.</p>
-
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2015-03-26T14:00:47.000Z"><a href="/2015/03/26/fixes-some-bugs-for-ng-grid-reorderable/">2015-03-26</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2015/03/26/fixes-some-bugs-for-ng-grid-reorderable/">Fixes some bugs for ng-grid-reorderable</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p><a href="https://github.com/angular-ui/ng-grid/tree/2.x/plugins" target="_blank" rel="external">ng-grid-reorderable</a> is a drag-drop plugin for <a href="https://github.com/angular-ui/ng-grid" target="_blank" rel="external">ng-gird</a>. I found some bugs when I was using this plugin.</p>
-<p>###Bug 1: It doesn’t work on firefox<br>The plugin use html5 drag-drop, firefox needs to set data for dataTransfer.<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//set dataTransfer as it's required by firefox</span></span><br><span class="line">            <span class="keyword">var</span> onDragStart = <span class="function"><span class="keyword">function</span> (<span class="params">event</span>) </span>&#123;</span><br><span class="line">                event.originalEvent.dataTransfer.setData(<span class="string">"gridId"</span>, self.myGrid.gridId);</span><br><span class="line">            &#125;;</span><br></pre></td></tr></table></figure></p>
-<p>###Bug 2: Can drag a row to the other ng-grid<br>To fix this bug, it needs to compare grid id on drop event.<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> prevRow = self.services.DomUtilityService.eventStorage.rowToMove;</span><br><span class="line"><span class="keyword">if</span> (prevRow.gridId != self.myGrid.gridId) <span class="keyword">return</span>;</span><br></pre></td></tr></table></figure></p>
-<p>###Bug 3: Can’t select all texts when at edting status<br>To fix this bug, it needs to disable drag-drop feature.<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//It should disable drag/drop feature when editing</span></span><br><span class="line">rowScope.$on(<span class="string">'ngGridEventStartCellEdit'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    targetRow.attr(<span class="string">'draggable'</span>, <span class="string">'false'</span>);</span><br><span class="line">    targetRow.off(<span class="string">'dragstart'</span>, onDragStart);</span><br><span class="line">&#125;);</span><br><span class="line">rowScope.$on(<span class="string">'ngGridEventEndCellEdit'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    targetRow.attr(<span class="string">'draggable'</span>, <span class="string">'true'</span>);</span><br><span class="line">    targetRow.on(<span class="string">'dragstart'</span>, onDragStart);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
-<p>###Bug 4: Can select some texts and then drag and drop it on the ng-gird<br>To fix this bug, it needs to remove dragover and drop event for the $viewport when editing<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">rowScope.$on(<span class="string">'ngGridEventStartCellEdit'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    self.myGrid.$viewport.off(<span class="string">'dragover'</span>, self.dragOver).off(<span class="string">'drop'</span>, self.onRowDrop);</span><br><span class="line">&#125;);</span><br><span class="line">rowScope.$on(<span class="string">'ngGridEventEndCellEdit'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    self.myGrid.$viewport.on(<span class="string">'dragover'</span>, self.dragOver).on(<span class="string">'drop'</span>, self.onRowDrop);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
-<p>###The codes in gist<br><script src="//gist.github.com/a77d1507f0e65c0e2908.js?file=ng-grid-reorderable.js"></script></p>
-
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-  <article class="photo">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2015-03-24T13:39:06.000Z"><a href="/2015/03/24/nvd3-nice-scale/">2015-03-24</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2015/03/24/nvd3-nice-scale/">nvd3中计算坐标轴的nice domain</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>最近用<a href="https://github.com/novus/nvd3" target="_blank" rel="external">nvd3</a>以及<a href="https://github.com/angularjs-nvd3-directives/angularjs-nvd3-directives" target="_blank" rel="external">angularjs-nvd3-directives</a>做chart遇到一个问题，如下图，y轴中的最大值是3.8。nvd3只会在坐标轴显示到数据最大值，但是有些情况下最大值并不是很好看，我们需要在这种情况下显示4.0。<br><img src="/2015/03/24/nvd3-nice-scale/nvd3_axis_1.png" alt="nvd3_axis_1.png" title=""><br>最开始查了下d3的文档，发现有个<a href="https://github.com/mbostock/d3/wiki/Quantitative-Scales" target="_blank" rel="external">nice()</a>方法可能会做到，但是尝试了下，不生效。查了下，可能是nvd3的<a href="https://github.com/novus/nvd3/issues/594" target="_blank" rel="external">bug</a>。要控制坐标轴的显示还可以通过xDomain(),yDomain()来实现，关键问题是如何计算domain的nice值。</p>
-<h3 id="计算数据中的最小值，最大值"><a href="#计算数据中的最小值，最大值" class="headerlink" title="计算数据中的最小值，最大值"></a>计算数据中的最小值，最大值</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> yAxisValues = [<span class="number">1</span>,<span class="number">2.4</span>,<span class="number">3.6</span>,<span class="number">7.8</span>,<span class="number">9.2</span>];</span><br><span class="line"><span class="keyword">var</span> yAxisMax = d3.max(yAxisValues)</span><br><span class="line"><span class="keyword">var</span> yAxisMin= d3.min(yAxisValues)</span><br></pre></td></tr></table></figure>
-<p>我们可以通过d3中提供的max方法得到数据中的最小值，最大值</p>
-<h3 id="根据给定的最小值和最大值计算出nice值"><a href="#根据给定的最小值和最大值计算出nice值" class="headerlink" title="根据给定的最小值和最大值计算出nice值"></a>根据给定的最小值和最大值计算出nice值</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">app.factory(<span class="string">'niceScale'</span>, [<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> factory = &#123;&#125;;</span><br><span class="line"></span><br><span class="line">        <span class="comment">/// &lt;summary&gt;</span></span><br><span class="line">        <span class="comment">///  Returns a "nice" number approximately equal to range Rounds</span></span><br><span class="line">        <span class="comment">///  the number if round = true Takes the ceiling if round = false.</span></span><br><span class="line">        <span class="comment">/// &lt;/summary&gt;</span></span><br><span class="line">        <span class="comment">/// &lt;param name="range"&gt;the minimum data point on the axis&lt;/param&gt;</span></span><br><span class="line">        <span class="comment">/// &lt;param name="round"&gt;the maximum data point on the axis&lt;/param&gt;</span></span><br><span class="line">        <span class="function"><span class="keyword">function</span> <span class="title">niceNum</span>(<span class="params">range, round</span>) </span>&#123;</span><br><span class="line">            <span class="comment">// exponent of range</span></span><br><span class="line">            <span class="keyword">var</span> exponent;</span><br><span class="line">            <span class="comment">// fractional part of range</span></span><br><span class="line">            <span class="keyword">var</span> fraction;</span><br><span class="line">            <span class="comment">// nice, rounded fraction</span></span><br><span class="line">            <span class="keyword">var</span> niceFraction;</span><br><span class="line">            exponent = <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.log10(range));</span><br><span class="line">            fraction = range / <span class="built_in">Math</span>.pow(<span class="number">10</span>, exponent);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (round) &#123;</span><br><span class="line">                <span class="keyword">if</span> (fraction &lt; <span class="number">1.5</span>) niceFraction = <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span> (fraction &lt; <span class="number">3</span>) niceFraction = <span class="number">2</span>;</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span> (fraction &lt; <span class="number">7</span>) niceFraction = <span class="number">5</span>;</span><br><span class="line">                <span class="keyword">else</span> niceFraction = <span class="number">10</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">if</span> (fraction &lt;= <span class="number">1</span>) niceFraction = <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span> (fraction &lt;= <span class="number">2</span>) niceFraction = <span class="number">2</span>;</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span> (fraction &lt;= <span class="number">5</span>) niceFraction = <span class="number">5</span>;</span><br><span class="line">                <span class="keyword">else</span> niceFraction = <span class="number">10</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> niceFraction * <span class="built_in">Math</span>.pow(<span class="number">10</span>, exponent);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        factory.calculate = <span class="function"><span class="keyword">function</span> (<span class="params">min, max, maxTicks</span>) </span>&#123;</span><br><span class="line">            maxTicks = maxTicks ? maxTicks : <span class="number">10</span>;</span><br><span class="line">            <span class="keyword">var</span> range = niceNum(max - min, <span class="literal">false</span>);</span><br><span class="line">            <span class="keyword">var</span> tickSpacing = niceNum(range / (maxTicks - <span class="number">1</span>), <span class="literal">true</span>);</span><br><span class="line">            <span class="keyword">var</span> niceMin = <span class="built_in">Math</span>.floor(min / tickSpacing) * tickSpacing;</span><br><span class="line">            <span class="keyword">var</span> niceMax = <span class="built_in">Math</span>.ceil(max / tickSpacing) * tickSpacing;</span><br><span class="line">            <span class="keyword">return</span> [niceMin, niceMax];</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> factory;</span><br><span class="line">    &#125;]);</span><br></pre></td></tr></table></figure>
-<p>上面定义了一个angular中的service用来处理算法</p>
-<h3 id="设置chart的domain"><a href="#设置chart的domain" class="headerlink" title="设置chart的domain"></a>设置chart的domain</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chart.yDomain([niceMin,niceMax]);</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-
-<nav id="pagination">
-  
-  
-    <a href="/page/2/" class="alignright next">Next</a>
-  
-  <div class="clearfix"></div>
-</nav></div></div>
-    <aside id="sidebar" class="alignright">
-  <div class="search">
-  <form action="//google.com/search" method="get" accept-charset="utf-8">
-    <input type="search" name="q" results="0" placeholder="Search">
-    <input type="hidden" name="q" value="site:yoursite.com">
-  </form>
-</div>
-
-  
-<div class="widget tag">
-  <h3 class="title">Categories</h3>
-  <ul class="entry">
-  
-    <li><a href="/categories/NET/">.NET</a><small>3</small></li>
-  
-    <li><a href="/categories/English/">English</a><small>4</small></li>
-  
-    <li><a href="/categories/Java/">Java</a><small>1</small></li>
-  
-    <li><a href="/categories/git/">git</a><small>1</small></li>
-  
-    <li><a href="/categories/javascript/">javascript</a><small>4</small></li>
-  
-    <li><a href="/categories/shell/">shell</a><small>1</small></li>
-  
-  </ul>
-</div>
-
-
-  
-<div class="widget tag">
-  <h3 class="title">Tags</h3>
-  <ul class="entry">
-  
-    <li><a href="/tags/Apache-POI/">Apache POI</a><small>1</small></li>
-  
-    <li><a href="/tags/ESL/">ESL</a><small>4</small></li>
-  
-    <li><a href="/tags/EXCEL/">EXCEL</a><small>1</small></li>
-  
-    <li><a href="/tags/OWIN/">OWIN</a><small>1</small></li>
-  
-    <li><a href="/tags/PDF/">PDF</a><small>1</small></li>
-  
-    <li><a href="/tags/Phantomjs/">Phantomjs</a><small>1</small></li>
-  
-    <li><a href="/tags/angularjs/">angularjs</a><small>4</small></li>
-  
-    <li><a href="/tags/canvg/">canvg</a><small>1</small></li>
-  
-    <li><a href="/tags/chart/">chart</a><small>2</small></li>
-  
-    <li><a href="/tags/d3/">d3</a><small>2</small></li>
-  
-    <li><a href="/tags/git/">git</a><small>1</small></li>
-  
-    <li><a href="/tags/itextsharp/">itextsharp</a><small>1</small></li>
-  
-    <li><a href="/tags/mac/">mac</a><small>1</small></li>
-  
-    <li><a href="/tags/ng-gird/">ng-gird</a><small>1</small></li>
-  
-    <li><a href="/tags/nvd3/">nvd3</a><small>2</small></li>
-  
-    <li><a href="/tags/shell/">shell</a><small>2</small></li>
-  
-    <li><a href="/tags/ssh/">ssh</a><small>1</small></li>
-  
-  </ul>
-</div>
-
+        <li>One minute read</li>
+    </ul>
 </aside>
-    <div class="clearfix"></div>
-  </div>
-  <footer id="footer" class="inner"><div class="alignleft">
-  
-  &copy; 2016 Hui
-  
+
+            <p>Recently I was using angularjs-dropdown-multiselect for multiple select. It&rsquo;s a good library, but it doesn&rsquo;t support customizing button text very well, so I forked it and added the customized button text feature.</p>
+            
+            <a href="https://dixon629.github.io/posts/add-customized-button-text-angularjs-dropdown-mulitipselect/">Read more…</a>
+            
+          </li>
+          
+          <li >
+            <h1><a href="https://dixon629.github.io/posts/fixes-some-bugs-for-ng-grid-reorderable/" title="Fixes some bugs for ng-grid-reorderable">Fixes some bugs for ng-grid-reorderable</a></h1>
+            <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2016-03-26T22:00:47&#43;08:00">Mar 26, 2016</time>
+        </li>
+        
+        <li>
+            Categories:
+            <em>
+                
+                    
+                    <a href="https://dixon629.github.io/categories/javascript">javascript</a>
+                
+            </em>
+        </li>
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="https://dixon629.github.io/tags/ng-gird">#ng-gird</a>
+                
+                    , 
+                    <a href="https://dixon629.github.io/tags/angularjs">#angularjs</a>
+                
+            </em>
+        </li>
+        
+
+        <li>One minute read</li>
+    </ul>
+</aside>
+
+            <p>ng-grid-reorderable is a drag-drop plugin for ng-gird. I found some bugs when I was using this plugin.
+Bug 1: It doesn&rsquo;t work on firefox The plugin use html5 drag-drop, firefox needs to set data for dataTransfer.</p>
+            
+            <a href="https://dixon629.github.io/posts/fixes-some-bugs-for-ng-grid-reorderable/">Read more…</a>
+            
+          </li>
+          
+          <li >
+            <h1><a href="https://dixon629.github.io/posts/how-to-make-dependent-drop-down-list-through-apache-poi/" title="How to make dependent drop-down list in Excel through Apache POI">How to make dependent drop-down list in Excel through Apache POI</a></h1>
+            <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2015-04-25T14:45:56&#43;08:00">Apr 25, 2015</time>
+        </li>
+        
+        <li>
+            Categories:
+            <em>
+                
+                    
+                    <a href="https://dixon629.github.io/categories/java">java</a>
+                
+            </em>
+        </li>
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="https://dixon629.github.io/tags/apache">#Apache</a>
+                
+                    , 
+                    <a href="https://dixon629.github.io/tags/poi">#POI</a>
+                
+                    , 
+                    <a href="https://dixon629.github.io/tags/excel">#EXCEL</a>
+                
+            </em>
+        </li>
+        
+
+        <li>2 minutes read</li>
+    </ul>
+</aside>
+
+            <p>In some situation, we need to use dependent drop-down list in Excel. For example, there&rsquo;re two drop-down list, parent cateogory list and subcategory list. The subcategory list depends on which item parent selected.</p>
+            
+            <a href="https://dixon629.github.io/posts/how-to-make-dependent-drop-down-list-through-apache-poi/">Read more…</a>
+            
+          </li>
+          
+          <li >
+            <h1><a href="https://dixon629.github.io/posts/append-page-header-and-footer-through-itextsharp-xmlworker/" title="Append page header and footer through itextsharp xmlworker">Append page header and footer through itextsharp xmlworker</a></h1>
+            <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2015-04-18T13:07:42&#43;08:00">Apr 18, 2015</time>
+        </li>
+        
+        <li>
+            Categories:
+            <em>
+                
+                    
+                    <a href="https://dixon629.github.io/categories/c">c#</a>
+                
+            </em>
+        </li>
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="https://dixon629.github.io/tags/itextsharp">#itextsharp</a>
+                
+                    , 
+                    <a href="https://dixon629.github.io/tags/pdf">#PDF</a>
+                
+            </em>
+        </li>
+        
+
+        <li>2 minutes read</li>
+    </ul>
+</aside>
+
+            <p>We’re using itextSharp xmlworker to convert html to PDF. And we need to append page header and footer for PDF, but xmlworker doesn’t support this. So how to do it? Actually xmlworker still use itextsharp to generate PDF, thus we’re able to use page event to do it as well.</p>
+            
+            <a href="https://dixon629.github.io/posts/append-page-header-and-footer-through-itextsharp-xmlworker/">Read more…</a>
+            
+          </li>
+          
+          <li >
+            <h1><a href="https://dixon629.github.io/posts/how-to-generate-same-chart-on-web-page-and-pdf/" title="How to generate identical chart in html and PDF">How to generate identical chart in html and PDF</a></h1>
+            <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2015-04-15T22:18:20&#43;08:00">Apr 15, 2015</time>
+        </li>
+        
+        <li>
+            Categories:
+            <em>
+                
+                    
+                    <a href="https://dixon629.github.io/categories/c">c#</a>
+                
+            </em>
+        </li>
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="https://dixon629.github.io/tags/phantomjs">#Phantomjs</a>
+                
+            </em>
+        </li>
+        
+
+        <li>One minute read</li>
+    </ul>
+</aside>
+
+            <p>I’m working on PDF stuff recently. I got a requirement that the chart in PDF should be identical with in html.
+At the beginning, we were trying to generate chart of PDF through .</p>
+            
+            <a href="https://dixon629.github.io/posts/how-to-generate-same-chart-on-web-page-and-pdf/">Read more…</a>
+            
+          </li>
+          
+          <li >
+            <h1><a href="https://dixon629.github.io/posts/how-to-download-file-on-net-owin/" title="How to download file on .NET OWIN">How to download file on .NET OWIN</a></h1>
+            <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2015-04-03T15:57:34&#43;08:00">Apr 3, 2015</time>
+        </li>
+        
+        <li>
+            Categories:
+            <em>
+                
+                    
+                    <a href="https://dixon629.github.io/categories/c">c#</a>
+                
+            </em>
+        </li>
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="https://dixon629.github.io/tags/owin">#OWIN</a>
+                
+            </em>
+        </li>
+        
+
+        <li>One minute read</li>
+    </ul>
+</aside>
+
+            <p>Sometimes we need to use browser navigation or iframe mechanism to download file as some old browsers don&rsquo;t support html5 file API. But there&rsquo;s a problem that most of applications has access control, thus you can&rsquo;t access the server source directly.</p>
+            
+            <a href="https://dixon629.github.io/posts/how-to-download-file-on-net-owin/">Read more…</a>
+            
+          </li>
+          
+          <li >
+            <h1><a href="https://dixon629.github.io/posts/svg-to-png/" title="How to export nvd3 chart to PNG">How to export nvd3 chart to PNG</a></h1>
+            <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2015-03-28T16:41:23&#43;08:00">Mar 28, 2015</time>
+        </li>
+        
+        <li>
+            Categories:
+            <em>
+                
+                    
+                    <a href="https://dixon629.github.io/categories/d3">d3</a>
+                
+                    , 
+                    <a href="https://dixon629.github.io/categories/nvd3">nvd3</a>
+                
+                    , 
+                    <a href="https://dixon629.github.io/categories/chart">chart</a>
+                
+                    , 
+                    <a href="https://dixon629.github.io/categories/canvg">canvg</a>
+                
+                    , 
+                    <a href="https://dixon629.github.io/categories/angularjs">angularjs</a>
+                
+            </em>
+        </li>
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="https://dixon629.github.io/tags/javascript">#javascript</a>
+                
+            </em>
+        </li>
+        
+
+        <li>5 minutes read</li>
+    </ul>
+</aside>
+
+            <p>Recently I was working on NVD3. I got a task to export nvd3 chart to PNG file. It needs to support IE9+, Chrome, Firefox. I encountered some problems when I was doing this task, it took me some time to figure it out.</p>
+            
+            <a href="https://dixon629.github.io/posts/svg-to-png/">Read more…</a>
+            
+          </li>
+          
+          <li >
+            <h1><a href="https://dixon629.github.io/posts/nvd3-nice-scale/" title="nvd3中计算坐标轴的nice domain">nvd3中计算坐标轴的nice domain</a></h1>
+            <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2014-12-24T21:39:06&#43;08:00">Dec 24, 2014</time>
+        </li>
+        
+        <li>
+            Categories:
+            <em>
+                
+                    
+                    <a href="https://dixon629.github.io/categories/d3">d3</a>
+                
+                    , 
+                    <a href="https://dixon629.github.io/categories/nvd3">nvd3</a>
+                
+                    , 
+                    <a href="https://dixon629.github.io/categories/chart">chart</a>
+                
+                    , 
+                    <a href="https://dixon629.github.io/categories/angularjs">angularjs</a>
+                
+            </em>
+        </li>
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="https://dixon629.github.io/tags/javascript">#javascript</a>
+                
+            </em>
+        </li>
+        
+
+        <li>2 minutes read</li>
+    </ul>
+</aside>
+
+            <p>最近用nvd3以及angularjs-nvd3-directives做chart遇到一个问题，如下图，y轴中的最大值是3.8。nvd3只会在坐标轴显示到数据最大值，但是有些情况下最大值并不是很好看，我们需要在这种情况下显示4.0。
+最开始查了下d3的文档，发现有个nice()方法可能会做到，但是尝试了下，不生效。查了下，可能是nvd3的bug。要控制坐标轴的显示还可以通过xDomain(),yDomain()来实现，关键问题是如何计算domain的nice值。
+计算数据中的最小值，最大值 var yAxisValues = [1,2.4,3.6,7.8,9.2]; var yAxisMax = d3.max(yAxisValues) var yAxisMin= d3.min(yAxisValues)  我们可以通过d3中提供的max方法得到数据中的最小值，最大值
+根据给定的最小值和最大值计算出nice值 app.factory(&#39;niceScale&#39;, [function () { var factory = {}; /// &lt;summary&gt;  /// Returns a &#34;nice&#34; number approximately equal to range Rounds  /// the number if round = true Takes the ceiling if round = false.</p>
+            
+            <a href="https://dixon629.github.io/posts/nvd3-nice-scale/">Read more…</a>
+            
+          </li>
+          
+          <li >
+            <h1><a href="https://dixon629.github.io/posts/git-operation/" title="git常用操作">git常用操作</a></h1>
+            <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2014-04-30T10:41:35&#43;08:00">Apr 30, 2014</time>
+        </li>
+        
+        <li>
+            Categories:
+            <em>
+                
+                    
+                    <a href="https://dixon629.github.io/categories/git">git</a>
+                
+            </em>
+        </li>
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="https://dixon629.github.io/tags/shell">#shell</a>
+                
+                    , 
+                    <a href="https://dixon629.github.io/tags/git">#git</a>
+                
+            </em>
+        </li>
+        
+
+        <li>One minute read</li>
+    </ul>
+</aside>
+
+            <p>这里是一些自己经常用到的git命令
+git 全局配置 配置全局user git config --global user.name &quot;Your Name&quot;  配置全局Email git config --global user.email your.email@example.com  配置别名 git config --global alias.co checkout 这里co 代替字数较多的 checkout 命令  配置默认编辑器 git config --global core.</p>
+            
+            <a href="https://dixon629.github.io/posts/git-operation/">Read more…</a>
+            
+          </li>
+          
+        </ul>
+      </section>
+
+
+
+</main>
+    <footer>
+        <h6>Copyright &copy; 2020 - Hui |
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="https://dixon629.github.io/index.xml">Subscribe </a></h6>
+    </footer>
 </div>
-<div class="clearfix"></div></footer>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<script src="/js/jquery.imagesloaded.min.js"></script>
-<script src="/js/gallery.js"></script>
-
-
-<script type="text/javascript">
-var disqus_shortname = 'dixon629githubio';
-
-(function(){
-  var dsq = document.createElement('script');
-  dsq.type = 'text/javascript';
-  dsq.async = true;
-  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
-  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-}());
-</script>
-
-
-
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
-<script type="text/javascript">
-(function($){
-  $('.fancybox').fancybox();
-})(jQuery);
-</script>
+<script src="https://dixon629.github.io/js/scripts.js"></script>
 
 </body>
+
 </html>
+
