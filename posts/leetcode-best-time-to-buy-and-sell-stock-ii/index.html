@@ -1,0 +1,212 @@
+<!doctype html>
+
+<html lang="en-us">
+
+<head>
+  <title>Hui&#39;s blog</title>
+  <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Kiera: A Hugo theme for creative and technical writing." />
+<meta name="author" content="Hui" /><meta property="og:title" content="Leetcode - Best Time to Buy and Sell Stock II" />
+<meta property="og:description" content="Say you have an array for which the ith element is the price of a given stock on day i. Design an algorithm to find the maximum profit. You may complete as many transactions as you like (i." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://dixon629.github.io/posts/leetcode-best-time-to-buy-and-sell-stock-ii/" />
+<meta property="article:published_time" content="2019-12-17T18:54:12+08:00" />
+<meta property="article:modified_time" content="2019-12-17T18:54:12+08:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Leetcode - Best Time to Buy and Sell Stock II"/>
+<meta name="twitter:description" content="Say you have an array for which the ith element is the price of a given stock on day i. Design an algorithm to find the maximum profit. You may complete as many transactions as you like (i."/>
+
+<meta name="generator" content="Hugo 0.59.1" />
+    
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://dixon629.github.io/fontawesome/css/all.min.css" />
+  <link rel="stylesheet" href="https://hui-resources.oss-cn-beijing.aliyuncs.com/fonts-google.Roboto-Slab-Ruda.css" />
+  
+  <link rel="stylesheet" type="text/css" href="https://dixon629.github.io/css/styles.css" /></head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="https://dixon629.github.io/">Hui&rsquo;s blog</a>
+            </h1>
+
+      <ul id="social-media">
+             <li>
+               <a href="https://github.com/dixon629" title="GitHub">
+               <i class="fab fa-github fa-lg"></i>
+               </a>
+             </li>
+             <li>
+               <a href="https://linkedin.com/in/%e8%be%89-%e5%85%b3-52a96098" title="LinkedIn">
+               <i class="fab fa-linkedin fa-lg"></i>
+               </a>
+             </li>
+      </ul>
+      
+      <p><em>Today is not easy, tomorrow is more difficult, but the day after tomorrow will be wonderful.</em></p>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+        <li>
+            <a class="" href="https://dixon629.github.io/categories">
+                <i class="fa-li fa  fa-lg"></i><span>Categories</span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="" href="https://dixon629.github.io/posts/">
+                <i class="fa-li fa  fa-lg"></i><span>Posts</span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="" href="https://dixon629.github.io/about/">
+                <i class="fa-li fa  fa-lg"></i><span>About Me</span>
+            </a>
+        </li>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>Leetcode - Best Time to Buy and Sell Stock II</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2019-12-17T18:54:12&#43;08:00">Dec 17, 2019</time>
+        </li>
+        
+        <li>
+            Categories:
+            <em>
+                
+                    
+                    <a href="https://dixon629.github.io/categories/leetcode">Leetcode</a>
+                
+            </em>
+        </li>
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="https://dixon629.github.io/tags/leetcode">#Leetcode</a>
+                
+            </em>
+        </li>
+        
+
+        <li>2 minutes read</li>
+    </ul>
+</aside>
+
+    
+
+    
+
+<h5 id="say-you-have-an-array-for-which-the-ith-element-is-the-price-of-a-given-stock-on-day-i">Say you have an array for which the ith element is the price of a given stock on day i.</h5>
+
+<h5 id="design-an-algorithm-to-find-the-maximum-profit-you-may-complete-as-many-transactions-as-you-like-i-e-buy-one-and-sell-one-share-of-the-stock-multiple-times">Design an algorithm to find the maximum profit. You may complete as many transactions as you like (i.e., buy one and sell one share of the stock multiple times).</h5>
+
+<p><strong>Note</strong>: You may not engage in multiple transactions at the same time (i.e., you must sell the stock before you buy again).</p>
+
+<h4 id="example-1">Example 1:</h4>
+
+<blockquote>
+<p>Input: [7,1,5,3,6,4]
+Output: 7
+Explanation: Buy on day 2 (price = 1) and sell on day 3 (price = 5), profit = 5-1 = 4.
+            Then buy on day 4 (price = 3) and sell on day 5 (price = 6), profit = 6-3 = 3.</p>
+
+<h4 id="example-2">Example 2:</h4>
+
+<p>Input: [1,2,3,4,5]
+Output: 4
+Explanation: Buy on day 1 (price = 1) and sell on day 5 (price = 5), profit = 5-1 = 4.
+            Note that you cannot buy on day 1, buy on day 2 and sell them later, as you are
+            engaging multiple transactions at the same time. You must sell before buying again.</p>
+
+<h4 id="example-3">Example 3:</h4>
+
+<p>Input: [7,6,4,3,1]
+Output: 0
+Explanation: In this case, no transaction is done, i.e. max profit = 0.</p>
+</blockquote>
+
+<h3 id="solution">Solution:</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#960050;background-color:#1e0010">class Solution </span>{
+    <span style="color:#960050;background-color:#1e0010">public int </span>maxProfit(<span style="color:#960050;background-color:#1e0010">int[] prices</span>) {
+        <span style="color:#66d9ef">if</span>(prices <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span> <span style="color:#f92672">||</span> prices.<span style="color:#a6e22e">length</span> <span style="color:#f92672">&lt;</span> 2)
+            <span style="color:#66d9ef">return</span> 0;
+        
+        <span style="color:#960050;background-color:#1e0010">int profit </span><span style="color:#f92672">=</span> 0;
+        <span style="color:#960050;background-color:#1e0010">int len </span><span style="color:#f92672">=</span> prices.<span style="color:#a6e22e">length</span>;
+        <span style="color:#66d9ef">for</span>(<span style="color:#960050;background-color:#1e0010">int i</span><span style="color:#f92672">=</span>0; <span style="color:#960050;background-color:#1e0010">i&lt; len</span>; i<span style="color:#f92672">++</span>){
+            <span style="color:#66d9ef">if</span>(<span style="color:#960050;background-color:#1e0010">i&lt; len</span><span style="color:#f92672">-</span>1 <span style="color:#f92672">&amp;&amp;</span>  prices[i<span style="color:#f92672">+</span>1] <span style="color:#f92672">&gt;</span> prices[i]){
+                profit  <span style="color:#f92672">+=</span> prices[i<span style="color:#f92672">+</span>1] <span style="color:#f92672">-</span> prices[i];
+            }
+        }
+        <span style="color:#66d9ef">return</span> profit;
+    }
+}</code></pre></div>
+<h3 id="conclusion">Conclusion:</h3>
+
+<ol>
+<li>Greedy algorithm, breakdown problem to each day, work out the best result for each day</li>
+<li>For each day, there&rsquo;re three conditions buy, sell, noting to do</li>
+<li>For each day, it can make mutliple transcations, can buy first and sell or sell first and then buy</li>
+<li>Dynamic programming algorith</li>
+<li>Peak and vally algorithm</li>
+</ol>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="https://dixon629.github.io/posts/leetcode-single-number/"><i class="fa fa-chevron-circle-left"></i> Leetcode - Single Number</a>
+        </li>
+        
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6>Copyright &copy; 2020 - Hui |
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="https://dixon629.github.io/index.xml">Subscribe </a></h6>
+    </footer>
+</div>
+<script src="https://dixon629.github.io/js/scripts.js"></script>
+
+</body>
+
+</html>
+

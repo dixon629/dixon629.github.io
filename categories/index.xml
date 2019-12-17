@@ -7,10 +7,332 @@
    <generator>Hugo -- gohugo.io</generator>
    <language>en-us</language>
    <copyright>Copyright &amp;copy; 2020 - Hui</copyright>
-   <lastBuildDate>Tue, 10 Dec 2019 18:41:56 +0800</lastBuildDate>
+   <lastBuildDate>Tue, 17 Dec 2019 18:54:12 +0800</lastBuildDate>
    
        <atom:link href="https://dixon629.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
    
+   
+     <item>
+       <title>Leetcode - Best Time to Buy and Sell Stock II</title>
+       <link>https://dixon629.github.io/posts/leetcode-best-time-to-buy-and-sell-stock-ii/</link>
+       <pubDate>Tue, 17 Dec 2019 18:54:12 +0800</pubDate>
+       
+       <guid>https://dixon629.github.io/posts/leetcode-best-time-to-buy-and-sell-stock-ii/</guid>
+       <description>
+
+&lt;h5 id=&#34;say-you-have-an-array-for-which-the-ith-element-is-the-price-of-a-given-stock-on-day-i&#34;&gt;Say you have an array for which the ith element is the price of a given stock on day i.&lt;/h5&gt;
+
+&lt;h5 id=&#34;design-an-algorithm-to-find-the-maximum-profit-you-may-complete-as-many-transactions-as-you-like-i-e-buy-one-and-sell-one-share-of-the-stock-multiple-times&#34;&gt;Design an algorithm to find the maximum profit. You may complete as many transactions as you like (i.e., buy one and sell one share of the stock multiple times).&lt;/h5&gt;
+
+&lt;p&gt;&lt;strong&gt;Note&lt;/strong&gt;: You may not engage in multiple transactions at the same time (i.e., you must sell the stock before you buy again).&lt;/p&gt;
+
+&lt;h4 id=&#34;example-1&#34;&gt;Example 1:&lt;/h4&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: [7,1,5,3,6,4]
+Output: 7
+Explanation: Buy on day 2 (price = 1) and sell on day 3 (price = 5), profit = 5-1 = 4.
+            Then buy on day 4 (price = 3) and sell on day 5 (price = 6), profit = 6-3 = 3.&lt;/p&gt;
+
+&lt;h4 id=&#34;example-2&#34;&gt;Example 2:&lt;/h4&gt;
+
+&lt;p&gt;Input: [1,2,3,4,5]
+Output: 4
+Explanation: Buy on day 1 (price = 1) and sell on day 5 (price = 5), profit = 5-1 = 4.
+            Note that you cannot buy on day 1, buy on day 2 and sell them later, as you are
+            engaging multiple transactions at the same time. You must sell before buying again.&lt;/p&gt;
+
+&lt;h4 id=&#34;example-3&#34;&gt;Example 3:&lt;/h4&gt;
+
+&lt;p&gt;Input: [7,6,4,3,1]
+Output: 0
+Explanation: In this case, no transaction is done, i.e. max profit = 0.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;solution&#34;&gt;Solution:&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;class Solution &lt;/span&gt;{
+    &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;public int &lt;/span&gt;maxProfit(&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;int[] prices&lt;/span&gt;) {
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt;(prices &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;||&lt;/span&gt; prices.&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; 2)
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; 0;
+        
+        &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;int profit &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 0;
+        &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;int len &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; prices.&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt;;
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt;(&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;int i&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;0; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;i&amp;lt; len&lt;/span&gt;; i&lt;span style=&#34;color:#f92672&#34;&gt;++&lt;/span&gt;){
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt;(&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;i&amp;lt; len&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;1 &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt;  prices[i&lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;1] &lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; prices[i]){
+                profit  &lt;span style=&#34;color:#f92672&#34;&gt;+=&lt;/span&gt; prices[i&lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;1] &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; prices[i];
+            }
+        }
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; profit;
+    }
+}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&#34;conclusion&#34;&gt;Conclusion:&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Greedy algorithm, breakdown problem to each day, work out the best result for each day&lt;/li&gt;
+&lt;li&gt;For each day, there&amp;rsquo;re three conditions buy, sell, noting to do&lt;/li&gt;
+&lt;li&gt;For each day, it can make mutliple transcations, can buy first and sell or sell first and then buy&lt;/li&gt;
+&lt;li&gt;Dynamic programming algorith&lt;/li&gt;
+&lt;li&gt;Peak and vally algorithm&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+     </item>
+   
+     <item>
+       <title>Leetcode - Single Number</title>
+       <link>https://dixon629.github.io/posts/leetcode-single-number/</link>
+       <pubDate>Mon, 16 Dec 2019 18:47:24 +0800</pubDate>
+       
+       <guid>https://dixon629.github.io/posts/leetcode-single-number/</guid>
+       <description>
+
+&lt;h5 id=&#34;given-a-non-empty-array-of-integers-every-element-appears-twice-except-for-one-find-that-single-one&#34;&gt;Given a non-empty array of integers, every element appears twice except for one. Find that single one.&lt;/h5&gt;
+
+&lt;h4 id=&#34;note&#34;&gt;Note:&lt;/h4&gt;
+
+&lt;p&gt;Your algorithm should have a linear runtime complexity. Could you implement it without using extra memory?&lt;/p&gt;
+
+&lt;h4 id=&#34;example-1&#34;&gt;Example 1:&lt;/h4&gt;
+
+&lt;p&gt;Input: [2,2,1]
+Output: 1&lt;/p&gt;
+
+&lt;h4 id=&#34;example-2&#34;&gt;Example 2:&lt;/h4&gt;
+
+&lt;p&gt;Input: [4,1,2,1,2]
+Output: 4&lt;/p&gt;
+
+&lt;h3 id=&#34;solution&#34;&gt;Solution:&lt;/h3&gt;
+
+&lt;h4 id=&#34;solution-1-排序-然后比较&#34;&gt;Solution 1: 排序，然后比较&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;class Solution &lt;/span&gt;{
+    &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;public int &lt;/span&gt;singleNumber(&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;int[] nums&lt;/span&gt;) {
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt;(nums.&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; 1)
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; nums[0];
+        
+        Arrays.&lt;span style=&#34;color:#a6e22e&#34;&gt;sort&lt;/span&gt;(nums);
+          
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt;(&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;int i&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;0; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;i&amp;lt; nums&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt;; i&lt;span style=&#34;color:#f92672&#34;&gt;++&lt;/span&gt;){
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt;(i &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt;0){
+                &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt;( nums[i] &lt;span style=&#34;color:#f92672&#34;&gt;!=&lt;/span&gt; nums[i&lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;1]){
+                    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; nums[i];
+                }
+            }&lt;span style=&#34;color:#66d9ef&#34;&gt;else&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt;(i &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; nums.&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;1){
+                &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt;( nums[i&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;1] &lt;span style=&#34;color:#f92672&#34;&gt;!=&lt;/span&gt; nums[i]){
+                    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; nums[i];
+                }
+            }&lt;span style=&#34;color:#66d9ef&#34;&gt;else&lt;/span&gt;{
+                &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt;(nums[i&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;1] &lt;span style=&#34;color:#f92672&#34;&gt;!=&lt;/span&gt; nums[i] &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; nums[i] &lt;span style=&#34;color:#f92672&#34;&gt;!=&lt;/span&gt; nums[i&lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;1]){
+                    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; nums[i];
+                }
+            }
+        }
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; nums[0];
+    }
+}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4 id=&#34;solution-2-异或&#34;&gt;Solution 2: 异或&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;class Solution &lt;/span&gt;{
+    &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;public int &lt;/span&gt;singleNumber(&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;int[] nums&lt;/span&gt;) {
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt;(nums.&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; 1)
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; nums[0];
+        
+        &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;int single &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; nums[0];
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt;(&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;int i &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 1; i&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;nums.&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt;;i&lt;span style=&#34;color:#f92672&#34;&gt;++&lt;/span&gt;){
+            single &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; single &lt;span style=&#34;color:#f92672&#34;&gt;^&lt;/span&gt; nums[i];
+        }
+        
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; single;
+
+    }
+}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&#34;conclusion&#34;&gt;Conclusion:&lt;/h3&gt;
+
+&lt;h5 id=&#34;理解异或运算的特别-以及题目只有一个单一数字的解释&#34;&gt;理解异或运算的特别，以及题目只有一个单一数字的解释：&lt;/h5&gt;
+
+&lt;ol&gt;
+&lt;li&gt;如果我们对 0 和二进制位做 XOR 运算，得到的仍然是这个二进制位
+a^0=a&lt;/li&gt;
+&lt;li&gt;如果我们对相同的二进制位做 XOR 运算，返回的结果是 0
+a^a=0&lt;/li&gt;
+&lt;li&gt;XOR 满足交换律和结合律
+a^b^a =(a^a)^b=0^b=b&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+     </item>
+   
+     <item>
+       <title>Leetcode - Remove Duplicates From Sorted Array</title>
+       <link>https://dixon629.github.io/posts/leetcode-remove-duplicates-from-sorted-array/</link>
+       <pubDate>Sun, 15 Dec 2019 18:51:11 +0800</pubDate>
+       
+       <guid>https://dixon629.github.io/posts/leetcode-remove-duplicates-from-sorted-array/</guid>
+       <description>
+
+&lt;h5 id=&#34;given-a-sorted-array-nums-remove-the-duplicates-in-place-such-that-each-element-appear-only-once-and-return-the-new-length&#34;&gt;Given a sorted array nums, remove the duplicates in-place such that each element appear only once and return the new length.&lt;/h5&gt;
+
+&lt;h5 id=&#34;do-not-allocate-extra-space-for-another-array-you-must-do-this-by-modifying-the-input-array-in-place-with-o-1-extra-memory&#34;&gt;Do not allocate extra space for another array, you must do this by modifying the input array in-place with O(1) extra memory.&lt;/h5&gt;
+
+&lt;h4 id=&#34;example-1&#34;&gt;Example 1:&lt;/h4&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Given nums = [1,1,2],&lt;/p&gt;
+
+&lt;p&gt;Your function should return length = 2, with the first two elements of nums being 1 and 2 respectively.&lt;/p&gt;
+
+&lt;p&gt;It doesn&amp;rsquo;t matter what you leave beyond the returned length.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&#34;example-2&#34;&gt;Example 2:&lt;/h4&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Given nums = [0,0,1,1,1,2,2,3,3,4],&lt;/p&gt;
+
+&lt;p&gt;Your function should return length = 5, with the first five elements of nums being modified to 0, 1, 2, 3, and 4 respectively.&lt;/p&gt;
+
+&lt;p&gt;It doesn&amp;rsquo;t matter what values are set beyond the returned length.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&#34;clarification&#34;&gt;Clarification:&lt;/h4&gt;
+
+&lt;p&gt;Confused why the returned value is an integer but your answer is an array?
+Note that the input array is passed in by reference, which means modification to the input array will be known to the caller as well.
+Internally you can think of this:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// nums is passed in by reference. (i.e., without making a copy)
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;int len &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; removeDuplicates(nums);
+
+&lt;span style=&#34;color:#75715e&#34;&gt;// any modification to nums in your function would be known by the caller.
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// using the length returned by your function, it prints the first len elements.
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; (&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;int i &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 0; i &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; len; i&lt;span style=&#34;color:#f92672&#34;&gt;++&lt;/span&gt;) {
+    print(nums[i]);
+}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&#34;solution&#34;&gt;Solution:&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;class Solution &lt;/span&gt;{
+    &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;public int &lt;/span&gt;removeDuplicates(&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;int[] nums&lt;/span&gt;) {
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt;(nums &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;||&lt;/span&gt; nums.&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt;0)
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; 0;
+
+        &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;int i &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 0;
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt;(&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;int j&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;1; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;j&amp;lt; nums&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt;; j&lt;span style=&#34;color:#f92672&#34;&gt;++&lt;/span&gt;){
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt;(nums[j] &lt;span style=&#34;color:#f92672&#34;&gt;!=&lt;/span&gt; nums[i]){
+                i&lt;span style=&#34;color:#f92672&#34;&gt;++&lt;/span&gt;;
+                nums[i] &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; nums[j];
+            }
+        }
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; i&lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;1;
+    }
+}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&#34;conclusion&#34;&gt;Conclusion:&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;It&amp;rsquo;s a sorted array which means the elelemnts of array are in order, and this solution is only for sorted array&lt;/li&gt;
+&lt;li&gt;Must consider boundary and null condition&lt;/li&gt;
+&lt;li&gt;Double pointers: from the beginning of array, work out the next correct array value through comparing the current pointer value and the next pointer value&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+     </item>
+   
+     <item>
+       <title>Leetcode - Intersection of Two Arrays II</title>
+       <link>https://dixon629.github.io/posts/leetcode-intersection-of-two-arrays-ii/</link>
+       <pubDate>Thu, 12 Dec 2019 18:44:45 +0800</pubDate>
+       
+       <guid>https://dixon629.github.io/posts/leetcode-intersection-of-two-arrays-ii/</guid>
+       <description>
+
+&lt;h5 id=&#34;given-two-arrays-write-a-function-to-compute-their-intersection&#34;&gt;Given two arrays, write a function to compute their intersection.&lt;/h5&gt;
+
+&lt;h4 id=&#34;example-1&#34;&gt;Example 1:&lt;/h4&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: nums1 = [1,2,2,1], nums2 = [2,2]
+Output: [2,2]&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&#34;example-2&#34;&gt;Example 2:&lt;/h4&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: nums1 = [4,9,5], nums2 = [9,4,9,8,4]
+Output: [4,9]&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&#34;note&#34;&gt;Note:&lt;/h4&gt;
+
+&lt;p&gt;Each element in the result should appear as many times as it shows in both arrays.
+The result can be in any order.&lt;/p&gt;
+
+&lt;h4 id=&#34;follow-up&#34;&gt;Follow up:&lt;/h4&gt;
+
+&lt;p&gt;What if the given array is already sorted? How would you optimize your algorithm?
+What if nums1&amp;rsquo;s size is small compared to nums2&amp;rsquo;s size? Which algorithm is better?
+What if elements of nums2 are stored on disk, and the memory is limited such that you cannot load all elements into the memory at once?&lt;/p&gt;
+
+&lt;h3 id=&#34;solution&#34;&gt;Solution:&lt;/h3&gt;
+
+&lt;h4 id=&#34;solution-1-hash&#34;&gt;Solution 1: Hash&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;class Solution &lt;/span&gt;{
+    &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;public int&lt;/span&gt;[] intersect(&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;int[] nums1&lt;/span&gt;, &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;int[] nums2&lt;/span&gt;) {
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt;(nums1 &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;||&lt;/span&gt; nums2 &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;)
+          &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;;
+
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt;( nums1.&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;1 &lt;span style=&#34;color:#f92672&#34;&gt;||&lt;/span&gt; nums2.&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;1){
+          &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt;[0];
+        }
+        
+        Map&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;Integer,&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;Integer&amp;gt; map1 &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; HashMap&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;Integer,Integer&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt;();
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt;(&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;int i&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;0;i&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;nums1.&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt;;i&lt;span style=&#34;color:#f92672&#34;&gt;++&lt;/span&gt;){
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt;(map1.&lt;span style=&#34;color:#a6e22e&#34;&gt;get&lt;/span&gt;(nums1[i]) &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;){
+                map1.&lt;span style=&#34;color:#a6e22e&#34;&gt;put&lt;/span&gt;(nums1[i],1);
+            }&lt;span style=&#34;color:#66d9ef&#34;&gt;else&lt;/span&gt;{
+                map1.&lt;span style=&#34;color:#a6e22e&#34;&gt;put&lt;/span&gt;(nums1[i],map1.&lt;span style=&#34;color:#a6e22e&#34;&gt;get&lt;/span&gt;(nums1[i])&lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;1);
+            }
+        }
+        
+        &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;List&amp;lt;Integer&amp;gt; list &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; ArrayList&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;Integer&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt;();
+        
+       &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt;(&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;int i&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;0;i&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;nums2.&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt;;i&lt;span style=&#34;color:#f92672&#34;&gt;++&lt;/span&gt;){
+           &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;int num &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; nums2[i];
+           &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt;(map1.&lt;span style=&#34;color:#a6e22e&#34;&gt;get&lt;/span&gt;(num)&lt;span style=&#34;color:#f92672&#34;&gt;!=&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; map1.&lt;span style=&#34;color:#a6e22e&#34;&gt;get&lt;/span&gt;(num)&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt;0){
+               list.&lt;span style=&#34;color:#a6e22e&#34;&gt;add&lt;/span&gt;(num);
+               map1.&lt;span style=&#34;color:#a6e22e&#34;&gt;put&lt;/span&gt;(num,map1.&lt;span style=&#34;color:#a6e22e&#34;&gt;get&lt;/span&gt;(num)&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;1);
+           }
+       }
+        
+        &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;int[] results &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt;[list.&lt;span style=&#34;color:#a6e22e&#34;&gt;size&lt;/span&gt;()];
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt;(&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;int i&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;0; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;i&amp;lt; list&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;size&lt;/span&gt;();i&lt;span style=&#34;color:#f92672&#34;&gt;++&lt;/span&gt;){
+            results[i] &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; list.&lt;span style=&#34;color:#a6e22e&#34;&gt;get&lt;/span&gt;(i);
+        }
+        
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; results;
+    }
+   
+}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4 id=&#34;todo-solution-2-排序-双指针法&#34;&gt;TODO Solution 2: 排序，双指针法&lt;/h4&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;先对两个数组A和B排序。&lt;/p&gt;
+
+&lt;p&gt;指针a=0，指向A的第一个节点。&lt;/p&gt;
+
+&lt;p&gt;指针b=0，指向B的第一个节点。&lt;/p&gt;
+
+&lt;p&gt;当A[a] == B[b]时，是一对相同元素。a向前走一步，b向前走一步。&lt;/p&gt;
+
+&lt;p&gt;当A[a] &amp;lt; B[b]时。a向前走一步。&lt;/p&gt;
+
+&lt;p&gt;当A[a] &amp;gt; B[b]时。b向前走一步。&lt;/p&gt;
+
+&lt;p&gt;如此直到A和B有一个遍历完。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;conclusion&#34;&gt;Conclusion:&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;理解题意，交集和顺序无关，只与元素是否出现以及出现的次数有关&lt;/li&gt;
+&lt;li&gt;Hash性能高，并没说不能用Hash 以及List&lt;/li&gt;
+&lt;li&gt;熟悉Hash的遍历方式&lt;/li&gt;
+&lt;li&gt;熟悉Java数组的定义和初始化&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+     </item>
    
      <item>
        <title>Leetcode - Plus One</title>
