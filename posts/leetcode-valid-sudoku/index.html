@@ -1,0 +1,309 @@
+<!doctype html>
+
+<html lang="en-us">
+
+<head>
+  <title>Hui&#39;s blog</title>
+  <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Kiera: A Hugo theme for creative and technical writing." />
+<meta name="author" content="Hui" /><meta property="og:title" content="Leetcode - Valid Sudoku" />
+<meta property="og:description" content="Determine if a 9x9 Sudoku board is valid. Only the filled cells need to be validated according to the following rules: Each row must contain the digits 1-9 without repetition." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://dixon629.github.io/posts/leetcode-valid-sudoku/" />
+<meta property="article:published_time" content="2019-12-02T18:31:13+08:00" />
+<meta property="article:modified_time" content="2019-12-02T18:31:13+08:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Leetcode - Valid Sudoku"/>
+<meta name="twitter:description" content="Determine if a 9x9 Sudoku board is valid. Only the filled cells need to be validated according to the following rules: Each row must contain the digits 1-9 without repetition."/>
+
+<meta name="generator" content="Hugo 0.59.1" />
+    
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://dixon629.github.io/fontawesome/css/all.min.css" />
+  <link rel="stylesheet" href="https://hui-resources.oss-cn-beijing.aliyuncs.com/fonts-google.Roboto-Slab-Ruda.css" />
+  
+  <link rel="stylesheet" type="text/css" href="https://dixon629.github.io/css/styles.css" /></head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="https://dixon629.github.io/">Hui&rsquo;s blog</a>
+            </h1>
+
+      <ul id="social-media">
+             <li>
+               <a href="https://github.com/dixon629" title="GitHub">
+               <i class="fab fa-github fa-lg"></i>
+               </a>
+             </li>
+             <li>
+               <a href="https://linkedin.com/in/%e8%be%89-%e5%85%b3-52a96098" title="LinkedIn">
+               <i class="fab fa-linkedin fa-lg"></i>
+               </a>
+             </li>
+      </ul>
+      
+      <p><em>Today is not easy, tomorrow is more difficult, but the day after tomorrow will be wonderful.</em></p>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+        <li>
+            <a class="" href="https://dixon629.github.io/categories">
+                <i class="fa-li fa  fa-lg"></i><span>Categories</span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="" href="https://dixon629.github.io/posts/">
+                <i class="fa-li fa  fa-lg"></i><span>Posts</span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="" href="https://dixon629.github.io/about/">
+                <i class="fa-li fa  fa-lg"></i><span>About Me</span>
+            </a>
+        </li>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>Leetcode - Valid Sudoku</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2019-12-02T18:31:13&#43;08:00">Dec 2, 2019</time>
+        </li>
+        
+        <li>
+            Categories:
+            <em>
+                
+                    
+                    <a href="https://dixon629.github.io/categories/leetcode">Leetcode</a>
+                
+            </em>
+        </li>
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="https://dixon629.github.io/tags/leetcode">#Leetcode</a>
+                
+            </em>
+        </li>
+        
+
+        <li>3 minutes read</li>
+    </ul>
+</aside>
+
+    
+
+    
+
+<h5 id="determine-if-a-9x9-sudoku-board-is-valid-only-the-filled-cells-need-to-be-validated-according-to-the-following-rules">Determine if a 9x9 Sudoku board is valid. Only the filled cells need to be validated according to the following rules:</h5>
+
+<h5 id="each-row-must-contain-the-digits-1-9-without-repetition-each-column-must-contain-the-digits-1-9-without-repetition-each-of-the-9-3x3-sub-boxes-of-the-grid-must-contain-the-digits-1-9-without-repetition">Each row must contain the digits 1-9 without repetition.Each column must contain the digits 1-9 without repetition.Each of the 9 3x3 sub-boxes of the grid must contain the digits 1-9 without repetition.</h5>
+
+<h5 id="a-partially-filled-sudoku-which-is-valid-the-sudoku-board-could-be-partially-filled-where-empty-cells-are-filled-with-the-character">A partially filled sudoku which is valid.The Sudoku board could be partially filled, where empty cells are filled with the character &rsquo;.&lsquo;.</h5>
+
+<h4 id="example-1-input">Example 1:Input:</h4>
+
+<blockquote>
+<p>[
+  [&ldquo;5&rdquo;,&ldquo;3&rdquo;,&ldquo;.&rdquo;,&ldquo;.&rdquo;,&ldquo;7&rdquo;,&ldquo;.&rdquo;,&ldquo;.&rdquo;,&ldquo;.&rdquo;,&ldquo;.&rdquo;],
+  [&ldquo;6&rdquo;,&ldquo;.&rdquo;,&ldquo;.&rdquo;,&ldquo;1&rdquo;,&ldquo;9&rdquo;,&ldquo;5&rdquo;,&ldquo;.&rdquo;,&ldquo;.&rdquo;,&ldquo;.&rdquo;],
+  [&ldquo;.&rdquo;,&ldquo;9&rdquo;,&ldquo;8&rdquo;,&ldquo;.&rdquo;,&ldquo;.&rdquo;,&ldquo;.&rdquo;,&ldquo;.&rdquo;,&ldquo;6&rdquo;,&ldquo;.&rdquo;],
+  [&ldquo;8&rdquo;,&ldquo;.&rdquo;,&ldquo;.&rdquo;,&ldquo;.&rdquo;,&ldquo;6&rdquo;,&ldquo;.&rdquo;,&ldquo;.&rdquo;,&ldquo;.&rdquo;,&ldquo;3&rdquo;],
+  [&ldquo;4&rdquo;,&ldquo;.&rdquo;,&ldquo;.&rdquo;,&ldquo;8&rdquo;,&ldquo;.&rdquo;,&ldquo;3&rdquo;,&ldquo;.&rdquo;,&ldquo;.&rdquo;,&ldquo;1&rdquo;],
+  [&ldquo;7&rdquo;,&ldquo;.&rdquo;,&ldquo;.&rdquo;,&ldquo;.&rdquo;,&ldquo;2&rdquo;,&ldquo;.&rdquo;,&ldquo;.&rdquo;,&ldquo;.&rdquo;,&ldquo;6&rdquo;],
+  [&ldquo;.&rdquo;,&ldquo;6&rdquo;,&ldquo;.&rdquo;,&ldquo;.&rdquo;,&ldquo;.&rdquo;,&ldquo;.&rdquo;,&ldquo;2&rdquo;,&ldquo;8&rdquo;,&ldquo;.&rdquo;],
+  [&ldquo;.&rdquo;,&ldquo;.&rdquo;,&ldquo;.&rdquo;,&ldquo;4&rdquo;,&ldquo;1&rdquo;,&ldquo;9&rdquo;,&ldquo;.&rdquo;,&ldquo;.&rdquo;,&ldquo;5&rdquo;],
+  [&ldquo;.&rdquo;,&ldquo;.&rdquo;,&ldquo;.&rdquo;,&ldquo;.&rdquo;,&ldquo;8&rdquo;,&ldquo;.&rdquo;,&ldquo;.&rdquo;,&ldquo;7&rdquo;,&ldquo;9&rdquo;]
+]
+Output: true</p>
+</blockquote>
+
+<h4 id="example-2-input">Example 2:Input:</h4>
+
+<blockquote>
+<p>[
+  [&ldquo;8&rdquo;,&ldquo;3&rdquo;,&ldquo;.&rdquo;,&ldquo;.&rdquo;,&ldquo;7&rdquo;,&ldquo;.&rdquo;,&ldquo;.&rdquo;,&ldquo;.&rdquo;,&ldquo;.&rdquo;],
+  [&ldquo;6&rdquo;,&ldquo;.&rdquo;,&ldquo;.&rdquo;,&ldquo;1&rdquo;,&ldquo;9&rdquo;,&ldquo;5&rdquo;,&ldquo;.&rdquo;,&ldquo;.&rdquo;,&ldquo;.&rdquo;],
+  [&ldquo;.&rdquo;,&ldquo;9&rdquo;,&ldquo;8&rdquo;,&ldquo;.&rdquo;,&ldquo;.&rdquo;,&ldquo;.&rdquo;,&ldquo;.&rdquo;,&ldquo;6&rdquo;,&ldquo;.&rdquo;],
+  [&ldquo;8&rdquo;,&ldquo;.&rdquo;,&ldquo;.&rdquo;,&ldquo;.&rdquo;,&ldquo;6&rdquo;,&ldquo;.&rdquo;,&ldquo;.&rdquo;,&ldquo;.&rdquo;,&ldquo;3&rdquo;],
+  [&ldquo;4&rdquo;,&ldquo;.&rdquo;,&ldquo;.&rdquo;,&ldquo;8&rdquo;,&ldquo;.&rdquo;,&ldquo;3&rdquo;,&ldquo;.&rdquo;,&ldquo;.&rdquo;,&ldquo;1&rdquo;],
+  [&ldquo;7&rdquo;,&ldquo;.&rdquo;,&ldquo;.&rdquo;,&ldquo;.&rdquo;,&ldquo;2&rdquo;,&ldquo;.&rdquo;,&ldquo;.&rdquo;,&ldquo;.&rdquo;,&ldquo;6&rdquo;],
+  [&ldquo;.&rdquo;,&ldquo;6&rdquo;,&ldquo;.&rdquo;,&ldquo;.&rdquo;,&ldquo;.&rdquo;,&ldquo;.&rdquo;,&ldquo;2&rdquo;,&ldquo;8&rdquo;,&ldquo;.&rdquo;],
+  [&ldquo;.&rdquo;,&ldquo;.&rdquo;,&ldquo;.&rdquo;,&ldquo;4&rdquo;,&ldquo;1&rdquo;,&ldquo;9&rdquo;,&ldquo;.&rdquo;,&ldquo;.&rdquo;,&ldquo;5&rdquo;],
+  [&ldquo;.&rdquo;,&ldquo;.&rdquo;,&ldquo;.&rdquo;,&ldquo;.&rdquo;,&ldquo;8&rdquo;,&ldquo;.&rdquo;,&ldquo;.&rdquo;,&ldquo;7&rdquo;,&ldquo;9&rdquo;]
+]
+Output: false</p>
+
+<p>Explanation: Same as Example 1, except with the 5 in the top left corner being modified to 8. Since there are two 8&rsquo;s in the top left 3x3 sub-box, it is invalid.</p>
+</blockquote>
+
+<p><strong>Note:A Sudoku board (partially filled) could be valid but is not necessarily solvable.Only the filled cells need to be validated according to the mentioned rules.The given board contain only digits 1-9 and the character &rsquo;.&lsquo;.The given board size is always 9x9.</strong></p>
+
+<h3 id="solution">Solution:</h3>
+
+<h4 id="solution-1-hash">Solution 1: Hash</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#960050;background-color:#1e0010">class Solution </span>{
+    
+    <span style="color:#960050;background-color:#1e0010">public boolean </span>isValidSudoku(<span style="color:#960050;background-color:#1e0010">char[][] board</span>) {
+         <span style="color:#66d9ef">if</span> (board <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span>)
+          <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>;
+
+        List<span style="color:#f92672">&lt;</span>Map<span style="color:#f92672">&lt;</span>Integer, <span style="color:#960050;background-color:#1e0010">Integer&gt;&gt; subBoxs </span><span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ArrayList(9);
+        List<span style="color:#f92672">&lt;</span>Map<span style="color:#f92672">&lt;</span>Integer, <span style="color:#960050;background-color:#1e0010">Integer&gt;&gt; columns </span><span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ArrayList(9);
+
+        <span style="color:#75715e">// Initialize the fixed 9 sub-box and colums
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">for</span> (<span style="color:#960050;background-color:#1e0010">int i </span><span style="color:#f92672">=</span> 0; i <span style="color:#f92672">&lt;</span> 9; i<span style="color:#f92672">++</span>) {
+          Map<span style="color:#f92672">&lt;</span>Integer, <span style="color:#960050;background-color:#1e0010">Integer&gt; subBoxMap </span><span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HashMap();
+          subBoxs.<span style="color:#a6e22e">add</span>(subBoxMap);
+
+          Map<span style="color:#f92672">&lt;</span>Integer, <span style="color:#960050;background-color:#1e0010">Integer&gt; colMap </span><span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HashMap();
+          columns.<span style="color:#a6e22e">add</span>(colMap);
+        }
+
+        <span style="color:#66d9ef">for</span> (<span style="color:#960050;background-color:#1e0010">int rowIndex </span><span style="color:#f92672">=</span> 0; rowIndex <span style="color:#f92672">&lt;</span> board.<span style="color:#a6e22e">length</span>; rowIndex<span style="color:#f92672">++</span>) {
+          <span style="color:#960050;background-color:#1e0010">char[] row </span><span style="color:#f92672">=</span> board[rowIndex];
+          Map<span style="color:#f92672">&lt;</span>Integer, <span style="color:#960050;background-color:#1e0010">Integer&gt; rowMap </span><span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HashMap<span style="color:#f92672">&lt;&gt;</span>();
+
+          <span style="color:#66d9ef">for</span> (<span style="color:#960050;background-color:#1e0010">int colIndex </span><span style="color:#f92672">=</span> 0; colIndex <span style="color:#f92672">&lt;</span> row.<span style="color:#a6e22e">length</span>; colIndex<span style="color:#f92672">++</span>) {
+            <span style="color:#960050;background-color:#1e0010">char c </span><span style="color:#f92672">=</span> row[colIndex];
+            <span style="color:#66d9ef">if</span> (c <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;.&#39;</span>)
+              <span style="color:#66d9ef">continue</span>;
+
+            <span style="color:#960050;background-color:#1e0010">int num </span><span style="color:#f92672">=</span> Integer.<span style="color:#a6e22e">parseInt</span>(String.<span style="color:#a6e22e">valueOf</span>(row[colIndex]));
+
+            <span style="color:#75715e">//Put the num to the correct sub box
+</span><span style="color:#75715e"></span>            <span style="color:#960050;background-color:#1e0010">int colSection </span><span style="color:#f92672">=</span> colIndex <span style="color:#f92672">/</span> 3;
+            <span style="color:#960050;background-color:#1e0010">int rowSection </span><span style="color:#f92672">=</span> rowIndex <span style="color:#f92672">/</span> 3;
+            <span style="color:#960050;background-color:#1e0010">int section </span><span style="color:#f92672">=</span> rowSection <span style="color:#f92672">*</span> 3 <span style="color:#f92672">+</span> colSection;
+            Map<span style="color:#f92672">&lt;</span>Integer, <span style="color:#960050;background-color:#1e0010">Integer&gt; subBoxMap </span><span style="color:#f92672">=</span> subBoxs.<span style="color:#a6e22e">get</span>(section);
+            <span style="color:#66d9ef">if</span> (subBoxMap.<span style="color:#a6e22e">get</span>(num) <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span>) {
+              subBoxMap.<span style="color:#a6e22e">put</span>(num, 1);
+            } <span style="color:#66d9ef">else</span> {
+              <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>;
+            }
+
+            <span style="color:#66d9ef">if</span> (rowMap.<span style="color:#a6e22e">get</span>(num) <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span>) {
+              rowMap.<span style="color:#a6e22e">put</span>(num, 1);
+            } <span style="color:#66d9ef">else</span> {
+              <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>;
+            }
+
+            <span style="color:#75715e">// Put the num to the correct column map
+</span><span style="color:#75715e"></span>            Map<span style="color:#f92672">&lt;</span>Integer, <span style="color:#960050;background-color:#1e0010">Integer&gt; colMap </span><span style="color:#f92672">=</span> columns.<span style="color:#a6e22e">get</span>(colIndex);
+            <span style="color:#66d9ef">if</span> (colMap.<span style="color:#a6e22e">get</span>(num) <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span>) {
+              colMap.<span style="color:#a6e22e">put</span>(num, 1);
+            } <span style="color:#66d9ef">else</span> {
+              <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>;
+            }
+          }
+
+        }
+
+        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span>;
+    }
+    
+}</code></pre></div>
+<h4 id="solution-2-offcial-version">Solution 2: Offcial version</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#960050;background-color:#1e0010">class Solution </span>{
+  <span style="color:#960050;background-color:#1e0010">public boolean </span>isValidSudoku(<span style="color:#960050;background-color:#1e0010">char[][] board</span>) {
+    <span style="color:#75715e">// init data
+</span><span style="color:#75715e"></span>    HashMap<span style="color:#f92672">&lt;</span>Integer, Integer<span style="color:#f92672">&gt;</span> [] rows <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HashMap[9];
+    HashMap<span style="color:#f92672">&lt;</span>Integer, Integer<span style="color:#f92672">&gt;</span> [] columns <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HashMap[9];
+    HashMap<span style="color:#f92672">&lt;</span>Integer, Integer<span style="color:#f92672">&gt;</span> [] boxes <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HashMap[9];
+    <span style="color:#66d9ef">for</span> (<span style="color:#960050;background-color:#1e0010">int i </span><span style="color:#f92672">=</span> 0; i <span style="color:#f92672">&lt;</span> 9; i<span style="color:#f92672">++</span>) {
+      rows[i] <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HashMap<span style="color:#f92672">&lt;</span>Integer, Integer<span style="color:#f92672">&gt;</span>();
+      columns[i] <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HashMap<span style="color:#f92672">&lt;</span>Integer, Integer<span style="color:#f92672">&gt;</span>();
+      boxes[i] <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HashMap<span style="color:#f92672">&lt;</span>Integer, Integer<span style="color:#f92672">&gt;</span>();
+    }
+
+    <span style="color:#75715e">// validate a board
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">for</span> (<span style="color:#960050;background-color:#1e0010">int i </span><span style="color:#f92672">=</span> 0; i <span style="color:#f92672">&lt;</span> 9; i<span style="color:#f92672">++</span>) {
+      <span style="color:#66d9ef">for</span> (<span style="color:#960050;background-color:#1e0010">int j </span><span style="color:#f92672">=</span> 0; j <span style="color:#f92672">&lt;</span> 9; j<span style="color:#f92672">++</span>) {
+        <span style="color:#960050;background-color:#1e0010">char num </span><span style="color:#f92672">=</span> board[i][j];
+        <span style="color:#66d9ef">if</span> (num <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#39;.&#39;</span>) {
+          <span style="color:#960050;background-color:#1e0010">int n </span><span style="color:#f92672">=</span> (<span style="color:#66d9ef">int</span>)num;
+          <span style="color:#960050;background-color:#1e0010">int box_index </span><span style="color:#f92672">=</span> (i <span style="color:#f92672">/</span> 3 ) <span style="color:#f92672">*</span> 3 <span style="color:#f92672">+</span> j <span style="color:#f92672">/</span> 3;
+
+          <span style="color:#75715e">// keep the current cell value
+</span><span style="color:#75715e"></span>          rows[i].<span style="color:#a6e22e">put</span>(n, rows[i].<span style="color:#a6e22e">getOrDefault</span>(n, 0) <span style="color:#f92672">+</span> 1);
+          columns[j].<span style="color:#a6e22e">put</span>(n, columns[j].<span style="color:#a6e22e">getOrDefault</span>(n, 0) <span style="color:#f92672">+</span> 1);
+          boxes[box_index].<span style="color:#a6e22e">put</span>(n, boxes[box_index].<span style="color:#a6e22e">getOrDefault</span>(n, 0) <span style="color:#f92672">+</span> 1);
+
+          <span style="color:#75715e">// check if this value has been already seen before
+</span><span style="color:#75715e"></span>          <span style="color:#66d9ef">if</span> (rows[i].<span style="color:#a6e22e">get</span>(n) <span style="color:#f92672">&gt;</span> 1 <span style="color:#f92672">||</span> columns[j].<span style="color:#a6e22e">get</span>(n) <span style="color:#f92672">&gt;</span> 1 <span style="color:#f92672">||</span> boxes[box_index].<span style="color:#a6e22e">get</span>(n) <span style="color:#f92672">&gt;</span> 1)
+            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>;
+        }
+      }
+    }
+
+    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span>;
+  }
+}</code></pre></div>
+<h3 id="conclusion">Conclusion:</h3>
+
+<p>1.Hash 算法效率高</p>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="https://dixon629.github.io/posts/leetcode-rotate-image/"><i class="fa fa-chevron-circle-left"></i> Leetcode - Rotate Image</a>
+        </li>
+        
+        
+        <li>
+            <a href="https://dixon629.github.io/posts/leetcode-two-sum/">Leetcode - Two Sum <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6>Copyright &copy; 2020 - Hui |
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="https://dixon629.github.io/index.xml">Subscribe </a></h6>
+    </footer>
+</div>
+<script src="https://dixon629.github.io/js/scripts.js"></script>
+
+</body>
+
+</html>
+

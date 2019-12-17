@@ -1,0 +1,236 @@
+<!doctype html>
+
+<html lang="en-us">
+
+<head>
+  <title>Hui&#39;s blog</title>
+  <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Kiera: A Hugo theme for creative and technical writing." />
+<meta name="author" content="Hui" /><meta property="og:title" content="Leetcode - Plus One" />
+<meta property="og:description" content="Leetcode - Plus One Given a non-empty array of digits representing a non-negative integer, plus one to the integer. The digits are stored such that the most significant digit is at the head of the list, and each element in the array contain a single digit." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://dixon629.github.io/posts/leetcode-plus-one/" />
+<meta property="article:published_time" content="2019-12-10T18:41:56+08:00" />
+<meta property="article:modified_time" content="2019-12-10T18:41:56+08:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Leetcode - Plus One"/>
+<meta name="twitter:description" content="Leetcode - Plus One Given a non-empty array of digits representing a non-negative integer, plus one to the integer. The digits are stored such that the most significant digit is at the head of the list, and each element in the array contain a single digit."/>
+
+<meta name="generator" content="Hugo 0.59.1" />
+    
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://dixon629.github.io/fontawesome/css/all.min.css" />
+  <link rel="stylesheet" href="https://hui-resources.oss-cn-beijing.aliyuncs.com/fonts-google.Roboto-Slab-Ruda.css" />
+  
+  <link rel="stylesheet" type="text/css" href="https://dixon629.github.io/css/styles.css" /></head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="https://dixon629.github.io/">Hui&rsquo;s blog</a>
+            </h1>
+
+      <ul id="social-media">
+             <li>
+               <a href="https://github.com/dixon629" title="GitHub">
+               <i class="fab fa-github fa-lg"></i>
+               </a>
+             </li>
+             <li>
+               <a href="https://linkedin.com/in/%e8%be%89-%e5%85%b3-52a96098" title="LinkedIn">
+               <i class="fab fa-linkedin fa-lg"></i>
+               </a>
+             </li>
+      </ul>
+      
+      <p><em>Today is not easy, tomorrow is more difficult, but the day after tomorrow will be wonderful.</em></p>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+        <li>
+            <a class="" href="https://dixon629.github.io/categories">
+                <i class="fa-li fa  fa-lg"></i><span>Categories</span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="" href="https://dixon629.github.io/posts/">
+                <i class="fa-li fa  fa-lg"></i><span>Posts</span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="" href="https://dixon629.github.io/about/">
+                <i class="fa-li fa  fa-lg"></i><span>About Me</span>
+            </a>
+        </li>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>Leetcode - Plus One</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2019-12-10T18:41:56&#43;08:00">Dec 10, 2019</time>
+        </li>
+        
+        <li>
+            Categories:
+            <em>
+                
+                    
+                    <a href="https://dixon629.github.io/categories/leetcode">Leetcode</a>
+                
+            </em>
+        </li>
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="https://dixon629.github.io/tags/leetcode">#Leetcode</a>
+                
+            </em>
+        </li>
+        
+
+        <li>2 minutes read</li>
+    </ul>
+</aside>
+
+    
+
+    
+
+<h1 id="leetcode-plus-one">Leetcode - Plus One</h1>
+
+<h5 id="given-a-non-empty-array-of-digits-representing-a-non-negative-integer-plus-one-to-the-integer">Given a non-empty array of digits representing a non-negative integer, plus one to the integer.</h5>
+
+<h5 id="the-digits-are-stored-such-that-the-most-significant-digit-is-at-the-head-of-the-list-and-each-element-in-the-array-contain-a-single-digit">The digits are stored such that the most significant digit is at the head of the list, and each element in the array contain a single digit.</h5>
+
+<h5 id="you-may-assume-the-integer-does-not-contain-any-leading-zero-except-the-number-0-itself">You may assume the integer does not contain any leading zero, except the number 0 itself.</h5>
+
+<h4 id="example-1">Example 1:</h4>
+
+<blockquote>
+<p>Input: [1,2,3]
+Output: [1,2,4]
+Explanation: The array represents the integer 123.</p>
+</blockquote>
+
+<h4 id="example-2">Example 2:</h4>
+
+<blockquote>
+<p>Input: [4,3,2,1]
+Output: [4,3,2,2]
+Explanation: The array represents the integer 4321.</p>
+</blockquote>
+
+<h3 id="solution">Solution:</h3>
+
+<h4 id="solution-1-recursion">Solution 1: recursion</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#960050;background-color:#1e0010">class Solution </span>{
+    <span style="color:#960050;background-color:#1e0010">public int</span>[] plusOne(<span style="color:#960050;background-color:#1e0010">int[] digits</span>) {
+      <span style="color:#960050;background-color:#1e0010">int units </span><span style="color:#f92672">=</span> digits[digits.<span style="color:#a6e22e">length</span><span style="color:#f92672">-</span>1]<span style="color:#f92672">+</span>1;
+      <span style="color:#66d9ef">if</span>(units <span style="color:#f92672">&lt;</span> 10){
+         digits[digits.<span style="color:#a6e22e">length</span><span style="color:#f92672">-</span>1] <span style="color:#f92672">=</span> units;
+         <span style="color:#66d9ef">return</span> digits;
+      }<span style="color:#66d9ef">else</span>{  
+         digits[digits.<span style="color:#a6e22e">length</span><span style="color:#f92672">-</span>1] <span style="color:#f92672">=</span> units<span style="color:#f92672">-</span>10;
+          <span style="color:#75715e">// The previous digit plus one
+</span><span style="color:#75715e"></span>         <span style="color:#66d9ef">if</span>(digits.<span style="color:#a6e22e">length</span> <span style="color:#f92672">==</span>1){
+             <span style="color:#960050;background-color:#1e0010">int[] results </span><span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">int</span>[digits.<span style="color:#a6e22e">length</span><span style="color:#f92672">+</span>1];
+             results[0] <span style="color:#f92672">=</span>1;
+             results[1] <span style="color:#f92672">=</span> digits[0];
+             <span style="color:#66d9ef">return</span> results; 
+         }<span style="color:#66d9ef">else</span>{
+             <span style="color:#960050;background-color:#1e0010">int[] pre </span><span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span>  <span style="color:#66d9ef">int</span>[digits.<span style="color:#a6e22e">length</span><span style="color:#f92672">-</span>1];
+             <span style="color:#66d9ef">for</span>(<span style="color:#960050;background-color:#1e0010">int i</span><span style="color:#f92672">=</span>0;i<span style="color:#f92672">&lt;</span>pre.<span style="color:#a6e22e">length</span>;i<span style="color:#f92672">++</span>){
+                 pre[i] <span style="color:#f92672">=</span> digits[i];
+             }
+            <span style="color:#960050;background-color:#1e0010">int[] next</span><span style="color:#f92672">=</span> plusOne(pre);
+            <span style="color:#960050;background-color:#1e0010">int[] results </span><span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">int</span>[next.<span style="color:#a6e22e">length</span><span style="color:#f92672">+</span>1];
+            <span style="color:#66d9ef">for</span>(<span style="color:#960050;background-color:#1e0010">int i</span><span style="color:#f92672">=</span>0;i<span style="color:#f92672">&lt;</span>results.<span style="color:#a6e22e">length</span>;i<span style="color:#f92672">++</span>){
+                <span style="color:#66d9ef">if</span>(i<span style="color:#f92672">!=</span>results.<span style="color:#a6e22e">length</span><span style="color:#f92672">-</span>1){
+                    results[i] <span style="color:#f92672">=</span> next[i];
+                }<span style="color:#66d9ef">else</span>{
+                    results[i] <span style="color:#f92672">=</span> digits[digits.<span style="color:#a6e22e">length</span><span style="color:#f92672">-</span>1];
+                }
+            }
+            <span style="color:#66d9ef">return</span> results;
+         }
+      }
+    }
+}</code></pre></div>
+<h4 id="solution-2-offcial-solution">Solution 2: Offcial solution</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#960050;background-color:#1e0010">class Solution </span>{
+    <span style="color:#960050;background-color:#1e0010">public int</span>[] plusOne(<span style="color:#960050;background-color:#1e0010">int[] digits</span>) {
+        <span style="color:#66d9ef">for</span> (<span style="color:#960050;background-color:#1e0010">int i </span><span style="color:#f92672">=</span> digits.<span style="color:#a6e22e">length</span> <span style="color:#f92672">-</span> 1; i <span style="color:#f92672">&gt;=</span> 0; i<span style="color:#f92672">--</span>) {
+            digits[i]<span style="color:#f92672">++</span>;
+            digits[i] <span style="color:#f92672">=</span> digits[i] <span style="color:#f92672">%</span> 10;
+            <span style="color:#66d9ef">if</span> (digits[i] <span style="color:#f92672">!=</span> 0) <span style="color:#66d9ef">return</span> digits;
+        }
+        digits <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">int</span>[digits.<span style="color:#a6e22e">length</span> <span style="color:#f92672">+</span> 1];
+        digits[0] <span style="color:#f92672">=</span> 1;
+        <span style="color:#66d9ef">return</span> digits;
+    }
+}</code></pre></div>
+<h3 id="conclusion">Conclusion:</h3>
+
+<ol>
+<li>递归移位+1</li>
+</ol>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="https://dixon629.github.io/posts/leetcode-move-zeros/"><i class="fa fa-chevron-circle-left"></i> Leetcode - Move Zeros</a>
+        </li>
+        
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6>Copyright &copy; 2020 - Hui |
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="https://dixon629.github.io/index.xml">Subscribe </a></h6>
+    </footer>
+</div>
+<script src="https://dixon629.github.io/js/scripts.js"></script>
+
+</body>
+
+</html>
+

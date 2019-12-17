@@ -1,0 +1,229 @@
+<!doctype html>
+
+<html lang="en-us">
+
+<head>
+  <title>Hui&#39;s blog</title>
+  <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Kiera: A Hugo theme for creative and technical writing." />
+<meta name="author" content="Hui" /><meta property="og:title" content="Leetcode - Move Zeros" />
+<meta property="og:description" content="Given an array nums, write a function to move all 0&rsquo;s to the end of it while maintaining the relative order of the non-zero elements. Example:  Input: [0,1,0,3,12] Output: [1,3,12,0,0]" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://dixon629.github.io/posts/leetcode-move-zeros/" />
+<meta property="article:published_time" content="2019-12-07T18:39:12+08:00" />
+<meta property="article:modified_time" content="2019-12-07T18:39:12+08:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Leetcode - Move Zeros"/>
+<meta name="twitter:description" content="Given an array nums, write a function to move all 0&rsquo;s to the end of it while maintaining the relative order of the non-zero elements. Example:  Input: [0,1,0,3,12] Output: [1,3,12,0,0]"/>
+
+<meta name="generator" content="Hugo 0.59.1" />
+    
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://dixon629.github.io/fontawesome/css/all.min.css" />
+  <link rel="stylesheet" href="https://hui-resources.oss-cn-beijing.aliyuncs.com/fonts-google.Roboto-Slab-Ruda.css" />
+  
+  <link rel="stylesheet" type="text/css" href="https://dixon629.github.io/css/styles.css" /></head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="https://dixon629.github.io/">Hui&rsquo;s blog</a>
+            </h1>
+
+      <ul id="social-media">
+             <li>
+               <a href="https://github.com/dixon629" title="GitHub">
+               <i class="fab fa-github fa-lg"></i>
+               </a>
+             </li>
+             <li>
+               <a href="https://linkedin.com/in/%e8%be%89-%e5%85%b3-52a96098" title="LinkedIn">
+               <i class="fab fa-linkedin fa-lg"></i>
+               </a>
+             </li>
+      </ul>
+      
+      <p><em>Today is not easy, tomorrow is more difficult, but the day after tomorrow will be wonderful.</em></p>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+        <li>
+            <a class="" href="https://dixon629.github.io/categories">
+                <i class="fa-li fa  fa-lg"></i><span>Categories</span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="" href="https://dixon629.github.io/posts/">
+                <i class="fa-li fa  fa-lg"></i><span>Posts</span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="" href="https://dixon629.github.io/about/">
+                <i class="fa-li fa  fa-lg"></i><span>About Me</span>
+            </a>
+        </li>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>Leetcode - Move Zeros</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2019-12-07T18:39:12&#43;08:00">Dec 7, 2019</time>
+        </li>
+        
+        <li>
+            Categories:
+            <em>
+                
+                    
+                    <a href="https://dixon629.github.io/categories/leetcode">Leetcode</a>
+                
+            </em>
+        </li>
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="https://dixon629.github.io/tags/leetcode">#Leetcode</a>
+                
+            </em>
+        </li>
+        
+
+        <li>One minute read</li>
+    </ul>
+</aside>
+
+    
+
+    
+
+<h5 id="given-an-array-nums-write-a-function-to-move-all-0-s-to-the-end-of-it-while-maintaining-the-relative-order-of-the-non-zero-elements">Given an array nums, write a function to move all 0&rsquo;s to the end of it while maintaining the relative order of the non-zero elements.</h5>
+
+<h4 id="example">Example:</h4>
+
+<blockquote>
+<p>Input: [0,1,0,3,12]
+Output: [1,3,12,0,0]</p>
+</blockquote>
+
+<p><strong>Note:</strong></p>
+
+<p>You must do this in-place without making a copy of the array.
+Minimize the total number of operations.</p>
+
+<h3 id="solution">Solution:</h3>
+
+<h4 id="solution-1-low-efficency-移位">Solution 1: Low efficency 移位</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#960050;background-color:#1e0010">class Solution </span>{
+    <span style="color:#960050;background-color:#1e0010">public void </span>moveZeroes(<span style="color:#960050;background-color:#1e0010">int[] nums</span>) {
+        <span style="color:#66d9ef">if</span>(nums <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span> <span style="color:#f92672">||</span> nums.<span style="color:#a6e22e">length</span> <span style="color:#f92672">&lt;</span>2)
+            <span style="color:#66d9ef">return</span>;
+
+        <span style="color:#960050;background-color:#1e0010">int p </span><span style="color:#f92672">=</span> nums.<span style="color:#a6e22e">length</span> <span style="color:#f92672">-</span>1;
+        <span style="color:#960050;background-color:#1e0010">int end </span><span style="color:#f92672">=</span> nums.<span style="color:#a6e22e">length</span> <span style="color:#f92672">-</span>1;
+        <span style="color:#66d9ef">while</span>(p <span style="color:#f92672">&gt;=</span>0){
+            <span style="color:#66d9ef">if</span>(nums[p] <span style="color:#f92672">==</span>0){
+                <span style="color:#960050;background-color:#1e0010">int q </span><span style="color:#f92672">=</span> p;
+                <span style="color:#66d9ef">while</span>(q <span style="color:#f92672">&lt;=</span> end){
+                    <span style="color:#66d9ef">if</span>(q <span style="color:#f92672">==</span> end){
+                        nums[q] <span style="color:#f92672">=</span> 0;
+                    }<span style="color:#66d9ef">else</span>{
+                        nums[q] <span style="color:#f92672">=</span> nums[q<span style="color:#f92672">+</span>1];
+                    }
+                    q<span style="color:#f92672">++</span>;
+                } 
+                end <span style="color:#f92672">--</span>;
+            }
+            p<span style="color:#f92672">--</span>;
+
+        }
+        
+    }
+}</code></pre></div>
+<h4 id="solution-2">Solution 2:</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#960050;background-color:#1e0010">class Solution </span>{
+    <span style="color:#960050;background-color:#1e0010">public void </span>moveZeroes(<span style="color:#960050;background-color:#1e0010">int[] nums</span>) {
+        <span style="color:#66d9ef">if</span>(nums <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span> <span style="color:#f92672">||</span> nums.<span style="color:#a6e22e">length</span> <span style="color:#f92672">&lt;</span>2)
+            <span style="color:#66d9ef">return</span>;
+        
+        <span style="color:#75715e">// None-Zero Pointer
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">for</span> (<span style="color:#960050;background-color:#1e0010">int i </span><span style="color:#f92672">=</span> 0, j <span style="color:#f92672">=</span> 0; i <span style="color:#f92672">&lt;</span> nums.<span style="color:#a6e22e">length</span>; i<span style="color:#f92672">++</span>)
+		{
+			<span style="color:#66d9ef">if</span> (nums[i] <span style="color:#f92672">!=</span> 0)
+			{
+				<span style="color:#960050;background-color:#1e0010">int temp </span><span style="color:#f92672">=</span> nums[i];
+				nums[i] <span style="color:#f92672">=</span> nums[j];
+				nums[j] <span style="color:#f92672">=</span> temp;
+				j<span style="color:#f92672">++</span>;
+			}
+		} 
+    }
+}</code></pre></div>
+<blockquote>
+<p>将数组分成两个区域，一个是非0数区，一个是0数区，而我们要做的唯一一件事就是把非0数移动到非0数区。指针j记录最后一个非0数的位置，在j的左边，所有数都是非0数。 第一轮之前: [{非0数区}|0,1,0,3,12,15] 第一轮： [1, {非0数区}|0, 0, 3,12,15] 第二轮： [1, {非0数区}|0, 0, 3,12,15] 第三轮： [1, 3,{非0数区}|0,0,12,15</p>
+</blockquote>
+
+<h3 id="conclusion">Conclusion:</h3>
+
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="https://dixon629.github.io/posts/leetcode-two-sum/"><i class="fa fa-chevron-circle-left"></i> Leetcode - Two Sum</a>
+        </li>
+        
+        
+        <li>
+            <a href="https://dixon629.github.io/posts/leetcode-plus-one/">Leetcode - Plus One <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6>Copyright &copy; 2020 - Hui |
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="https://dixon629.github.io/index.xml">Subscribe </a></h6>
+    </footer>
+</div>
+<script src="https://dixon629.github.io/js/scripts.js"></script>
+
+</body>
+
+</html>
+

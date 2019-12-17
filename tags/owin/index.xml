@@ -13,6 +13,718 @@
    
    
      <item>
+       <title>Leetcode - Plus One</title>
+       <link>https://dixon629.github.io/posts/leetcode-plus-one/</link>
+       <pubDate>Tue, 10 Dec 2019 18:41:56 +0800</pubDate>
+       
+       <guid>https://dixon629.github.io/posts/leetcode-plus-one/</guid>
+       <description>
+
+&lt;h1 id=&#34;leetcode-plus-one&#34;&gt;Leetcode - Plus One&lt;/h1&gt;
+
+&lt;h5 id=&#34;given-a-non-empty-array-of-digits-representing-a-non-negative-integer-plus-one-to-the-integer&#34;&gt;Given a non-empty array of digits representing a non-negative integer, plus one to the integer.&lt;/h5&gt;
+
+&lt;h5 id=&#34;the-digits-are-stored-such-that-the-most-significant-digit-is-at-the-head-of-the-list-and-each-element-in-the-array-contain-a-single-digit&#34;&gt;The digits are stored such that the most significant digit is at the head of the list, and each element in the array contain a single digit.&lt;/h5&gt;
+
+&lt;h5 id=&#34;you-may-assume-the-integer-does-not-contain-any-leading-zero-except-the-number-0-itself&#34;&gt;You may assume the integer does not contain any leading zero, except the number 0 itself.&lt;/h5&gt;
+
+&lt;h4 id=&#34;example-1&#34;&gt;Example 1:&lt;/h4&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: [1,2,3]
+Output: [1,2,4]
+Explanation: The array represents the integer 123.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&#34;example-2&#34;&gt;Example 2:&lt;/h4&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: [4,3,2,1]
+Output: [4,3,2,2]
+Explanation: The array represents the integer 4321.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;solution&#34;&gt;Solution:&lt;/h3&gt;
+
+&lt;h4 id=&#34;solution-1-recursion&#34;&gt;Solution 1: recursion&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;class Solution &lt;/span&gt;{
+    &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;public int&lt;/span&gt;[] plusOne(&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;int[] digits&lt;/span&gt;) {
+      &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;int units &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; digits[digits.&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;1]&lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;1;
+      &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt;(units &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; 10){
+         digits[digits.&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;1] &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; units;
+         &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; digits;
+      }&lt;span style=&#34;color:#66d9ef&#34;&gt;else&lt;/span&gt;{  
+         digits[digits.&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;1] &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; units&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;10;
+          &lt;span style=&#34;color:#75715e&#34;&gt;// The previous digit plus one
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;         &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt;(digits.&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt;1){
+             &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;int[] results &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt;[digits.&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;1];
+             results[0] &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;1;
+             results[1] &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; digits[0];
+             &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; results; 
+         }&lt;span style=&#34;color:#66d9ef&#34;&gt;else&lt;/span&gt;{
+             &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;int[] pre &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt;  &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt;[digits.&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;1];
+             &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt;(&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;int i&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;0;i&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;pre.&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt;;i&lt;span style=&#34;color:#f92672&#34;&gt;++&lt;/span&gt;){
+                 pre[i] &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; digits[i];
+             }
+            &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;int[] next&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; plusOne(pre);
+            &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;int[] results &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt;[next.&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;1];
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt;(&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;int i&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;0;i&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;results.&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt;;i&lt;span style=&#34;color:#f92672&#34;&gt;++&lt;/span&gt;){
+                &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt;(i&lt;span style=&#34;color:#f92672&#34;&gt;!=&lt;/span&gt;results.&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;1){
+                    results[i] &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; next[i];
+                }&lt;span style=&#34;color:#66d9ef&#34;&gt;else&lt;/span&gt;{
+                    results[i] &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; digits[digits.&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;1];
+                }
+            }
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; results;
+         }
+      }
+    }
+}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4 id=&#34;solution-2-offcial-solution&#34;&gt;Solution 2: Offcial solution&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;class Solution &lt;/span&gt;{
+    &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;public int&lt;/span&gt;[] plusOne(&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;int[] digits&lt;/span&gt;) {
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; (&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;int i &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; digits.&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; 1; i &lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;=&lt;/span&gt; 0; i&lt;span style=&#34;color:#f92672&#34;&gt;--&lt;/span&gt;) {
+            digits[i]&lt;span style=&#34;color:#f92672&#34;&gt;++&lt;/span&gt;;
+            digits[i] &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; digits[i] &lt;span style=&#34;color:#f92672&#34;&gt;%&lt;/span&gt; 10;
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; (digits[i] &lt;span style=&#34;color:#f92672&#34;&gt;!=&lt;/span&gt; 0) &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; digits;
+        }
+        digits &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt;[digits.&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; 1];
+        digits[0] &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 1;
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; digits;
+    }
+}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&#34;conclusion&#34;&gt;Conclusion:&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;递归移位+1&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+     </item>
+   
+     <item>
+       <title>Leetcode - Move Zeros</title>
+       <link>https://dixon629.github.io/posts/leetcode-move-zeros/</link>
+       <pubDate>Sat, 07 Dec 2019 18:39:12 +0800</pubDate>
+       
+       <guid>https://dixon629.github.io/posts/leetcode-move-zeros/</guid>
+       <description>
+
+&lt;h5 id=&#34;given-an-array-nums-write-a-function-to-move-all-0-s-to-the-end-of-it-while-maintaining-the-relative-order-of-the-non-zero-elements&#34;&gt;Given an array nums, write a function to move all 0&amp;rsquo;s to the end of it while maintaining the relative order of the non-zero elements.&lt;/h5&gt;
+
+&lt;h4 id=&#34;example&#34;&gt;Example:&lt;/h4&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: [0,1,0,3,12]
+Output: [1,3,12,0,0]&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;You must do this in-place without making a copy of the array.
+Minimize the total number of operations.&lt;/p&gt;
+
+&lt;h3 id=&#34;solution&#34;&gt;Solution:&lt;/h3&gt;
+
+&lt;h4 id=&#34;solution-1-low-efficency-移位&#34;&gt;Solution 1: Low efficency 移位&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;class Solution &lt;/span&gt;{
+    &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;public void &lt;/span&gt;moveZeroes(&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;int[] nums&lt;/span&gt;) {
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt;(nums &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;||&lt;/span&gt; nums.&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;2)
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt;;
+
+        &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;int p &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; nums.&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;1;
+        &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;int end &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; nums.&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;1;
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;while&lt;/span&gt;(p &lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;=&lt;/span&gt;0){
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt;(nums[p] &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt;0){
+                &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;int q &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; p;
+                &lt;span style=&#34;color:#66d9ef&#34;&gt;while&lt;/span&gt;(q &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;=&lt;/span&gt; end){
+                    &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt;(q &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; end){
+                        nums[q] &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 0;
+                    }&lt;span style=&#34;color:#66d9ef&#34;&gt;else&lt;/span&gt;{
+                        nums[q] &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; nums[q&lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;1];
+                    }
+                    q&lt;span style=&#34;color:#f92672&#34;&gt;++&lt;/span&gt;;
+                } 
+                end &lt;span style=&#34;color:#f92672&#34;&gt;--&lt;/span&gt;;
+            }
+            p&lt;span style=&#34;color:#f92672&#34;&gt;--&lt;/span&gt;;
+
+        }
+        
+    }
+}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4 id=&#34;solution-2&#34;&gt;Solution 2:&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;class Solution &lt;/span&gt;{
+    &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;public void &lt;/span&gt;moveZeroes(&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;int[] nums&lt;/span&gt;) {
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt;(nums &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;||&lt;/span&gt; nums.&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;2)
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt;;
+        
+        &lt;span style=&#34;color:#75715e&#34;&gt;// None-Zero Pointer
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; (&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;int i &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 0, j &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 0; i &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; nums.&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt;; i&lt;span style=&#34;color:#f92672&#34;&gt;++&lt;/span&gt;)
+		{
+			&lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; (nums[i] &lt;span style=&#34;color:#f92672&#34;&gt;!=&lt;/span&gt; 0)
+			{
+				&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;int temp &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; nums[i];
+				nums[i] &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; nums[j];
+				nums[j] &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; temp;
+				j&lt;span style=&#34;color:#f92672&#34;&gt;++&lt;/span&gt;;
+			}
+		} 
+    }
+}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;blockquote&gt;
+&lt;p&gt;将数组分成两个区域，一个是非0数区，一个是0数区，而我们要做的唯一一件事就是把非0数移动到非0数区。指针j记录最后一个非0数的位置，在j的左边，所有数都是非0数。 第一轮之前: [{非0数区}|0,1,0,3,12,15] 第一轮： [1, {非0数区}|0, 0, 3,12,15] 第二轮： [1, {非0数区}|0, 0, 3,12,15] 第三轮： [1, 3,{非0数区}|0,0,12,15&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;conclusion&#34;&gt;Conclusion:&lt;/h3&gt;
+</description>
+     </item>
+   
+     <item>
+       <title>Leetcode - Two Sum</title>
+       <link>https://dixon629.github.io/posts/leetcode-two-sum/</link>
+       <pubDate>Wed, 04 Dec 2019 18:36:02 +0800</pubDate>
+       
+       <guid>https://dixon629.github.io/posts/leetcode-two-sum/</guid>
+       <description>
+
+&lt;h5 id=&#34;given-an-array-of-integers-return-indices-of-the-two-numbers-such-that-they-add-up-to-a-specific-target&#34;&gt;Given an array of integers, return indices of the two numbers such that they add up to a specific target.&lt;/h5&gt;
+
+&lt;h5 id=&#34;you-may-assume-that-each-input-would-have-exactly-one-solution-and-you-may-not-use-the-same-element-twice&#34;&gt;You may assume that each input would have exactly one solution, and you may not use the same element twice.&lt;/h5&gt;
+
+&lt;h4 id=&#34;example&#34;&gt;Example:&lt;/h4&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Given nums = [2, 7, 11, 15], target = 9,&lt;/p&gt;
+
+&lt;p&gt;Because nums[0] + nums[1] = 2 + 7 = 9,
+return [0, 1].&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;solution&#34;&gt;Solution:&lt;/h3&gt;
+
+&lt;h4 id=&#34;solution-1-暴力法-时间-o-n-2-空间-0-1&#34;&gt;Solution 1: 暴力法  时间 O(n^2) 空间 0(1)&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;class Solution &lt;/span&gt;{
+    &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;public int&lt;/span&gt;[] twoSum(&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;int[] nums&lt;/span&gt;, &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;int target&lt;/span&gt;) {
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt;(nums &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;)
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;;
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt;(nums.&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;2)
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt;[0];
+        
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt;(&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;int i&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;0; i&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;nums.&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt;;i&lt;span style=&#34;color:#f92672&#34;&gt;++&lt;/span&gt;){
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt;(&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;int j&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;i&lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;1; j&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;nums.&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt;;j&lt;span style=&#34;color:#f92672&#34;&gt;++&lt;/span&gt;){
+                &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt;(nums[i] &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; nums[j] &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; target){
+                    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt;[]{i,j};
+                }
+            }
+        }
+        
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt;[0];
+    }
+}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4 id=&#34;solution-2-哈希表-时间o-n-空间-o-n-性能更好&#34;&gt;Solution 2: 哈希表 时间O(n),空间 O(n)，性能更好&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;class Solution &lt;/span&gt;{
+    &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;public int&lt;/span&gt;[] twoSum(&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;int[] nums&lt;/span&gt;, &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;int target&lt;/span&gt;) {
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt;(nums &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;)
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;;
+        
+        Map&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;Integer,&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;Integer&amp;gt; map &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; HashMap();
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt;(&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;int i&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;0;i&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;nums.&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt;;i&lt;span style=&#34;color:#f92672&#34;&gt;++&lt;/span&gt;){
+            &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;int complement &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; target &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; nums[i];
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt;(map.&lt;span style=&#34;color:#a6e22e&#34;&gt;containsKey&lt;/span&gt;(complement)){
+                &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt;[]{map.&lt;span style=&#34;color:#a6e22e&#34;&gt;get&lt;/span&gt;(complement),i};
+            }&lt;span style=&#34;color:#66d9ef&#34;&gt;else&lt;/span&gt;{
+                map.&lt;span style=&#34;color:#a6e22e&#34;&gt;put&lt;/span&gt;(nums[i],i);
+            }
+        }
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;throw&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; IllegalArgumentException(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;No two sum solution&amp;#34;&lt;/span&gt;);
+
+    }
+}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&#34;conclusion&#34;&gt;Conclusion:&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;哈希表取特定数的时间复杂度仅为O(1)&lt;/li&gt;
+&lt;li&gt;哈希表法虽然有额外的空间开销，当时当n越大时其消耗时间大幅小于暴力法&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+     </item>
+   
+     <item>
+       <title>Leetcode - Valid Sudoku</title>
+       <link>https://dixon629.github.io/posts/leetcode-valid-sudoku/</link>
+       <pubDate>Mon, 02 Dec 2019 18:31:13 +0800</pubDate>
+       
+       <guid>https://dixon629.github.io/posts/leetcode-valid-sudoku/</guid>
+       <description>
+
+&lt;h5 id=&#34;determine-if-a-9x9-sudoku-board-is-valid-only-the-filled-cells-need-to-be-validated-according-to-the-following-rules&#34;&gt;Determine if a 9x9 Sudoku board is valid. Only the filled cells need to be validated according to the following rules:&lt;/h5&gt;
+
+&lt;h5 id=&#34;each-row-must-contain-the-digits-1-9-without-repetition-each-column-must-contain-the-digits-1-9-without-repetition-each-of-the-9-3x3-sub-boxes-of-the-grid-must-contain-the-digits-1-9-without-repetition&#34;&gt;Each row must contain the digits 1-9 without repetition.Each column must contain the digits 1-9 without repetition.Each of the 9 3x3 sub-boxes of the grid must contain the digits 1-9 without repetition.&lt;/h5&gt;
+
+&lt;h5 id=&#34;a-partially-filled-sudoku-which-is-valid-the-sudoku-board-could-be-partially-filled-where-empty-cells-are-filled-with-the-character&#34;&gt;A partially filled sudoku which is valid.The Sudoku board could be partially filled, where empty cells are filled with the character &amp;rsquo;.&amp;lsquo;.&lt;/h5&gt;
+
+&lt;h4 id=&#34;example-1-input&#34;&gt;Example 1:Input:&lt;/h4&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;[
+  [&amp;ldquo;5&amp;rdquo;,&amp;ldquo;3&amp;rdquo;,&amp;ldquo;.&amp;rdquo;,&amp;ldquo;.&amp;rdquo;,&amp;ldquo;7&amp;rdquo;,&amp;ldquo;.&amp;rdquo;,&amp;ldquo;.&amp;rdquo;,&amp;ldquo;.&amp;rdquo;,&amp;ldquo;.&amp;rdquo;],
+  [&amp;ldquo;6&amp;rdquo;,&amp;ldquo;.&amp;rdquo;,&amp;ldquo;.&amp;rdquo;,&amp;ldquo;1&amp;rdquo;,&amp;ldquo;9&amp;rdquo;,&amp;ldquo;5&amp;rdquo;,&amp;ldquo;.&amp;rdquo;,&amp;ldquo;.&amp;rdquo;,&amp;ldquo;.&amp;rdquo;],
+  [&amp;ldquo;.&amp;rdquo;,&amp;ldquo;9&amp;rdquo;,&amp;ldquo;8&amp;rdquo;,&amp;ldquo;.&amp;rdquo;,&amp;ldquo;.&amp;rdquo;,&amp;ldquo;.&amp;rdquo;,&amp;ldquo;.&amp;rdquo;,&amp;ldquo;6&amp;rdquo;,&amp;ldquo;.&amp;rdquo;],
+  [&amp;ldquo;8&amp;rdquo;,&amp;ldquo;.&amp;rdquo;,&amp;ldquo;.&amp;rdquo;,&amp;ldquo;.&amp;rdquo;,&amp;ldquo;6&amp;rdquo;,&amp;ldquo;.&amp;rdquo;,&amp;ldquo;.&amp;rdquo;,&amp;ldquo;.&amp;rdquo;,&amp;ldquo;3&amp;rdquo;],
+  [&amp;ldquo;4&amp;rdquo;,&amp;ldquo;.&amp;rdquo;,&amp;ldquo;.&amp;rdquo;,&amp;ldquo;8&amp;rdquo;,&amp;ldquo;.&amp;rdquo;,&amp;ldquo;3&amp;rdquo;,&amp;ldquo;.&amp;rdquo;,&amp;ldquo;.&amp;rdquo;,&amp;ldquo;1&amp;rdquo;],
+  [&amp;ldquo;7&amp;rdquo;,&amp;ldquo;.&amp;rdquo;,&amp;ldquo;.&amp;rdquo;,&amp;ldquo;.&amp;rdquo;,&amp;ldquo;2&amp;rdquo;,&amp;ldquo;.&amp;rdquo;,&amp;ldquo;.&amp;rdquo;,&amp;ldquo;.&amp;rdquo;,&amp;ldquo;6&amp;rdquo;],
+  [&amp;ldquo;.&amp;rdquo;,&amp;ldquo;6&amp;rdquo;,&amp;ldquo;.&amp;rdquo;,&amp;ldquo;.&amp;rdquo;,&amp;ldquo;.&amp;rdquo;,&amp;ldquo;.&amp;rdquo;,&amp;ldquo;2&amp;rdquo;,&amp;ldquo;8&amp;rdquo;,&amp;ldquo;.&amp;rdquo;],
+  [&amp;ldquo;.&amp;rdquo;,&amp;ldquo;.&amp;rdquo;,&amp;ldquo;.&amp;rdquo;,&amp;ldquo;4&amp;rdquo;,&amp;ldquo;1&amp;rdquo;,&amp;ldquo;9&amp;rdquo;,&amp;ldquo;.&amp;rdquo;,&amp;ldquo;.&amp;rdquo;,&amp;ldquo;5&amp;rdquo;],
+  [&amp;ldquo;.&amp;rdquo;,&amp;ldquo;.&amp;rdquo;,&amp;ldquo;.&amp;rdquo;,&amp;ldquo;.&amp;rdquo;,&amp;ldquo;8&amp;rdquo;,&amp;ldquo;.&amp;rdquo;,&amp;ldquo;.&amp;rdquo;,&amp;ldquo;7&amp;rdquo;,&amp;ldquo;9&amp;rdquo;]
+]
+Output: true&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&#34;example-2-input&#34;&gt;Example 2:Input:&lt;/h4&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;[
+  [&amp;ldquo;8&amp;rdquo;,&amp;ldquo;3&amp;rdquo;,&amp;ldquo;.&amp;rdquo;,&amp;ldquo;.&amp;rdquo;,&amp;ldquo;7&amp;rdquo;,&amp;ldquo;.&amp;rdquo;,&amp;ldquo;.&amp;rdquo;,&amp;ldquo;.&amp;rdquo;,&amp;ldquo;.&amp;rdquo;],
+  [&amp;ldquo;6&amp;rdquo;,&amp;ldquo;.&amp;rdquo;,&amp;ldquo;.&amp;rdquo;,&amp;ldquo;1&amp;rdquo;,&amp;ldquo;9&amp;rdquo;,&amp;ldquo;5&amp;rdquo;,&amp;ldquo;.&amp;rdquo;,&amp;ldquo;.&amp;rdquo;,&amp;ldquo;.&amp;rdquo;],
+  [&amp;ldquo;.&amp;rdquo;,&amp;ldquo;9&amp;rdquo;,&amp;ldquo;8&amp;rdquo;,&amp;ldquo;.&amp;rdquo;,&amp;ldquo;.&amp;rdquo;,&amp;ldquo;.&amp;rdquo;,&amp;ldquo;.&amp;rdquo;,&amp;ldquo;6&amp;rdquo;,&amp;ldquo;.&amp;rdquo;],
+  [&amp;ldquo;8&amp;rdquo;,&amp;ldquo;.&amp;rdquo;,&amp;ldquo;.&amp;rdquo;,&amp;ldquo;.&amp;rdquo;,&amp;ldquo;6&amp;rdquo;,&amp;ldquo;.&amp;rdquo;,&amp;ldquo;.&amp;rdquo;,&amp;ldquo;.&amp;rdquo;,&amp;ldquo;3&amp;rdquo;],
+  [&amp;ldquo;4&amp;rdquo;,&amp;ldquo;.&amp;rdquo;,&amp;ldquo;.&amp;rdquo;,&amp;ldquo;8&amp;rdquo;,&amp;ldquo;.&amp;rdquo;,&amp;ldquo;3&amp;rdquo;,&amp;ldquo;.&amp;rdquo;,&amp;ldquo;.&amp;rdquo;,&amp;ldquo;1&amp;rdquo;],
+  [&amp;ldquo;7&amp;rdquo;,&amp;ldquo;.&amp;rdquo;,&amp;ldquo;.&amp;rdquo;,&amp;ldquo;.&amp;rdquo;,&amp;ldquo;2&amp;rdquo;,&amp;ldquo;.&amp;rdquo;,&amp;ldquo;.&amp;rdquo;,&amp;ldquo;.&amp;rdquo;,&amp;ldquo;6&amp;rdquo;],
+  [&amp;ldquo;.&amp;rdquo;,&amp;ldquo;6&amp;rdquo;,&amp;ldquo;.&amp;rdquo;,&amp;ldquo;.&amp;rdquo;,&amp;ldquo;.&amp;rdquo;,&amp;ldquo;.&amp;rdquo;,&amp;ldquo;2&amp;rdquo;,&amp;ldquo;8&amp;rdquo;,&amp;ldquo;.&amp;rdquo;],
+  [&amp;ldquo;.&amp;rdquo;,&amp;ldquo;.&amp;rdquo;,&amp;ldquo;.&amp;rdquo;,&amp;ldquo;4&amp;rdquo;,&amp;ldquo;1&amp;rdquo;,&amp;ldquo;9&amp;rdquo;,&amp;ldquo;.&amp;rdquo;,&amp;ldquo;.&amp;rdquo;,&amp;ldquo;5&amp;rdquo;],
+  [&amp;ldquo;.&amp;rdquo;,&amp;ldquo;.&amp;rdquo;,&amp;ldquo;.&amp;rdquo;,&amp;ldquo;.&amp;rdquo;,&amp;ldquo;8&amp;rdquo;,&amp;ldquo;.&amp;rdquo;,&amp;ldquo;.&amp;rdquo;,&amp;ldquo;7&amp;rdquo;,&amp;ldquo;9&amp;rdquo;]
+]
+Output: false&lt;/p&gt;
+
+&lt;p&gt;Explanation: Same as Example 1, except with the 5 in the top left corner being modified to 8. Since there are two 8&amp;rsquo;s in the top left 3x3 sub-box, it is invalid.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;strong&gt;Note:A Sudoku board (partially filled) could be valid but is not necessarily solvable.Only the filled cells need to be validated according to the mentioned rules.The given board contain only digits 1-9 and the character &amp;rsquo;.&amp;lsquo;.The given board size is always 9x9.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;solution&#34;&gt;Solution:&lt;/h3&gt;
+
+&lt;h4 id=&#34;solution-1-hash&#34;&gt;Solution 1: Hash&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;class Solution &lt;/span&gt;{
+    
+    &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;public boolean &lt;/span&gt;isValidSudoku(&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;char[][] board&lt;/span&gt;) {
+         &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; (board &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;)
+          &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;false&lt;/span&gt;;
+
+        List&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;Map&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;Integer, &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;Integer&amp;gt;&amp;gt; subBoxs &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; ArrayList(9);
+        List&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;Map&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;Integer, &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;Integer&amp;gt;&amp;gt; columns &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; ArrayList(9);
+
+        &lt;span style=&#34;color:#75715e&#34;&gt;// Initialize the fixed 9 sub-box and colums
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; (&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;int i &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 0; i &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; 9; i&lt;span style=&#34;color:#f92672&#34;&gt;++&lt;/span&gt;) {
+          Map&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;Integer, &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;Integer&amp;gt; subBoxMap &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; HashMap();
+          subBoxs.&lt;span style=&#34;color:#a6e22e&#34;&gt;add&lt;/span&gt;(subBoxMap);
+
+          Map&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;Integer, &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;Integer&amp;gt; colMap &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; HashMap();
+          columns.&lt;span style=&#34;color:#a6e22e&#34;&gt;add&lt;/span&gt;(colMap);
+        }
+
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; (&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;int rowIndex &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 0; rowIndex &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; board.&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt;; rowIndex&lt;span style=&#34;color:#f92672&#34;&gt;++&lt;/span&gt;) {
+          &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;char[] row &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; board[rowIndex];
+          Map&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;Integer, &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;Integer&amp;gt; rowMap &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; HashMap&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&amp;gt;&lt;/span&gt;();
+
+          &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; (&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;int colIndex &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 0; colIndex &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; row.&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt;; colIndex&lt;span style=&#34;color:#f92672&#34;&gt;++&lt;/span&gt;) {
+            &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;char c &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; row[colIndex];
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; (c &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;.&amp;#39;&lt;/span&gt;)
+              &lt;span style=&#34;color:#66d9ef&#34;&gt;continue&lt;/span&gt;;
+
+            &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;int num &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; Integer.&lt;span style=&#34;color:#a6e22e&#34;&gt;parseInt&lt;/span&gt;(String.&lt;span style=&#34;color:#a6e22e&#34;&gt;valueOf&lt;/span&gt;(row[colIndex]));
+
+            &lt;span style=&#34;color:#75715e&#34;&gt;//Put the num to the correct sub box
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;            &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;int colSection &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; colIndex &lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt; 3;
+            &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;int rowSection &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; rowIndex &lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt; 3;
+            &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;int section &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; rowSection &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; 3 &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; colSection;
+            Map&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;Integer, &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;Integer&amp;gt; subBoxMap &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; subBoxs.&lt;span style=&#34;color:#a6e22e&#34;&gt;get&lt;/span&gt;(section);
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; (subBoxMap.&lt;span style=&#34;color:#a6e22e&#34;&gt;get&lt;/span&gt;(num) &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;) {
+              subBoxMap.&lt;span style=&#34;color:#a6e22e&#34;&gt;put&lt;/span&gt;(num, 1);
+            } &lt;span style=&#34;color:#66d9ef&#34;&gt;else&lt;/span&gt; {
+              &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;false&lt;/span&gt;;
+            }
+
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; (rowMap.&lt;span style=&#34;color:#a6e22e&#34;&gt;get&lt;/span&gt;(num) &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;) {
+              rowMap.&lt;span style=&#34;color:#a6e22e&#34;&gt;put&lt;/span&gt;(num, 1);
+            } &lt;span style=&#34;color:#66d9ef&#34;&gt;else&lt;/span&gt; {
+              &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;false&lt;/span&gt;;
+            }
+
+            &lt;span style=&#34;color:#75715e&#34;&gt;// Put the num to the correct column map
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;            Map&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;Integer, &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;Integer&amp;gt; colMap &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; columns.&lt;span style=&#34;color:#a6e22e&#34;&gt;get&lt;/span&gt;(colIndex);
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; (colMap.&lt;span style=&#34;color:#a6e22e&#34;&gt;get&lt;/span&gt;(num) &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;) {
+              colMap.&lt;span style=&#34;color:#a6e22e&#34;&gt;put&lt;/span&gt;(num, 1);
+            } &lt;span style=&#34;color:#66d9ef&#34;&gt;else&lt;/span&gt; {
+              &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;false&lt;/span&gt;;
+            }
+          }
+
+        }
+
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;;
+    }
+    
+}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4 id=&#34;solution-2-offcial-version&#34;&gt;Solution 2: Offcial version&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;class Solution &lt;/span&gt;{
+  &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;public boolean &lt;/span&gt;isValidSudoku(&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;char[][] board&lt;/span&gt;) {
+    &lt;span style=&#34;color:#75715e&#34;&gt;// init data
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    HashMap&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;Integer, Integer&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; [] rows &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; HashMap[9];
+    HashMap&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;Integer, Integer&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; [] columns &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; HashMap[9];
+    HashMap&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;Integer, Integer&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; [] boxes &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; HashMap[9];
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; (&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;int i &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 0; i &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; 9; i&lt;span style=&#34;color:#f92672&#34;&gt;++&lt;/span&gt;) {
+      rows[i] &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; HashMap&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;Integer, Integer&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt;();
+      columns[i] &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; HashMap&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;Integer, Integer&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt;();
+      boxes[i] &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; HashMap&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;Integer, Integer&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt;();
+    }
+
+    &lt;span style=&#34;color:#75715e&#34;&gt;// validate a board
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; (&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;int i &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 0; i &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; 9; i&lt;span style=&#34;color:#f92672&#34;&gt;++&lt;/span&gt;) {
+      &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; (&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;int j &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 0; j &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; 9; j&lt;span style=&#34;color:#f92672&#34;&gt;++&lt;/span&gt;) {
+        &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;char num &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; board[i][j];
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; (num &lt;span style=&#34;color:#f92672&#34;&gt;!=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;.&amp;#39;&lt;/span&gt;) {
+          &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;int n &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; (&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt;)num;
+          &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;int box_index &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; (i &lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt; 3 ) &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; 3 &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; j &lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt; 3;
+
+          &lt;span style=&#34;color:#75715e&#34;&gt;// keep the current cell value
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;          rows[i].&lt;span style=&#34;color:#a6e22e&#34;&gt;put&lt;/span&gt;(n, rows[i].&lt;span style=&#34;color:#a6e22e&#34;&gt;getOrDefault&lt;/span&gt;(n, 0) &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; 1);
+          columns[j].&lt;span style=&#34;color:#a6e22e&#34;&gt;put&lt;/span&gt;(n, columns[j].&lt;span style=&#34;color:#a6e22e&#34;&gt;getOrDefault&lt;/span&gt;(n, 0) &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; 1);
+          boxes[box_index].&lt;span style=&#34;color:#a6e22e&#34;&gt;put&lt;/span&gt;(n, boxes[box_index].&lt;span style=&#34;color:#a6e22e&#34;&gt;getOrDefault&lt;/span&gt;(n, 0) &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; 1);
+
+          &lt;span style=&#34;color:#75715e&#34;&gt;// check if this value has been already seen before
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;          &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; (rows[i].&lt;span style=&#34;color:#a6e22e&#34;&gt;get&lt;/span&gt;(n) &lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; 1 &lt;span style=&#34;color:#f92672&#34;&gt;||&lt;/span&gt; columns[j].&lt;span style=&#34;color:#a6e22e&#34;&gt;get&lt;/span&gt;(n) &lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; 1 &lt;span style=&#34;color:#f92672&#34;&gt;||&lt;/span&gt; boxes[box_index].&lt;span style=&#34;color:#a6e22e&#34;&gt;get&lt;/span&gt;(n) &lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; 1)
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;false&lt;/span&gt;;
+        }
+      }
+    }
+
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;;
+  }
+}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&#34;conclusion&#34;&gt;Conclusion:&lt;/h3&gt;
+
+&lt;p&gt;1.Hash 算法效率高&lt;/p&gt;
+</description>
+     </item>
+   
+     <item>
+       <title>Leetcode - Rotate Image</title>
+       <link>https://dixon629.github.io/posts/leetcode-rotate-image/</link>
+       <pubDate>Sat, 30 Nov 2019 18:28:14 +0800</pubDate>
+       
+       <guid>https://dixon629.github.io/posts/leetcode-rotate-image/</guid>
+       <description>
+
+&lt;h5 id=&#34;you-are-given-an-n-x-n-2d-matrix-representing-an-image&#34;&gt;You are given an n x n 2D matrix representing an image.&lt;/h5&gt;
+
+&lt;h5 id=&#34;rotate-the-image-by-90-degrees-clockwise&#34;&gt;Rotate the image by 90 degrees (clockwise).&lt;/h5&gt;
+
+&lt;h5 id=&#34;note&#34;&gt;Note:&lt;/h5&gt;
+
+&lt;h5 id=&#34;you-have-to-rotate-the-image-in-place-which-means-you-have-to-modify-the-input-2d-matrix-directly-do-not-allocate-another-2d-matrix-and-do-the-rotation&#34;&gt;You have to rotate the image in-place, which means you have to modify the input 2D matrix directly. DO NOT allocate another 2D matrix and do the rotation.&lt;/h5&gt;
+
+&lt;p&gt;&lt;strong&gt;Example 1:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Given input matrix =
+[
+ [1,2,3],
+ [4,5,6],
+ [7,8,9]
+],&lt;/p&gt;
+
+&lt;p&gt;rotate the input matrix in-place such that it becomes:
+[
+ [7,4,1],
+ [8,5,2],
+ [9,6,3]
+]&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;strong&gt;Example 2:&lt;/strong&gt;
+&amp;gt;
+&amp;gt;Given input matrix =
+&amp;gt;[
+&amp;gt;  [ 5, 1, 9,11],
+&amp;gt;  [ 2, 4, 8,10],
+&amp;gt;  [13, 3, 6, 7],
+&amp;gt;  [15,14,12,16]
+&amp;gt;],
+&amp;gt;
+&amp;gt;rotate the input matrix in-place such that it becomes:
+&amp;gt;[
+&amp;gt;  [15,13, 2, 5],
+&amp;gt;  [14, 3, 4, 1],
+&amp;gt;  [12, 6, 8, 9],
+&amp;gt;  [16, 7,10,11]
+&amp;gt;]&lt;/p&gt;
+
+&lt;h3 id=&#34;solution&#34;&gt;Solution:&lt;/h3&gt;
+
+&lt;h4 id=&#34;solution-1-环形移位&#34;&gt;Solution 1: 环形移位&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;class Solution &lt;/span&gt;{
+    &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;public void &lt;/span&gt;rotate(&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;int[][] matrix&lt;/span&gt;) {
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt;(matrix &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;)
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt;;
+        
+        &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;int temp &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 0;
+        &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;int n &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; matrix.&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt;;
+        &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;Set&amp;lt;String&amp;gt; roated &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; HashSet();
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt;(&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;int rowIndex &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 0; rowIndex &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; n; rowIndex&lt;span style=&#34;color:#f92672&#34;&gt;++&lt;/span&gt;){
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt;(&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;int colIndex &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;0; colIndex &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; n; colIndex&lt;span style=&#34;color:#f92672&#34;&gt;++&lt;/span&gt;){
+
+                &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;String pos &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; String.&lt;span style=&#34;color:#a6e22e&#34;&gt;valueOf&lt;/span&gt;(rowIndex)&lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;String.&lt;span style=&#34;color:#a6e22e&#34;&gt;valueOf&lt;/span&gt;(colIndex);
+                &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt;(roated.&lt;span style=&#34;color:#a6e22e&#34;&gt;contains&lt;/span&gt;(pos)) &lt;span style=&#34;color:#66d9ef&#34;&gt;continue&lt;/span&gt;;
+                
+                &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;int currentRowIndex &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; rowIndex;
+                &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;int currentColIndex &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; colIndex;
+                &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;int previous &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; matrix[rowIndex][colIndex];
+  
+                &lt;span style=&#34;color:#66d9ef&#34;&gt;do&lt;/span&gt;{
+                    &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;int nextRowIndex &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; currentColIndex;
+                    &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;int nextColIndex &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; n&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;1&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;currentRowIndex;
+                    temp &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; matrix[nextRowIndex][nextColIndex];
+                    matrix[nextRowIndex][nextColIndex] &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; previous;
+                    previous &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; temp;
+                    
+                    roated.&lt;span style=&#34;color:#a6e22e&#34;&gt;add&lt;/span&gt;(String.&lt;span style=&#34;color:#a6e22e&#34;&gt;valueOf&lt;/span&gt;(currentRowIndex)&lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;String.&lt;span style=&#34;color:#a6e22e&#34;&gt;valueOf&lt;/span&gt;(currentColIndex));
+                    currentRowIndex &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; nextRowIndex;
+                    currentColIndex &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; nextColIndex;
+     
+                } &lt;span style=&#34;color:#66d9ef&#34;&gt;while&lt;/span&gt;(currentRowIndex &lt;span style=&#34;color:#f92672&#34;&gt;!=&lt;/span&gt; rowIndex &lt;span style=&#34;color:#f92672&#34;&gt;||&lt;/span&gt; currentColIndex&lt;span style=&#34;color:#f92672&#34;&gt;!=&lt;/span&gt;colIndex);
+                
+            } 
+        } 
+    }
+}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4 id=&#34;solution-2-先转270-再转-180&#34;&gt;Solution 2: 先转270 再转-180&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;class Solution &lt;/span&gt;{
+    &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;public void &lt;/span&gt;rotate(&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;int[][] matrix&lt;/span&gt;) {
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt;(matrix &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;)
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt;;
+        
+        &lt;span style=&#34;color:#75715e&#34;&gt;// rotate 270
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;int n &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; matrix.&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt;;
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt;(&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;int i&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;0;i &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; n;i&lt;span style=&#34;color:#f92672&#34;&gt;++&lt;/span&gt;){
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt;(&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;int j&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;i; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;j&amp;lt; n&lt;/span&gt;; j&lt;span style=&#34;color:#f92672&#34;&gt;++&lt;/span&gt;){
+                &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;int temp &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; matrix[i][j];
+                matrix[i][j] &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; matrix[j][i];
+                matrix[j][i] &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; temp; 
+            }
+        }
+        &lt;span style=&#34;color:#75715e&#34;&gt;// rotate -180
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt;(&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;int i&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;0;i &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;n;i&lt;span style=&#34;color:#f92672&#34;&gt;++&lt;/span&gt;){
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt;(&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;int j&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;0; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;j&amp;lt; n&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;2; j&lt;span style=&#34;color:#f92672&#34;&gt;++&lt;/span&gt;){
+                &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;int temp &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;  matrix[i][j];
+                matrix[i][j] &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; matrix[i][n&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;1&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;j];
+                matrix[i][n&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;1&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;j] &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; temp;
+            }
+        }
+    }
+}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4 id=&#34;solution-3-官方答案-循环移动&#34;&gt;Solution 3: 官方答案，循环移动&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;class Solution &lt;/span&gt;{
+  &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;public void &lt;/span&gt;rotate(&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;int[][] matrix&lt;/span&gt;) {
+    &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;int n &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; matrix.&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt;;
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; (&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;int i &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 0; i &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; n &lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt; 2 &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; n &lt;span style=&#34;color:#f92672&#34;&gt;%&lt;/span&gt; 2; i&lt;span style=&#34;color:#f92672&#34;&gt;++&lt;/span&gt;) {
+      &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; (&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;int j &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 0; j &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; n &lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt; 2; j&lt;span style=&#34;color:#f92672&#34;&gt;++&lt;/span&gt;) {
+        &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;int[] tmp &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt;[4];
+        &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;int row &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; i;
+        &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;int col &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; j;
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; (&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;int k &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 0; k &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; 4; k&lt;span style=&#34;color:#f92672&#34;&gt;++&lt;/span&gt;) {
+          tmp[k] &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; matrix[row][col];
+          &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;int x &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; row;
+          row &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; col;
+          col &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; n &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; 1 &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; x;
+        }
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; (&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;int k &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 0; k &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; 4; k&lt;span style=&#34;color:#f92672&#34;&gt;++&lt;/span&gt;) {
+          matrix[row][col] &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; tmp[(k &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; 3) &lt;span style=&#34;color:#f92672&#34;&gt;%&lt;/span&gt; 4];
+          &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;int x &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; row;
+          row &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; col;
+          col &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; n &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; 1 &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; x;
+        }
+      }
+    }
+  }
+}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&#34;conclusion&#34;&gt;Conclusion:&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;注意观察数组转换的特性，如果所有元素行列互换，其实就是转了270度，要达到旋转90度的效果，就需要再旋转-180度，其实就是行数组的元素反转&lt;/li&gt;
+&lt;li&gt;第3种方案的循环条件比较难确定&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+     </item>
+   
+     <item>
+       <title>Leetcode - Rotate Array</title>
+       <link>https://dixon629.github.io/posts/leetcode-rotate-array/</link>
+       <pubDate>Wed, 20 Nov 2019 18:24:06 +0800</pubDate>
+       
+       <guid>https://dixon629.github.io/posts/leetcode-rotate-array/</guid>
+       <description>
+
+&lt;h5 id=&#34;given-an-array-rotate-the-array-to-the-right-by-k-steps-where-k-is-non-negative&#34;&gt;Given an array, rotate the array to the right by k steps, where k is non-negative.&lt;/h5&gt;
+
+&lt;h4 id=&#34;example-1&#34;&gt;Example 1:&lt;/h4&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: [1,2,3,4,5,6,7] and k = 3
+Output: [5,6,7,1,2,3,4]
+Explanation:
+rotate 1 steps to the right: [7,1,2,3,4,5,6]
+rotate 2 steps to the right: [6,7,1,2,3,4,5]
+rotate 3 steps to the right: [5,6,7,1,2,3,4]&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&#34;example-2&#34;&gt;Example 2:&lt;/h4&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: [-1,-100,3,99] and k = 2
+Output: [3,99,-1,-100]
+Explanation:
+rotate 1 steps to the right: [99,-1,-100,3]
+rotate 2 steps to the right: [3,99,-1,-100]&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Try to come up as many solutions as you can, there are at least 3 different ways to solve this problem.
+Could you do it in-place with O(1) extra space?&lt;/p&gt;
+
+&lt;h3 id=&#34;solution&#34;&gt;Solution:&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;class Solution &lt;/span&gt;{
+    &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;public void &lt;/span&gt;rotate(&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;int[] nums&lt;/span&gt;, &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;int k&lt;/span&gt;) {
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt;(nums &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;||&lt;/span&gt; nums.&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;2)
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt;;
+        
+        &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;int len &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; nums.&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt;;
+        k &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; k &lt;span style=&#34;color:#f92672&#34;&gt;%&lt;/span&gt; len;
+        &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;int count &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 0;
+        &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;int temp&lt;/span&gt;;
+        &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;int preValue&lt;/span&gt;;
+        
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt;(&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;int start &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 0; count &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; len; start &lt;span style=&#34;color:#f92672&#34;&gt;++&lt;/span&gt;){
+            &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;int current &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; start;
+            &lt;span style=&#34;color:#75715e&#34;&gt;// Store the repaced previous value for next roatation
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;            preValue &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; nums[current];
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;do&lt;/span&gt;{
+                &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;int next &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; (current &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; k) &lt;span style=&#34;color:#f92672&#34;&gt;%&lt;/span&gt; len;
+                temp &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; nums[next];
+                nums[next] &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; preValue;
+                preValue &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; temp;
+                current &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; next;
+
+                count&lt;span style=&#34;color:#f92672&#34;&gt;++&lt;/span&gt;;
+            }&lt;span style=&#34;color:#66d9ef&#34;&gt;while&lt;/span&gt;( current &lt;span style=&#34;color:#f92672&#34;&gt;!=&lt;/span&gt; start);
+             
+        }  
+    }
+}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&#34;conclusion&#34;&gt;Conclusion:&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;使用环状替换&lt;/li&gt;
+&lt;li&gt;发转法 Reverse&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;分析右移后数据结构，发现可以通过三次反转达到移动效果。&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;原始数组                  : 1 2 3 4 5 6 7
+反转所有数字后             : 7 6 5 4 3 2 1
+反转前 k 个数字后          : 5 6 7 4 3 2 1
+反转后 n-k 个数字后        : 5 6 7 1 2 3 4 &amp;ndash;&amp;gt; 结果&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+     </item>
+   
+     <item>
+       <title>Leetcode - Contains Duplicate</title>
+       <link>https://dixon629.github.io/posts/leetcode-contains-duplicate/</link>
+       <pubDate>Sun, 17 Nov 2019 18:08:32 +0800</pubDate>
+       
+       <guid>https://dixon629.github.io/posts/leetcode-contains-duplicate/</guid>
+       <description>
+
+&lt;h5 id=&#34;given-an-array-of-integers-find-if-the-array-contains-any-duplicates&#34;&gt;Given an array of integers, find if the array contains any duplicates.&lt;/h5&gt;
+
+&lt;h5 id=&#34;your-function-should-return-true-if-any-value-appears-at-least-twice-in-the-array-and-it-should-return-false-if-every-element-is-distinct&#34;&gt;Your function should return true if any value appears at least twice in the array, and it should return false if every element is distinct.&lt;/h5&gt;
+
+&lt;h4 id=&#34;example-1&#34;&gt;Example 1:&lt;/h4&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: [1,2,3,1]
+Output: true&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&#34;example-2&#34;&gt;Example 2:&lt;/h4&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: [1,2,3,4]
+Output: false&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&#34;example-3&#34;&gt;Example 3:&lt;/h4&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Input: [1,1,1,3,3,4,3,2,4,2]
+Output: true&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;solution&#34;&gt;Solution:&lt;/h3&gt;
+
+&lt;h4 id=&#34;solution-1&#34;&gt;Solution 1:&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;class Solution &lt;/span&gt;{
+    &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;public boolean &lt;/span&gt;containsDuplicate(&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;int[] nums&lt;/span&gt;) {
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt;(nums &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;||&lt;/span&gt; nums.&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;2)
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;false&lt;/span&gt;;
+        
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt;(&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;int i&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;0; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;i&amp;lt; nums&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;1;i&lt;span style=&#34;color:#f92672&#34;&gt;++&lt;/span&gt;){
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt;(&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;int j&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;i&lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;1; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;j&amp;lt; nums&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt; ;j&lt;span style=&#34;color:#f92672&#34;&gt;++&lt;/span&gt;){
+                &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt;(nums[i] &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; nums[j])
+                    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;;
+            }
+        }
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;false&lt;/span&gt;;
+    }
+}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4 id=&#34;solution-2&#34;&gt;Solution 2:&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;class Solution &lt;/span&gt;{
+    &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;public boolean &lt;/span&gt;containsDuplicate(&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;int[] nums&lt;/span&gt;) {
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt;(nums &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;||&lt;/span&gt; nums.&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;2)
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;false&lt;/span&gt;;
+        
+        Map&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;Integer,&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;Integer&amp;gt; map &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; HashMap();
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt;(&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;int i&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;0; &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;i&amp;lt; nums&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt;;i&lt;span style=&#34;color:#f92672&#34;&gt;++&lt;/span&gt;){
+           &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;int value &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; nums[i];
+           &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt;(map.&lt;span style=&#34;color:#a6e22e&#34;&gt;get&lt;/span&gt;(value) &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;){
+               map.&lt;span style=&#34;color:#a6e22e&#34;&gt;put&lt;/span&gt;(value,1);
+           }&lt;span style=&#34;color:#66d9ef&#34;&gt;else&lt;/span&gt;{
+               &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;;
+           }
+        }
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;false&lt;/span&gt;;
+    }
+}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4 id=&#34;solution-3-the-most-time-efficient&#34;&gt;Solution 3 （The most time efficient）:&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;class Solution &lt;/span&gt;{
+      &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;public boolean &lt;/span&gt;containsDuplicate(&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;int[] nums&lt;/span&gt;) {
+         Arrays.&lt;span style=&#34;color:#a6e22e&#34;&gt;sort&lt;/span&gt;(nums);
+         &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; (&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;int i &lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 0; i &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; nums.&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; 1; &lt;span style=&#34;color:#f92672&#34;&gt;++&lt;/span&gt;i) {
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; (nums[i] &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; nums[i &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; 1]) &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;;
+         }
+         &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;false&lt;/span&gt;;
+     }
+}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&#34;conclusion&#34;&gt;Conclusion:&lt;/h3&gt;
+
+&lt;p&gt;1.Can sort array by the embedded java library first ，it&amp;rsquo;s more efficient to work out after sorting
+2.Only need to traverse array once by using HashMap or HashSet&lt;/p&gt;
+</description>
+     </item>
+   
+     <item>
        <title>Customize button text for angularjs-dropdown-mulitipselect</title>
        <link>https://dixon629.github.io/posts/add-customized-button-text-angularjs-dropdown-mulitipselect/</link>
        <pubDate>Sun, 03 Apr 2016 17:33:35 +0800</pubDate>
