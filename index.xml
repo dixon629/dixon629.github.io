@@ -342,8 +342,6 @@ What if elements of nums2 are stored on disk, and the memory is limited such tha
        <guid>https://dixon629.github.io/posts/leetcode-plus-one/</guid>
        <description>
 
-&lt;h1 id=&#34;leetcode-plus-one&#34;&gt;Leetcode - Plus One&lt;/h1&gt;
-
 &lt;h5 id=&#34;given-a-non-empty-array-of-digits-representing-a-non-negative-integer-plus-one-to-the-integer&#34;&gt;Given a non-empty array of digits representing a non-negative integer, plus one to the integer.&lt;/h5&gt;
 
 &lt;h5 id=&#34;the-digits-are-stored-such-that-the-most-significant-digit-is-at-the-head-of-the-list-and-each-element-in-the-array-contain-a-single-digit&#34;&gt;The digits are stored such that the most significant digit is at the head of the list, and each element in the array contain a single digit.&lt;/h5&gt;
